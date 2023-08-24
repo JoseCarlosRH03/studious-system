@@ -29,12 +29,10 @@ builder.Services.AddScoped<IAuthenticationService, AuthenticationService>();
 builder.Services.AddScoped<IResourceService, ResourceService>();
 
 builder.Services.AddScoped<IAuditService, AuditService>();
-builder.Services.AddScoped<IBillerService, BillerService>();
 builder.Services.Configure<EmailService.MailSettings>(builder.Configuration.GetSection("MailSettings"));
 builder.Services.AddScoped<IEmailService, EmailService>();
 
 builder.Services.AddScoped<IMunicipiaService, MunicipiaService>();
-builder.Services.AddScoped<ISicflexService, SicflexService>();
 builder.Services.AddScoped<IReadoutService, ReadoutService>();
 
 builder.Services.AddScoped<IDataService, DataService>();

@@ -7,10 +7,8 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <Folder Include="Models\Address\" />
+      <Folder Include="DTOs\API\" />
       <Folder Include="Models\Extensions\" />
-      <Folder Include="Models\Inventory\" />
-      <Folder Include="Models\Management\" />
     </ItemGroup>
 
 </Project>

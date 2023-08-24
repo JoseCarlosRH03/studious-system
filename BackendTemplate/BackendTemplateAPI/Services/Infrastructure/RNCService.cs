@@ -2,7 +2,7 @@
 
 namespace BackendTemplateAPI.Services.Infrastructure;
 
-public class RNCService : DbContext, IRNCService
+public class IDService : DbContext, IRNCService
 {
     public RNCService(DbContextOptions<RNCService> options) : base(options)
     { }

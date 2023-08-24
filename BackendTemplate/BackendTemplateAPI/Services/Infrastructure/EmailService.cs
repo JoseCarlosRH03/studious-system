@@ -1,6 +1,9 @@
 ﻿using System.Net;
 using System.Net.Mail;
 using System.Text.RegularExpressions;
+using BackendTemplateCore;
+using BackendTemplateCore.Models;
+using BackendTemplateCore.Services.Infrastructure;
 using Microsoft.Extensions.Options;
 
 namespace BackendTemplateAPI.Services.Infrastructure;

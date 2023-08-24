@@ -1,21 +1,28 @@
-﻿namespace BackendTemplateAPI.Services.Infrastructure;
+﻿using System.Data;
+using BackendTemplateCore.Errors;
+using BackendTemplateCore.Services.Infrastructure;
+using Microsoft.EntityFrameworkCore;
+
+namespace BackendTemplateAPI.Services.Infrastructure;
 
 public class CedulaService: DbContext, ICedulaService {
-        public DbSet<Cedulado> Cedulados { get; set; }
-
         public CedulaService(DbContextOptions<CedulaService> options) : base(options) { }
-
-        protected override void OnModelCreating(ModelBuilder model) {
-            model.Entity<Cedulado>(c => {
-                c.ToTable("CEDULADOS");
-                c.HasKey(c => c.Cedula);
-                c.Property(c => c.Cedula).HasColumnName("CEDULA");
-                c.Property(c => c.Nombres).HasColumnName("NOMBRES");
-                c.Property(c => c.Apellido1).HasColumnName("APELLIDO1");
-                c.Property(c => c.Apellido2).HasColumnName("APELLIDO2");
-                c.Property(c => c.DateOfBirth).HasColumnName("FECHA_NAC");
-                c.Property(c => c.Sex).HasColumnName("SEXO");
-            });
+        public IDbConnection Connection => Database.GetDbConnection();
+        public DbSet<Cedulado> Cedulados { get; set; }
+        public async Task<bool> IsEnabled()
+        {
+            try
+            {
+                if (string.IsNullOrWhiteSpace(Connection.ConnectionString))
+                {
+                    return false;
+                }
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
+            return true;
         }
 
         public async Task<string> RetrieveCitizenName(string national_id) {
@@ -25,7 +32,6 @@ public class CedulaService: DbContext, ICedulaService {
             return $"{cedulado.Nombres} {cedulado.Apellido1} {cedulado.Apellido2}";
         }
     }
-
 public class Cedulado {
     public string   Cedula      { get; set; }
     public string   Nombres     { get; set; }

@@ -66,33 +66,6 @@ public static class UserManagement
             app.MapDelete("/user/{id:guid}", (Guid id, Context ctx) => ctx.ExecuteAuthenticated(
                 (user, logic) => logic.DeactivateUser(id), PermissionAreas.Users, PermissionTypes.Delete))
                 .Produces<Guid>(),
-
-            app.MapGet("/lot", (int start, int count, DateTime? from, DateTime? to, Guid? user_id, int? status_id, Context ctx) => ctx.ExecuteAuthenticated(
-                (user, logic) => logic.GetLots(start, count, new LotSearchData(from, to?.AddDays(1), user_id, status_id)), PermissionAreas.Lots, PermissionTypes.Read))
-                .Produces<List<DayLotsView>>(),
-            app.MapGet("/lot" + "/count", (DateTime? from, DateTime? to, Guid? user_id, int? status_id, Context ctx) => ctx.ExecuteAuthenticated(
-                (user, logic) => logic.GetLotCount(new LotSearchData(from, to, user_id, status_id)), PermissionAreas.Lots, PermissionTypes.Read))
-                .Produces<int>(),
-            app.MapGet("/lot/current", (Context ctx) => ctx.ExecuteAuthenticated(
-                (user, logic) => logic.GetCurrentLot(user.Id), PermissionAreas.Lots, PermissionTypes.Read))
-                .Produces<LotDetailedView>(),
-            app.MapPost("/lot" + "/{id:guid}", (Guid id, decimal Amount, Context ctx) => ctx.ExecuteAuthenticated(
-                (user, logic) => logic.CreateLot(id, Amount), PermissionAreas.Lots, PermissionTypes.Create))
-                .Produces<int>(),
-            app.MapGet("/lot/{id:guid}", (Guid id, Context ctx) => ctx.ExecuteAuthenticated(
-                (user, logic) => logic.GetDetailedLot(id), PermissionAreas.Lots, PermissionTypes.Special))
-                .Produces<LotDetailedView>(),
-            app.MapPost("/lot" + "/close", (LotBalanceData[] data, Context ctx) => ctx.ExecuteAuthenticated(
-                (user, logic) => logic.CloseLot(user, data), PermissionAreas.Lots, PermissionTypes.Update))
-                .Produces<LotView>(),
-            app.MapGet("/lot" + "/balance_summary", (Context ctx) => ctx.ExecuteAuthenticated(
-                (user, logic) => logic.GetLotBalance(user.Id), PermissionAreas.Lots, PermissionTypes.Read))
-                .Produces<LotBalanceClosingView>(),
-            
-            
-            app.MapPost("/opening", (OpeningData data, Context ctx) => ctx.ExecuteAuthenticated(
-                    (user, logic) => logic.CreateOpening(user, data), PermissionAreas.Openings, PermissionTypes.Create))
-                .Produces<int>(),
         });
     }
 }
