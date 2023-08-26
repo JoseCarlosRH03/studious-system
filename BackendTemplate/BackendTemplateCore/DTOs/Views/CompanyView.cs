@@ -1,6 +1,6 @@
-﻿using Core.Models;
+﻿using BackendTemplateCore.Models.Company;
 
-namespace Core.DTOs.Queries;
+namespace BackendTemplateCore.DTOs.Views;
 
 public record struct CompanyView(
     int Id,

@@ -1,4 +1,4 @@
-﻿namespace BackendTemplateCore.Models;
+﻿namespace BackendTemplateCore.Models.Inventory;
 
 public class Material: AuditableEntity {
    public int   Id        { get; set; }

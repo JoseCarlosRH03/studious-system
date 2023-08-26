@@ -1,4 +1,4 @@
-﻿namespace BackendTemplateCore.Models;
+﻿namespace BackendTemplateCore.Models.User;
 
 public class PermissionType
 {

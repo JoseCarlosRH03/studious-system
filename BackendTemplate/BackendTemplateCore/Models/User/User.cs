@@ -1,4 +1,6 @@
-namespace BackendTemplateCore.Models;
+using BackendTemplateCore.Models.Company;
+
+namespace BackendTemplateCore.Models.User;
 
 public class User {
 	public Guid      Id                     { get; set; }
@@ -18,15 +20,11 @@ public class User {
 	public DateTime?  DateLastLogin          { get; set; }
 	public DateTime?  DateLastLoginFieldService { get; set; }
 	public DateTime?  DateLastPasswordChange { get; set; }
-	public int       Origin					{ get; set; } = (int) UserOrigin.BillFast;
 
 	public int? BranchId { get; set; }
 	public virtual Branch? Branch { get; set; }
-	public virtual Brigade? Brigade { get; set; }
+	public virtual Brigade.Brigade? Brigade { get; set; }
 	public virtual ICollection<UserRole>       Roles { get; set; }
 	public virtual ICollection<UserPermission> Claims { get; set; }
-	public virtual ICollection<Lot> 		   Lots { get; set; }
-	public virtual ICollection<Itinerary>                Itineraries         { get; set; } 
-	public virtual ICollection<Issue>                    Issues              { get; set; }
 
 }

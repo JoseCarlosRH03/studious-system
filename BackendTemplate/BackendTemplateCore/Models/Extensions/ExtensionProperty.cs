@@ -1,4 +1,4 @@
-﻿namespace BackendTemplateCore.Models;
+﻿namespace BackendTemplateCore.Models.Extensions;
 
 public class ExtensionProperty : AuditableEntity
 {

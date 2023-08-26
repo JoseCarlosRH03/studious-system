@@ -1,7 +1,10 @@
-﻿using Core.Enums;
-using Core.Models;
+﻿using BackendTemplateCore.DTOs.Shared;
+using BackendTemplateCore.Enums;
+using BackendTemplateCore.Models.Company;
 
-namespace Core.DTOs.Queries;
+using BackendTemplateCore.Models.Company;
+
+namespace BackendTemplateCore.DTOs.Views;
 
 public record struct BranchView(
     int Id,

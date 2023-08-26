@@ -1,10 +1,9 @@
 ﻿using System.Linq.Expressions;
+using BackendTemplateCore.DTOs.Shared;
+using BackendTemplateCore.DTOs.Views;
 using BackendTemplateCore.Models;
-using BackendTemplateCore.Models.Billings;
-using BackendTemplateCore.Models.Invoices;
-using BackendTemplateCore.Models.Payments;
-using BackendTemplateCore.Models.Subscriptions;
-using BillingBatchDetailedView = Core.DTOs.BillfastNGDTOs.BillingBatchDetailedView;
+using BackendTemplateCore.Models.Address;
+using BackendTemplateCore.Models.User;
 
 namespace BackendTemplateCore.Services;
 
@@ -33,9 +32,16 @@ public interface IDataService {
    
    Task<bool> ExistsUserWithEmail(string email);
    Task<bool> ExistsUserWithPhone(string phone);
+   Task<bool> ExistsRoleWithName(string dataName);
    Task<User> GetUserWithRoles(Guid userId);
    Task<User?> GetUserLogin(string login);
    Task<List<RoleView>> GetRoleViews(int start, int count, string? filter);
    Task<List<User>> GetUserViews(string? filter, int start, int count);
-
+   Task<List<CityView>> GetCities(int start, int count, string? filter);
+   Task<bool> ExistsCityWithName(string dataName, int dataStateId);
+   Task<bool> ExistsStateWithName(string dataName, int dataCountryId);
+   Task<List<StateView>> GetStates(string? filter);
+   Task<List<StatusItemView>> GetCountries(string? filter);
+   Task<bool> ExistsBranchWithCode(string dataCode);
+   Task<bool> ExistsCompanyWithCode(string code);
 }

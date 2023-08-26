@@ -1,4 +1,4 @@
-﻿namespace BackendTemplateCore.Models;
+﻿namespace BackendTemplateCore.Models.User;
 
 public class UserPermission
 {
@@ -7,5 +7,5 @@ public class UserPermission
     public int PermissionId { get; set; }
     
     public virtual Permission Permission { get; set; }
-    public virtual User User { get; set; }
+    public virtual Models.User.User User { get; set; }
 }

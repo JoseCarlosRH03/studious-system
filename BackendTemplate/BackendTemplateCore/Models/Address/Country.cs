@@ -1,5 +1,5 @@
 ﻿
-namespace BackendTemplateCore.Models;
+namespace BackendTemplateCore.Models.Address;
 
 public class Country : AuditableEntity
 {

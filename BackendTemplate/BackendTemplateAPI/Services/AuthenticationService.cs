@@ -1,5 +1,5 @@
 ﻿using BackendTemplateCore;
-using BackendTemplateCore.Models;
+using BackendTemplateCore.Models.User;
 using BackendTemplateCore.Services;
 using Microsoft.AspNetCore.Identity;
 

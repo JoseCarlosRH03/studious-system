@@ -1,4 +1,4 @@
-﻿using BackendTemplateCore.Models;
+﻿using BackendTemplateCore.Models.User;
 
 namespace BackendTemplateCore.Services.Model_Related_Services;
 

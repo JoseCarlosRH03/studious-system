@@ -2,7 +2,7 @@
 using System.Net.Mail;
 using System.Text.RegularExpressions;
 using BackendTemplateCore;
-using BackendTemplateCore.Models;
+using BackendTemplateCore.Models.User;
 using BackendTemplateCore.Services.Infrastructure;
 using Microsoft.Extensions.Options;
 

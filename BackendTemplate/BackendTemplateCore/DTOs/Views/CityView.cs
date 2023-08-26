@@ -1,9 +1,8 @@
-﻿
+﻿using BackendTemplateCore.DTOs.Shared;
+using BackendTemplateCore.Enums;
+using BackendTemplateCore.Models.Address;
 
-using Core.Enums;
-using Core.Models;
-
-namespace Core.DTOs;
+namespace BackendTemplateCore.DTOs.Views;
 
 public record struct CityView
 (

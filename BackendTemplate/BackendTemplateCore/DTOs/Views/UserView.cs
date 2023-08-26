@@ -1,9 +1,8 @@
-using Core.DTOs.BillfastNGDTOs;
-using Core.DTOs.Queries;
-using Core.Enums;
-using Core.Models;
+using BackendTemplateCore.DTOs.Shared;
+using BackendTemplateCore.Enums;
+using BackendTemplateCore.Models.User;
 
-namespace Core.DTOs;
+namespace BackendTemplateCore.DTOs.Views;
 
 public record struct UserView
 (

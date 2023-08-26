@@ -7,6 +7,7 @@ using BackendTemplateCore.Services;
 using BackendTemplateCore.Services.Infrastructure;
 using BackendTemplateCore.Services.Model_Related_Services;
 using Microsoft.AspNetCore.Http.Json;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -31,15 +32,13 @@ builder.Services.AddScoped<IResourceService, ResourceService>();
 builder.Services.AddScoped<IAuditService, AuditService>();
 builder.Services.Configure<EmailService.MailSettings>(builder.Configuration.GetSection("MailSettings"));
 builder.Services.AddScoped<IEmailService, EmailService>();
-
-builder.Services.AddScoped<IMunicipiaService, MunicipiaService>();
-builder.Services.AddScoped<IReadoutService, ReadoutService>();
+builder.Services.AddScoped<IClientService, ClientService>();
 
 builder.Services.AddScoped<IDataService, DataService>();
 builder.Services.AddDbContext<DataService>(options => {
     var env = builder.Environment;
     if (env.IsLocalDevelopment()) {
-        options.UseInMemoryDatabase("billfast");
+        options.UseInMemoryDatabase("DobarTecCentral");
     } else options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
 });
 

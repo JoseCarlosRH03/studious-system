@@ -1,7 +1,8 @@
-﻿using Core.Enums;
-using Core.Models;
+﻿using BackendTemplateCore.DTOs.Shared;
+using BackendTemplateCore.Enums;
+using BackendTemplateCore.Models.User;
 
-namespace Core.DTOs.BillfastNGDTOs;
+namespace BackendTemplateCore.DTOs.Views;
 
 public record struct RoleView(
     int Id,

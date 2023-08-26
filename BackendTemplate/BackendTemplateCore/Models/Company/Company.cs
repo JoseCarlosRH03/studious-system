@@ -1,4 +1,6 @@
-﻿namespace BackendTemplateCore.Models;
+﻿using BackendTemplateCore.Models.Address;
+
+namespace BackendTemplateCore.Models.Company;
 
 public class Company : AuditableEntity
 {
@@ -7,8 +9,8 @@ public class Company : AuditableEntity
     public string TaxRegistrationNumber { get; set; }
 
     public string AddressLine1 { get; set; }
-    public string AddressLine2 { get; set; }
-    public string AddressLine3 { get; set; }
+    public string? AddressLine2 { get; set; }
+    public string? AddressLine3 { get; set; }
     public string Region { get; set; }
     public int CityId { get; set; }
     public string PostalCode { get; set; }

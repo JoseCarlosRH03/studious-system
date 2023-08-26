@@ -1,6 +1,8 @@
 ﻿using BackendTemplateCore;
+using BackendTemplateCore.Enums;
 using BackendTemplateCore.Errors;
-using BackendTemplateCore.Models;
+using BackendTemplateCore.Logic;
+using BackendTemplateCore.Models.User;
 using BackendTemplateCore.Services.Model_Related_Services;
 
 namespace BackendTemplateAPI;

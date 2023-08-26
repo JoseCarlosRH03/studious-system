@@ -1,4 +1,8 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using BackendTemplateCore.DTOs.Data;
+using BackendTemplateCore.DTOs.Views;
+using BackendTemplateCore.Enums;
+using Microsoft.AspNetCore.Mvc;
+using Swashbuckle.AspNetCore.Annotations;
 using static BackendTemplateAPI.Extensions;
 
 namespace BackendTemplateAPI.Routes;
@@ -19,9 +23,6 @@ public static class UserManagement
                 (Guid userId, string password, Context ctx, HttpRequest req) => ctx.Execute(
                 logic => logic.ChangePassword(userId, password))),
             
-            app.MapGet("/audit", (Context ctx) => ctx.ExecuteAuthenticated(
-                (user, logic) => logic.GetAllAudits(), PermissionAreas.Audits, PermissionTypes.Read))
-                .Produces<List<AuditView>>(),
             app.MapGet("/permission", (Context ctx) => ctx.ExecuteAuthenticated(
                 (user, logic) => logic.GetAllPermissions(), PermissionAreas.Permissions, PermissionTypes.Read))
                 .Produces<List<PermissionView>>(),

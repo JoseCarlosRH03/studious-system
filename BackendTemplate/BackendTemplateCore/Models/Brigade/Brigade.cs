@@ -1,4 +1,4 @@
-﻿namespace BackendTemplateCore.Models;
+﻿namespace BackendTemplateCore.Models.Brigade;
 
 public class Brigade : AuditableEntity {
    public Guid     UserId      { get; set; }
@@ -12,6 +12,6 @@ public class Brigade : AuditableEntity {
 
    public virtual ICollection<BrigadeMember> Members { get; set; }
 
-   public virtual User          User   { get; set; }
+   public virtual User.User          User   { get; set; }
    public virtual BrigadeStatus Status { get; set; }
 }

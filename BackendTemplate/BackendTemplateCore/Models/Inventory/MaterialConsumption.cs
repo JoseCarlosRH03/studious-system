@@ -1,4 +1,4 @@
-﻿namespace BackendTemplateCore.Models;
+﻿namespace BackendTemplateCore.Models.Inventory;
 
 public class MaterialConsumption {
    public int Id { get; set; }
@@ -8,6 +8,6 @@ public class MaterialConsumption {
    public decimal Amount { get; set; }
    
    public virtual Material Material { get; set; }
-   public virtual Brigade Brigade { get; set; }
+   public virtual Brigade.Brigade Brigade { get; set; }
    
 }

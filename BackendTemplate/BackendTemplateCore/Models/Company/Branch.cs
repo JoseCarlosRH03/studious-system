@@ -1,4 +1,6 @@
-﻿namespace BackendTemplateCore.Models;
+﻿using BackendTemplateCore.Models.Address;
+
+namespace BackendTemplateCore.Models.Company;
 
 public class Branch: AuditableEntity
 {

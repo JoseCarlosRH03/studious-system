@@ -1,4 +1,4 @@
-﻿namespace BackendTemplateCore.Models;
+﻿namespace BackendTemplateCore.Models.Inventory;
 
 public class MaterialExistence {
    public int     Id         { get; set; }
@@ -7,5 +7,5 @@ public class MaterialExistence {
    public decimal Amount     { get; set; }
 
    public virtual Material Material { get; set; }
-   public virtual User?    User     { get; set; }
+   public virtual User.User?    User     { get; set; }
 }

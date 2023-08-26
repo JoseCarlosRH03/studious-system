@@ -1,8 +1,7 @@
 ﻿using System.Text;
-using BackendTemplateCore.Models;
-using BackendTemplateCore.Models.Payments;
-using BackendTemplateCore.Models.Products;
-using BackendTemplateCore.Services.Model_Related_Services;
+using BackendTemplateCore.Enums;
+using BackendTemplateCore.Models.Extensions;
+using BackendTemplateCore.Models.User;
 
 namespace BackendTemplateCore;
 
@@ -135,51 +134,8 @@ public static class Extensions {
              //    return;
              user.Roles.Any(r => r.Role.Name == "SuperAdmin");
    }
-      public static string GetPaymentTypeValue(PaymentMethodTypes? type, List<PaymentApply> payments, List<Payment> advancedPayments)
-   {
-      payments = type == null ? payments.Where(p => p.Payment.PaymentMethod.PaymentMethodTypeId is < (int)PaymentMethodTypes.Efectivo or > (int)PaymentMethodTypes.Cheque).ToList() : payments.Where(p => p.Payment.PaymentMethod.PaymentMethodTypeId == (int)type).ToList();
-      advancedPayments = type == null ? advancedPayments.Where(p => p.PaymentMethod.PaymentMethodTypeId is < (int)PaymentMethodTypes.Efectivo or > (int)PaymentMethodTypes.Cheque).ToList() : advancedPayments.Where(p => p.PaymentMethod.PaymentMethodTypeId == (int)type).ToList();
-      
-      return (payments.Select(p => p.ApplyAmount).Sum() + advancedPayments.Select(p => p.DocumentAmount).Sum()).ToString("F2");
-   }
-   
+
    public static string GetPropertyValueByName(ICollection<ExtensionProperty> properties, string name) {
       return properties.First(x => x.Name.Equals(name)).Value;
-   }
-
-   public static (decimal Value, decimal Consumption) GetRateValue(this UnifiedConsumption Consumption, string UnitOfMeasure, ProductRateScale[] scale, bool Fixed, bool Override)
-   {
-      decimal value;
-      scale = scale.OrderBy(s => s.LowerQuantity).ToArray();
-
-      decimal consumption = 0;
-      if (UnitOfMeasure.ToLower().Contains("kwh"))
-         consumption = Consumption.ConsumptionKWH;
-      else if (UnitOfMeasure.ToLower().Contains("kwpeak"))
-         consumption = Consumption.MaxKWPeak;
-      else if (UnitOfMeasure.ToLower().Contains("kwnonpeak"))
-         consumption = Consumption.MaxKWNonPeak;
-      else if (UnitOfMeasure.ToLower().Contains("kw"))
-         consumption = Consumption.MaxKW;
-      else if (UnitOfMeasure.ToLower().Contains("kvarh"))
-         consumption = Consumption.ConsumptionKVARH;
-      else if (UnitOfMeasure.ToLower().Contains('v'))
-         consumption = Consumption.MaxV;
-
-      if (Fixed)
-         value = scale.Last(s =>
-            s.LowerQuantity <= consumption && (s.UpperQuantity is null || s.UpperQuantity >= consumption)).Price;
-      else if (scale.Last().LowerQuantity < consumption && Override)
-         value = scale.Last(s => s.LowerQuantity <= consumption).Price *
-                 (scale.Last(s => s.LowerQuantity <= consumption).UpperQuantity is not null
-                    ? scale.Last(s => s.LowerQuantity <= consumption).UpperQuantity!.Value
-                    : consumption);
-      else
-         value = scale.Sum(s =>
-            s.Price * (s.LowerQuantity - (s.UpperQuantity is not null && consumption > s.UpperQuantity.Value
-               ? s.UpperQuantity.Value
-               : consumption)));
-
-      return (value, consumption);
    }
 }
