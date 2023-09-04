@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.7.34003.232
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FleetTechAPI", "BackendTemplateAPI\FleetTechAPI.csproj", "{A0D3CEEF-76DF-4C86-9D42-EDEA9292DDED}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FleetTechAPI", "FleetTechAPI\FleetTechAPI.csproj", "{A0D3CEEF-76DF-4C86-9D42-EDEA9292DDED}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FleetTechCore", "BackendTemplateCore\FleetTechCore.csproj", "{F2257B54-D334-4735-A5CE-62748A2C3780}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FleetTechCore", "FleetTechCore\FleetTechCore.csproj", "{F2257B54-D334-4735-A5CE-62748A2C3780}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
