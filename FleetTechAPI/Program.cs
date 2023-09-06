@@ -38,10 +38,10 @@ builder.Services.AddScoped<IDataService, DataService>();
 builder.Services.AddDbContext<DataService>(options => {
     var env = builder.Environment;
     if (env.IsLocalDevelopment()) {
-        options.UseInMemoryDatabase("DobarTecCentral");
-    } else options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
+        options.UseSqlite(builder.Configuration.GetConnectionString("FleetTechLite"));
+    } else options.UseMySQL(builder.Configuration.GetConnectionString("FleetTech"));
 });
-
+ 
 
 var app = builder.Build();
 
