@@ -5,8 +5,11 @@ using FleetTechCore.Models.Address;
 using FleetTechCore.Models.Brigade;
 using FleetTechCore.Models.Company;
 using FleetTechCore.Models.Extensions;
+using FleetTechCore.Models.Fleet;
+using FleetTechCore.Models.Fuel;
 using FleetTechCore.Models.Inventory;
 using FleetTechCore.Models.User;
+using FleetTechCore.Models.WorkShop;
 using FleetTechCore.Services;
 using FleetTechCore.Services.Model_Related_Services;
 using Microsoft.AspNetCore.Identity;
@@ -197,4 +200,12 @@ public partial class DataService: DbContext, IDataService
     public DbSet<UserPermission> UserClaims { get; set; }
     public DbSet<UserRole> UserRoles { get; set; }
     public DbSet<User> Users { get; set; }
+    public DbSet<Contact> Contacts { get; set; }
+    public DbSet<MaintenanceScheduling> MaintenanceSchedulings { get; set; }
+    public DbSet<Mechanic> Mechanics { get; set; }
+    public DbSet<MechanicSpecialty> MechanicSpecialtys { get; set; }
+    public DbSet<Driver> Drivers { get; set; }
+    public DbSet<Vehicle> Vehicles { get; set; }
+    public DbSet<FuelPrice> FuelPrices { get; set; }
+    public DbSet<FuelStation> FuelStations { get; set; }
 }
