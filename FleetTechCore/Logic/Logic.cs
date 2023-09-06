@@ -16,7 +16,7 @@ namespace FleetTechCore.Logic;
 public partial class Logic
 {
     public Logic(IAuditService audit, IDataService data, IAuthenticationService authentication, 
-        IEmailService emails, IResourceService resources, ICedulaService cedulaService,
+        IEmailService emails, IResourceService resources,/* ICedulaService cedulaService,*/
         IClientService clientService)
     {
         Audit = audit;
@@ -24,7 +24,7 @@ public partial class Logic
         Authentication = authentication;
         Email = emails;
         Resources = resources;
-        Cedula = cedulaService;
+        //Cedula = cedulaService;
         Client = clientService;
     }
 
@@ -33,7 +33,7 @@ public partial class Logic
     readonly IAuthenticationService Authentication;
     readonly IEmailService Email;
     readonly IResourceService Resources;
-    readonly ICedulaService Cedula;
+    //readonly ICedulaService Cedula;
     readonly IClientService Client;
 
     #region Cities

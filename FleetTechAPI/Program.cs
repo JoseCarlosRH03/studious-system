@@ -1,8 +1,10 @@
 using FleetTechAPI;
+using FleetTechAPI.Routes;
 using FleetTechAPI.Services;
 using FleetTechAPI.Services.Data;
 using FleetTechAPI.Services.Infrastructure;
 using FleetTechCore;
+using FleetTechCore.Logic;
 using FleetTechCore.Services;
 using FleetTechCore.Services.Infrastructure;
 using FleetTechCore.Services.Model_Related_Services;
@@ -13,7 +15,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
-builder.Services.AddControllers();
+
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
@@ -41,7 +43,8 @@ builder.Services.AddDbContext<DataService>(options => {
         options.UseSqlite(builder.Configuration.GetConnectionString("FleetTechLite"));
     } else options.UseMySQL(builder.Configuration.GetConnectionString("FleetTech"));
 });
- 
+builder.Services.AddScoped<Logic>();
+builder.Services.AddScoped<Context>();
 
 var app = builder.Build();
 
@@ -53,10 +56,8 @@ if (HostEnvironmentEnvExtensions.IsDevelopment(app.Environment))
 }
 
 app.UseHttpsRedirection();
-
-app.UseAuthorization();
-
-app.MapControllers();
+app.MapUserManagement();
+app.MapFleetManagement();
 
 app.Run();
 
