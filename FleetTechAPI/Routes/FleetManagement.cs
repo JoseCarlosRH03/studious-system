@@ -11,7 +11,7 @@ public static class FleetManagement
         Tagged("Manejo de Conductores y Vehículos", new []
         {
             app.MapGet("/conductores", (Context ctx) => ctx.ExecuteAuthenticated(
-                (user, logic) => logic.GetAllPermissions(), PermissionAreas.Permissions, PermissionTypes.Read))
+                (user, logic) => logic.GetAllPermissions()))
                 .Produces<List<PermissionView>>(),
         });
     }
