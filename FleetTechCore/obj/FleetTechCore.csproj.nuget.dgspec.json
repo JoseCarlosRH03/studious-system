@@ -1,20 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Berna\\work\\Dobartec\\BackEnd\\fleettech_api\\FleetTechCore\\FleetTechCore.csproj": {}
+    "C:\\Users\\josec\\OneDrive\\Documents\\DBT\\FleetTech-API\\FleetTechCore\\FleetTechCore.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Berna\\work\\Dobartec\\BackEnd\\fleettech_api\\FleetTechCore\\FleetTechCore.csproj": {
+    "C:\\Users\\josec\\OneDrive\\Documents\\DBT\\FleetTech-API\\FleetTechCore\\FleetTechCore.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Berna\\work\\Dobartec\\BackEnd\\fleettech_api\\FleetTechCore\\FleetTechCore.csproj",
+        "projectUniqueName": "C:\\Users\\josec\\OneDrive\\Documents\\DBT\\FleetTech-API\\FleetTechCore\\FleetTechCore.csproj",
         "projectName": "FleetTechCore",
-        "projectPath": "C:\\Users\\Berna\\work\\Dobartec\\BackEnd\\fleettech_api\\FleetTechCore\\FleetTechCore.csproj",
-        "packagesPath": "C:\\Users\\Berna\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Berna\\work\\Dobartec\\BackEnd\\fleettech_api\\FleetTechCore\\obj\\",
+        "projectPath": "C:\\Users\\josec\\OneDrive\\Documents\\DBT\\FleetTech-API\\FleetTechCore\\FleetTechCore.csproj",
+        "packagesPath": "C:\\Users\\josec\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\josec\\OneDrive\\Documents\\DBT\\FleetTech-API\\FleetTechCore\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\Berna\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\josec\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -22,6 +26,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
