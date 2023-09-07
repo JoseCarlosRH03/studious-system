@@ -13,5 +13,6 @@
 /dataSources/
 /dataSources.local.xml
 .vs/FleetTech/DesignTimeBuild
+.vs/
 *.v2
 FleetTechAPI/obj
