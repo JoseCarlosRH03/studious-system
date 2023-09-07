@@ -1126,6 +1126,53 @@ namespace FleetTechAPI.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Licenses");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Description = "Permiso de aprendizaje"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Description = "01a motocicletas y tricículos livianos"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Description = "01b motocicletas y tricículos pesados"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Description = "02 vehículos livianos"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Description = "02+R vehículos livianos con remolque"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            Description = "03a vehículos pesados"
+                        },
+                        new
+                        {
+                            Id = 7,
+                            Description = "03+R vehículos pesados con remolque"
+                        },
+                        new
+                        {
+                            Id = 8,
+                            Description = "04 vehículos pesados de carga (patanas)"
+                        },
+                        new
+                        {
+                            Id = 9,
+                            Description = "05 vehículos especiales"
+                        });
                 });
 
             modelBuilder.Entity("FleetTechCore.Models.Fleet.Vehicle", b =>
@@ -1982,11 +2029,11 @@ namespace FleetTechAPI.Migrations
                         {
                             Id = new Guid("00000000-0000-0000-0000-000000000001"),
                             AccessFailedCount = 0,
-                            DateCreated = new DateTime(2023, 9, 6, 21, 41, 46, 658, DateTimeKind.Local).AddTicks(482),
+                            DateCreated = new DateTime(2023, 9, 6, 21, 48, 1, 45, DateTimeKind.Local).AddTicks(6211),
                             Email = "superadmin@gmail.com",
                             FirstName = "Super",
                             LastName = "Admin",
-                            PasswordHash = "AQAAAAIAAYagAAAAEGaafGlJH+wkaMM66d2T9xP9JQ4UwLdtTW6UXFq0XeGPeyE1cqXGp2elyoucwT5nNQ==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEOPhRARyv4p3qgRP5JXRLfwdLWp6PZ4jrrcQiUDYnOB76f1y+xYAD715Db9xRaQ+MA==",
                             Phone = "(829) 123-4567",
                             Status = 1,
                             Username = "superadmin"

@@ -376,20 +376,19 @@ public static class Seeder {
 				CreatedOn = DateTime.MinValue,
 			}
 		}),
+         (typeof(LicenseDrivers), new[] {
+			  new LicenseDrivers { Id = 1, Description = "Permiso de aprendizaje"                   },
+			  new LicenseDrivers { Id = 2, Description = "01a motocicletas y tricículos livianos"   },
+			  new LicenseDrivers { Id = 3, Description = "01b motocicletas y tricículos pesados"    },
+			  new LicenseDrivers { Id = 4, Description = "02 vehículos livianos"                    },
+			  new LicenseDrivers { Id = 5, Description = "02+R vehículos livianos con remolque"     },
+			  new LicenseDrivers { Id = 6, Description = "03a vehículos pesados"                    },
+			  new LicenseDrivers { Id = 7, Description = "03+R vehículos pesados con remolque"      },
+			  new LicenseDrivers { Id = 8, Description = "04 vehículos pesados de carga (patanas)"  },
+			  new LicenseDrivers { Id = 9, Description = "05 vehículos especiales"                  }
+	     }),
+
 	};
-
-    private static (Type, object[]) Liscenses() => (typeof(LicenseDrivers), new[] {
-      new LicenseDrivers { Id = 1, Description = "Permiso de aprendizaje"					},
-      new LicenseDrivers { Id = 2, Description = "01a motocicletas y tricículos livianos"	},
-      new LicenseDrivers { Id = 3, Description = "01b motocicletas y tricículos pesados"    },
-      new LicenseDrivers { Id = 4, Description = "02 vehículos livianos"					},
-      new LicenseDrivers { Id = 5, Description = "02+R vehículos livianos con remolque"     },
-      new LicenseDrivers { Id = 5, Description = "03a vehículos pesados"					},
-      new LicenseDrivers { Id = 5, Description = "03+R vehículos pesados con remolque"      },
-      new LicenseDrivers { Id = 5, Description = "04 vehículos pesados de carga (patanas)"  },
-      new LicenseDrivers { Id = 5, Description = "05 vehículos especiales"					}
-   });
-
    public static (Type type, object[] data)[] DevelopmentSeeds() => new (Type, object[])[] {
 		(typeof(Role), new Role[]
 		{
