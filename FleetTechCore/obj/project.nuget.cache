@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "s7row4Ps83GG8kWePSMt2QYJhhPNuGF7XwVqnnzJQEnR2wy9lh4MFmJECsljbYHjLXxRHXoEcX5GqHWFbRrqyA==",
+  "dgSpecHash": "Zlkz4nWSrrBviPYRxU/4VKqa5rZxIW4Mq0wAsKl+3hlkEXh0C7EykNbEVkMTKKP9a++fCf9uP13Mb0Luu9j/Lg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\josec\\OneDrive\\Documents\\DBT\\FleetTech-API\\FleetTechCore\\FleetTechCore.csproj",
+  "projectFilePath": "C:\\Users\\Berna\\work\\Dobartec\\BackEnd\\fleettech_api\\FleetTechCore\\FleetTechCore.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

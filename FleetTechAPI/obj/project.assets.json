@@ -3441,24 +3441,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\josec\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "C:\\Users\\Berna\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\josec\\OneDrive\\Documents\\DBT\\FleetTech-API\\FleetTechAPI\\FleetTechAPI.csproj",
+      "projectUniqueName": "C:\\Users\\Berna\\work\\Dobartec\\BackEnd\\fleettech_api\\FleetTechAPI\\FleetTechAPI.csproj",
       "projectName": "FleetTechAPI",
-      "projectPath": "C:\\Users\\josec\\OneDrive\\Documents\\DBT\\FleetTech-API\\FleetTechAPI\\FleetTechAPI.csproj",
-      "packagesPath": "C:\\Users\\josec\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\josec\\OneDrive\\Documents\\DBT\\FleetTech-API\\FleetTechAPI\\obj\\",
+      "projectPath": "C:\\Users\\Berna\\work\\Dobartec\\BackEnd\\fleettech_api\\FleetTechAPI\\FleetTechAPI.csproj",
+      "packagesPath": "C:\\Users\\Berna\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Berna\\work\\Dobartec\\BackEnd\\fleettech_api\\FleetTechAPI\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-      ],
       "configFilePaths": [
-        "C:\\Users\\josec\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Users\\Berna\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -3466,15 +3461,14 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net7.0": {
           "targetAlias": "net7.0",
           "projectReferences": {
-            "C:\\Users\\josec\\OneDrive\\Documents\\DBT\\FleetTech-API\\FleetTechCore\\FleetTechCore.csproj": {
-              "projectPath": "C:\\Users\\josec\\OneDrive\\Documents\\DBT\\FleetTech-API\\FleetTechCore\\FleetTechCore.csproj"
+            "C:\\Users\\Berna\\work\\Dobartec\\BackEnd\\fleettech_api\\FleetTechCore\\FleetTechCore.csproj": {
+              "projectPath": "C:\\Users\\Berna\\work\\Dobartec\\BackEnd\\fleettech_api\\FleetTechCore\\FleetTechCore.csproj"
             }
           }
         }
@@ -3546,5 +3540,13 @@
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.400\\RuntimeIdentifierGraph.json"
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "Undefined",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Problem reading the cache file C:\\Users\\Berna\\work\\Dobartec\\BackEnd\\fleettech_api\\FleetTechAPI\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
+    }
+  ]
 }

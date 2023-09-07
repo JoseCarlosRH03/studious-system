@@ -12,3 +12,6 @@
 # Datasource local storage ignored files
 /dataSources/
 /dataSources.local.xml
+.vs/FleetTech/DesignTimeBuild
+*.v2
+FleetTechAPI/obj
