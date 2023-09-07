@@ -8,6 +8,4 @@ public class MaterialConsumption {
    public decimal Amount { get; set; }
    
    public virtual Material Material { get; set; }
-   public virtual Brigade.Brigade Brigade { get; set; }
-   
 }

@@ -2,11 +2,13 @@
 using FleetTechCore;
 using FleetTechCore.Models;
 using FleetTechCore.Models.Address;
-using FleetTechCore.Models.Brigade;
 using FleetTechCore.Models.Company;
 using FleetTechCore.Models.Extensions;
+using FleetTechCore.Models.Fleet;
+using FleetTechCore.Models.Fuel;
 using FleetTechCore.Models.Inventory;
 using FleetTechCore.Models.User;
+using FleetTechCore.Models.WorkShop;
 using FleetTechCore.Services;
 using FleetTechCore.Services.Model_Related_Services;
 using Microsoft.AspNetCore.Identity;
@@ -118,11 +120,11 @@ public partial class DataService: DbContext, IDataService
 
     public async Task Atomic(Func<Task> operation)
     {
-        if (Database.IsInMemory())
-        {
-            await operation();
-            return;
-        }
+        //if (Database.IsInMemory())
+        //{
+        //    await operation();
+        //    return;
+        //}
 
         using var transaction = await Database.BeginTransactionAsync();
         try
@@ -174,11 +176,6 @@ public partial class DataService: DbContext, IDataService
     }
     public DbSet<Branch> Branches { get; set; }
     public DbSet<BranchType> BranchTypes { get; set; }
-    public DbSet<BrigadeGeolocation> BrigadeGeolocations { get; set; }
-    public DbSet<Brigade> Brigades { get; set; }
-    public DbSet<BrigadeMember> BrigadeMembers { get; set; }
-    public DbSet<BrigadeStatus> BrigadeStatuses { get; set; }
-    public DbSet<BrigadeType> BrigadeTypes { get; set; }
     public DbSet<City> Cities { get; set; }
     public DbSet<Company> Companies { get; set; }
     public DbSet<CompanySetting> CompanySettings { get; set; }
@@ -197,4 +194,13 @@ public partial class DataService: DbContext, IDataService
     public DbSet<UserPermission> UserClaims { get; set; }
     public DbSet<UserRole> UserRoles { get; set; }
     public DbSet<User> Users { get; set; }
+    public DbSet<Contact> Contacts { get; set; }
+    public DbSet<MaintenanceScheduling> MaintenanceSchedulings { get; set; }
+    public DbSet<Mechanic> Mechanics { get; set; }
+    public DbSet<MechanicSpecialty> MechanicSpecialtys { get; set; }
+    public DbSet<Driver> Drivers { get; set; }
+    public DbSet<Vehicle> Vehicles { get; set; }
+    public DbSet<FuelPrice> FuelPrices { get; set; }
+    public DbSet<FuelStation> FuelStations { get; set; }
+    public DbSet<LicenseDrivers> Licenses { get; set; }
 }

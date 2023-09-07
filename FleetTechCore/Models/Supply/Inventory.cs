@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace FleetTechCore.Models.Supply
 {
-    internal class Inventory
+    public class Inventory: AuditableEntity
     {
+
     }
 }

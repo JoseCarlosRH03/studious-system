@@ -2,7 +2,7 @@
 
 public enum PermissionAreas
 {
-    Companies,
+    Companies = 1,
     Users,
     Roles,
     Permissions,

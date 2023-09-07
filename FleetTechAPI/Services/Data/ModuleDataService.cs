@@ -66,4 +66,8 @@ public partial class DataService
         return user.Id;
     }
     #endregion
+
+    #region Fleet Management
+        
+    #endregion
 }

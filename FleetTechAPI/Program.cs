@@ -39,9 +39,9 @@ builder.Services.AddScoped<IClientService, ClientService>();
 builder.Services.AddScoped<IDataService, DataService>();
 builder.Services.AddDbContext<DataService>(options => {
     var env = builder.Environment;
-    if (env.IsLocalDevelopment()) {
+    if (env.IsDevelopment()) {
         options.UseSqlite(builder.Configuration.GetConnectionString("FleetTechLite"));
-    } else options.UseMySQL(builder.Configuration.GetConnectionString("FleetTech"));
+    }else options.UseMySQL(builder.Configuration.GetConnectionString("FleetTech"));
 });
 builder.Services.AddScoped<Logic>();
 builder.Services.AddScoped<Context>();
