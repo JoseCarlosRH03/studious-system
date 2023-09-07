@@ -194,13 +194,13 @@ public partial class DataService: DbContext, IDataService
     public DbSet<UserPermission> UserClaims { get; set; }
     public DbSet<UserRole> UserRoles { get; set; }
     public DbSet<User> Users { get; set; }
-    //public DbSet<Contact> Contacts { get; set; }
-    //public DbSet<MaintenanceScheduling> MaintenanceSchedulings { get; set; }
-    //public DbSet<Mechanic> Mechanics { get; set; }
-    //public DbSet<MechanicSpecialty> MechanicSpecialtys { get; set; }
-    //public DbSet<Driver> Drivers { get; set; }
-    //public DbSet<Vehicle> Vehicles { get; set; }
-    //public DbSet<FuelPrice> FuelPrices { get; set; }
-    //public DbSet<FuelStation> FuelStations { get; set; }
-    //public DbSet<LicenseDrivers> Licenses { get; set; }
+    public DbSet<Contact> Contacts { get; set; }
+    public DbSet<MaintenanceScheduling> MaintenanceSchedulings { get; set; }
+    public DbSet<Mechanic> Mechanics { get; set; }
+    public DbSet<MechanicSpecialty> MechanicSpecialtys { get; set; }
+    public DbSet<Driver> Drivers { get; set; }
+    public DbSet<Vehicle> Vehicles { get; set; }
+    public DbSet<FuelPrice> FuelPrices { get; set; }
+    public DbSet<FuelStation> FuelStations { get; set; }
+    public DbSet<LicenseDrivers> Licenses { get; set; }
 }
