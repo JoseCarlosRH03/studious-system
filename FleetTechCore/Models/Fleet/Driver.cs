@@ -16,7 +16,9 @@ namespace FleetTechCore.Models.Fleet
         public required   DateTime ExpirationOfTheLicense  { get; set; }
         public required   string   LicenseFileName         { get; set; }
         public            string   Phone                   { get; set; }
-        public required   int      LicenseCategory         { get; set; }
+        public required   int      LicenseCategory_id      { get; set; }
+
+        public virtual LicenseDrivers LicenseDrivers { get; set; }
 
     }
 }

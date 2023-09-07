@@ -23,7 +23,6 @@ public class User {
 
 	public int? BranchId { get; set; }
 	public virtual Branch? Branch { get; set; }
-	public virtual Brigade.Brigade? Brigade { get; set; }
 	public virtual ICollection<UserRole>       Roles { get; set; }
 	public virtual ICollection<UserPermission> Claims { get; set; }
 

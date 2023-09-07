@@ -1,10 +1,11 @@
 using FleetTechCore.Enums;
 using FleetTechCore.Models;
 using FleetTechCore.Models.Address;
-using FleetTechCore.Models.Brigade;
 using FleetTechCore.Models.Company;
 using FleetTechCore.Models.Extensions;
+using FleetTechCore.Models.Fleet;
 using FleetTechCore.Models.User;
+using System.ComponentModel;
 
 namespace FleetTechCore;
 
@@ -30,14 +31,12 @@ public static class Seeder {
 		SeedEnum<BranchType, BranchTypes>(),
 		SeedEnum<PermissionArea, PermissionAreas>(),
 		SeedEnum<PermissionType, PermissionTypes>(),
-		SeedEnum<BrigadeStatus, BrigadeStatuses>(),
-		SeedEnum<BrigadeType, BrigadeTypes>(),
 
 		(typeof(Permission), Enum.GetValues<PermissionAreas>().Select(x =>
 			Enum.GetValues<PermissionTypes>().Select(y =>
 				new Permission
 				{
-					Id = (int) y + (((int) x - 1) * 6),
+					Id = (int)y + (((int) x - 1) * 6),
 					PermissionAreaId = (int) x,
 					PermissionTypeId = (int) y,
 				}).ToArray()).SelectMany(x => x).ToArray()),
@@ -379,24 +378,19 @@ public static class Seeder {
 		}),
 	};
 
-	private static (Type, object[]) SeedBrigadeStatuses() => (typeof(BrigadeStatus), new [] {
-      new BrigadeStatus { Id = (int)BrigadeStatuses.EnTrabajo,    Description = "En trabajo"     },
-      new BrigadeStatus { Id = (int)BrigadeStatuses.Almuerzo,     Description = "Almuerzo"       },
-      new BrigadeStatus { Id = (int)BrigadeStatuses.Averiada,     Description = "Averiada"       },
-      new BrigadeStatus { Id = (int)BrigadeStatuses.FinDeJornada, Description = "Fin de jornada" },
-      new BrigadeStatus { Id = (int)BrigadeStatuses.Inactivo,     Description = "Inactivo"       }
+    private static (Type, object[]) Liscenses() => (typeof(LicenseDrivers), new[] {
+      new LicenseDrivers { Id = 1, Description = "Permiso de aprendizaje"					},
+      new LicenseDrivers { Id = 2, Description = "01a motocicletas y tricículos livianos"	},
+      new LicenseDrivers { Id = 3, Description = "01b motocicletas y tricículos pesados"    },
+      new LicenseDrivers { Id = 4, Description = "02 vehículos livianos"					},
+      new LicenseDrivers { Id = 5, Description = "02+R vehículos livianos con remolque"     },
+      new LicenseDrivers { Id = 5, Description = "03a vehículos pesados"					},
+      new LicenseDrivers { Id = 5, Description = "03+R vehículos pesados con remolque"      },
+      new LicenseDrivers { Id = 5, Description = "04 vehículos pesados de carga (patanas)"  },
+      new LicenseDrivers { Id = 5, Description = "05 vehículos especiales"					}
    });
 
-	private static (Type, object[]) SeedBrigadeTypes() => (typeof(BrigadeType), new[]
-   {
-	   new BrigadeType { Id = (int)BrigadeTypes.Ligera, Description = BrigadeTypes.Ligera.ToString()},
-	   new BrigadeType { Id = (int)BrigadeTypes.Canasto, Description = BrigadeTypes.Canasto.ToString()},
-	   new BrigadeType { Id = (int)BrigadeTypes.Grua, Description = BrigadeTypes.Grua.ToString()},
-	   new BrigadeType { Id = (int)BrigadeTypes.Motor, Description = BrigadeTypes.Motor.ToString()},
-	   new BrigadeType { Id = (int)BrigadeTypes.Persona, Description = BrigadeTypes.Persona.ToString()},
-	   new BrigadeType { Id = (int)BrigadeTypes.Automovil, Description = BrigadeTypes.Automovil.ToString()},
-   });
-	public static (Type type, object[] data)[] DevelopmentSeeds() => new (Type, object[])[] {
+   public static (Type type, object[] data)[] DevelopmentSeeds() => new (Type, object[])[] {
 		(typeof(Role), new Role[]
 		{
 			new ()
