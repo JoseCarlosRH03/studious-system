@@ -202,6 +202,6 @@ public partial class DataService: DbContext, IDataService
     public DbSet<Vehicle> Vehicles { get; set; }
     public DbSet<FuelPrice> FuelPrices { get; set; }
     public DbSet<FuelStation> FuelStations { get; set; }
-    public DbSet<LicenseDrivers> Licenses { get; set; }
+    public DbSet<LicenseType> Licenses { get; set; }
     public DbSet<FuelType> FuelTypes { get; set; }
 }

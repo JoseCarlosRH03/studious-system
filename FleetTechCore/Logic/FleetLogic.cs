@@ -1,10 +1,12 @@
 using FleetTechCore.DTOs.Data;
+using FleetTechCore.DTOs.Shared;
 using FleetTechCore.DTOs.Views;
 using FleetTechCore.Errors;
 using FleetTechCore.Models.Company;
 using FleetTechCore.Models.Fleet;
 using Microsoft.VisualBasic.FileIO;
 using System.Drawing;
+using System.Linq;
 using System.Reflection;
 
 namespace FleetTechCore.Logic;
@@ -14,6 +16,9 @@ public partial class Logic
 
     public async Task<List<Driver>> GetAllDrivers() => (await Data.GetAll<Driver>()).ToList() ?? throw new NotFound("No se encontro ningun conductor");
     public async Task<List<Vehicle>> GetAllVehicle() => (await Data.GetAll<Vehicle>()).ToList() ?? throw new NotFound("No se encontro ningun conductor");
+    public async Task<List<Item>> GetAllLicenseType() => (await Data.GetAll<LicenseType>())
+        .Select(l => new Item(l.Id, l.Description))
+        .ToList() ?? throw new NotFound("No se encontro ningun tipo de licencia");
     public async Task<VehicleView> CreateVehicle(VehicleData data)
     {
        Validation.ValidateVehicleData(data);

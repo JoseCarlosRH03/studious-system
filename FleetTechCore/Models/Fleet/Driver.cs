@@ -18,7 +18,7 @@ namespace FleetTechCore.Models.Fleet
         public            string   Phone                   { get; set; }
         public required   int      LicenseCategory_id      { get; set; }
 
-        public virtual LicenseDrivers LicenseDrivers { get; set; }
+        public virtual LicenseType LicenseDrivers { get; set; }
 
     }
 }

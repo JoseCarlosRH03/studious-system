@@ -377,16 +377,16 @@ public static class Seeder {
 				CreatedOn = DateTime.MinValue,
 			}
 		}),
-        (typeof(LicenseDrivers), new[] {
-			  new LicenseDrivers { Id = 1, Description = "Permiso de aprendizaje"                   },
-			  new LicenseDrivers { Id = 2, Description = "01a motocicletas y tricículos livianos"   },
-			  new LicenseDrivers { Id = 3, Description = "01b motocicletas y tricículos pesados"    },
-			  new LicenseDrivers { Id = 4, Description = "02 vehículos livianos"                    },
-			  new LicenseDrivers { Id = 5, Description = "02+R vehículos livianos con remolque"     },
-			  new LicenseDrivers { Id = 6, Description = "03a vehículos pesados"                    },
-			  new LicenseDrivers { Id = 7, Description = "03+R vehículos pesados con remolque"      },
-			  new LicenseDrivers { Id = 8, Description = "04 vehículos pesados de carga (patanas)"  },
-			  new LicenseDrivers { Id = 9, Description = "05 vehículos especiales"                  }
+        (typeof(LicenseType), new[] {
+			  new LicenseType { Id = 1, Description = "Permiso de aprendizaje"                   },
+			  new LicenseType { Id = 2, Description = "01a motocicletas y tricículos livianos"   },
+			  new LicenseType { Id = 3, Description = "01b motocicletas y tricículos pesados"    },
+			  new LicenseType { Id = 4, Description = "02 vehículos livianos"                    },
+			  new LicenseType { Id = 5, Description = "02+R vehículos livianos con remolque"     },
+			  new LicenseType { Id = 6, Description = "03a vehículos pesados"                    },
+			  new LicenseType { Id = 7, Description = "03+R vehículos pesados con remolque"      },
+			  new LicenseType { Id = 8, Description = "04 vehículos pesados de carga (patanas)"  },
+			  new LicenseType { Id = 9, Description = "05 vehículos especiales"                  }
 	     }),
          (typeof(FuelType), new[] {
               new FuelType { Id = 1, Name = "Gasolina Premium"  },
