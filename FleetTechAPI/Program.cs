@@ -57,6 +57,7 @@ if (HostEnvironmentEnvExtensions.IsDevelopment(app.Environment))
 
 app.UseHttpsRedirection();
 app.MapUserManagement();
+app.MapFluelManagement();
 app.MapFleetManagement();
 
 app.Run();
