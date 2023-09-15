@@ -4,6 +4,7 @@ using FleetTechCore.Models.Address;
 using FleetTechCore.Models.Company;
 using FleetTechCore.Models.Extensions;
 using FleetTechCore.Models.Fleet;
+using FleetTechCore.Models.Fuel;
 using FleetTechCore.Models.User;
 using System.ComponentModel;
 
@@ -376,7 +377,7 @@ public static class Seeder {
 				CreatedOn = DateTime.MinValue,
 			}
 		}),
-         (typeof(LicenseDrivers), new[] {
+        (typeof(LicenseDrivers), new[] {
 			  new LicenseDrivers { Id = 1, Description = "Permiso de aprendizaje"                   },
 			  new LicenseDrivers { Id = 2, Description = "01a motocicletas y tricículos livianos"   },
 			  new LicenseDrivers { Id = 3, Description = "01b motocicletas y tricículos pesados"    },
@@ -387,8 +388,19 @@ public static class Seeder {
 			  new LicenseDrivers { Id = 8, Description = "04 vehículos pesados de carga (patanas)"  },
 			  new LicenseDrivers { Id = 9, Description = "05 vehículos especiales"                  }
 	     }),
+         (typeof(FuelType), new[] {
+              new FuelType { Id = 1, Name = "Gasolina Premium"  },
+              new FuelType { Id = 2, Name = "Gasolina Regular"  },
+              new FuelType { Id = 3, Name = "Diesel Premium"    },
+              new FuelType { Id = 4, Name = "Diesel Regular"    },
+              new FuelType { Id = 5, Name = "Gasoil Optimo"     },
+              new FuelType { Id = 6, Name = "Gasoil Regular"    },
+              new FuelType { Id = 7, Name = "Kerosene"			},
+              new FuelType { Id = 8, Name = "Gas Licuado (GLP)" },
+              new FuelType { Id = 9, Name = "Gas Natural (GNV)" },
+         }),
 
-	};
+    };
    public static (Type type, object[] data)[] DevelopmentSeeds() => new (Type, object[])[] {
 		(typeof(Role), new Role[]
 		{
