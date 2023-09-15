@@ -16,7 +16,6 @@ public record struct RoleView(
         role.RolePermissions.Select(p => PermissionView.From(p.Permission)).ToArray()
     );
 }
-
 public record struct PermissionView(
     int Id,
     string Description,
