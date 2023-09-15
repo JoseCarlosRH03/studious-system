@@ -16,11 +16,15 @@ public static class FleetManagement
                 (user, logic) => logic.GetAllPermissions()))
                 .Produces<List<PermissionView>>(),
 
+            app.MapGet("/vehicle/state", (Context ctx) => ctx.Execute(
+                (logic) => logic.GetAllVehicleState()))
+                .Produces<List<Item>>(),
+
             app.MapPost("/Vehicle", (VehicleData data,Context ctx) => ctx.ExecuteAuthenticated(
                 (user, logic) => logic.CreateVehicle(data)))
                 .Produces<int>(),
 
-            app.MapGet("/licenseType",(Context ctx) => ctx.Execute(
+            app.MapGet("/license/type",(Context ctx) => ctx.Execute(
                 (logic) => logic.GetAllLicenseType())).Produces<List<Item>>(),
         }); ;
     }

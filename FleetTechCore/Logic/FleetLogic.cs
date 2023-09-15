@@ -16,6 +16,7 @@ public partial class Logic
 
     public async Task<List<Driver>> GetAllDrivers() => (await Data.GetAll<Driver>()).ToList() ?? throw new NotFound("No se encontro ningun conductor");
     public async Task<List<Vehicle>> GetAllVehicle() => (await Data.GetAll<Vehicle>()).ToList() ?? throw new NotFound("No se encontro ningun conductor");
+    public  Task<List<Item>> GetAllVehicleState() => (GetVehicleState()) ?? throw new NotFound("No se encontro ningun conductor");
     public async Task<List<Item>> GetAllLicenseType() => (await Data.GetAll<LicenseType>())
         .Select(l => new Item(l.Id, l.Description))
         .ToList() ?? throw new NotFound("No se encontro ningun tipo de licencia");

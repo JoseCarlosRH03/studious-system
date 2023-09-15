@@ -331,6 +331,7 @@ public partial class Logic
         
     public static Task<List<Item>> GetPermissionTypes() => Task.FromResult(GetListFromEnum<PermissionTypes>());
     public static Task<List<Item>> GetPermissionAreas() => Task.FromResult(GetListFromEnum<PermissionAreas>()); 
+    public static Task<List<Item>> GetVehicleState() => Task.FromResult(GetListFromEnum<VehicleState>());
 
     private static List<Item> GetListFromEnum<T>() where T : Enum
     {

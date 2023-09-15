@@ -12,7 +12,7 @@ public static class FluelManagement
     {
         Tagged("Manejo de Combustible", new[]
         {
-            app.MapGet("/fuelType",(Context ctx) => ctx.Execute(
+            app.MapGet("/fuel/type",(Context ctx) => ctx.Execute(
                 (logic) => logic.GetAllFuelType())).Produces<List<Item>>(),
         }); ;
     }
