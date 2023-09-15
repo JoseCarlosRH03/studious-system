@@ -1,4 +1,5 @@
-﻿using FleetTechCore.DTOs.Views;
+﻿using FleetTechCore.DTOs.Data;
+using FleetTechCore.DTOs.Views;
 using FleetTechCore.Enums;
 using static FleetTechAPI.Extensions;
 
@@ -13,6 +14,9 @@ public static class FleetManagement
             app.MapGet("/conductores", (Context ctx) => ctx.ExecuteAuthenticated(
                 (user, logic) => logic.GetAllPermissions()))
                 .Produces<List<PermissionView>>(),
+
+            app.MapPost("/Vehicle", (VehicleData data,Context ctx) => ctx.ExecuteAuthenticated( 
+                (user, logic) => logic.CreateVehicle(data)))
         });
     }
 }

@@ -9,8 +9,8 @@ using System.Text;
 using System.Threading.Tasks;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 
-namespace FleetTechCore.Models.Fleet
-{
+namespace FleetTechCore.Models.Fleet;
+
     public class Vehicle: AuditableEntity
     {
        public required string   Code                    { get; set; }
@@ -33,4 +33,4 @@ namespace FleetTechCore.Models.Fleet
        public required string   Engine                  { get; set; }
 
     }
-}
+

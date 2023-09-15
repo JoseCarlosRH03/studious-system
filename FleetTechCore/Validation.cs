@@ -1,6 +1,9 @@
+using System.Reflection;
 using System.Text.RegularExpressions;
 using FleetTechCore.DTOs.Data;
 using FleetTechCore.Errors;
+using Microsoft.VisualBasic.FileIO;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace FleetTechCore;
 
@@ -92,5 +95,26 @@ public class Validation
         Require(data.DatePattern, "Formato de fecha");
         Require(data.TimePattern, "Formato de hora");
         Require(data.LateFeeProductId, "Producto de mora");
+    }
+
+    public static void ValidateVehicleData(VehicleData data)
+    {
+        Require(data.Code, "Ficha de Vehiculo");
+        Require(data.PolicyNumber, "Numero de poliza");
+        Require(data.PolicyReference, "Referencia de poliza");
+        Require(data.PolicyExpiration, "Expiración de poliza");
+        Require(data.Status, "Estado");
+        Require(data.Type, "Tipo");
+        Require(data.Brand, "Marca");
+        Require(data.Model, "Modelo");
+        Require(data.Year, "Año");
+        Require(data.LicensePlate, "Matrícula");
+        Require(data.Color, "Color");
+        Require(data.FuelType, "Tipo de combustible");
+        Require(data.FuelCapacity, "Cap. de combustible");
+        Require(data.FuelPerMonth, "Combustible al mes");
+        Require(data.Mileage, "Kilometraje");
+        Require(data.Chassis, "Chasis");
+        Require(data.Engine, "Motor");
     }
 }
