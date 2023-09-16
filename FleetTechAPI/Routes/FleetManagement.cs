@@ -20,7 +20,11 @@ public static class FleetManagement
                 (logic) => logic.GetAllVehicleState()))
                 .Produces<List<Item>>(),
 
-            app.MapPost("/Vehicle", (VehicleData data,Context ctx) => ctx.ExecuteAuthenticated(
+            app.MapGet("/vehicle/type", (Context ctx) => ctx.Execute(
+                (logic) => logic.GetAllVehicleType()))
+                .Produces<List<Item>>(),
+
+            app.MapPost("/vehicle", (VehicleData data,Context ctx) => ctx.ExecuteAuthenticated(
                 (user, logic) => logic.CreateVehicle(data)))
                 .Produces<int>(),
 

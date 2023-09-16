@@ -332,12 +332,13 @@ public partial class Logic
     public static Task<List<Item>> GetPermissionTypes() => Task.FromResult(GetListFromEnum<PermissionTypes>());
     public static Task<List<Item>> GetPermissionAreas() => Task.FromResult(GetListFromEnum<PermissionAreas>()); 
     public static Task<List<Item>> GetVehicleState() => Task.FromResult(GetListFromEnum<VehicleState>());
+    public static Task<List<Item>> GetVehicleType() => Task.FromResult(GetListFromEnum<VehicleType>());
 
     private static List<Item> GetListFromEnum<T>() where T : Enum
     {
         var list = new List<Item>();
         foreach (var value in Enum.GetValues(typeof(T)))
-            list.Add(new Item((int)(object)value, value.ToString().PascalCaseWithInitialsToTitleCase()));
+            list.Add(new Item((int)(object)value, value.ToString().PascalCaseWithInitialsToTitleCase().Replace("_", " /")));
         return list;
     }
 

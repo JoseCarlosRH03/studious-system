@@ -16,11 +16,12 @@ public partial class Logic
 
     public async Task<List<Driver>> GetAllDrivers() => (await Data.GetAll<Driver>()).ToList() ?? throw new NotFound("No se encontro ningun conductor");
     public async Task<List<Vehicle>> GetAllVehicle() => (await Data.GetAll<Vehicle>()).ToList() ?? throw new NotFound("No se encontro ningun conductor");
-    public  Task<List<Item>> GetAllVehicleState() => (GetVehicleState()) ?? throw new NotFound("No se encontro ningun conductor");
+    public  Task<List<Item>> GetAllVehicleState() => (GetVehicleState()) ?? throw new NotFound("No se encontro ningun estado");
+    public  Task<List<Item>> GetAllVehicleType() => (GetVehicleType()) ?? throw new NotFound("No se encontro ningun tipo");
     public async Task<List<Item>> GetAllLicenseType() => (await Data.GetAll<LicenseType>())
         .Select(l => new Item(l.Id, l.Description))
         .ToList() ?? throw new NotFound("No se encontro ningun tipo de licencia");
-    public async Task<VehicleView> CreateVehicle(VehicleData data)
+    public async Task<int> CreateVehicle(VehicleData data)
     {
        Validation.ValidateVehicleData(data);
 
@@ -40,7 +41,7 @@ public partial class Logic
              Year              = data.Year,                   
              LicensePlate      = data.LicensePlate,            
              Color             = data.Color,                   
-             FuelType          = data.FuelType,                
+             FuelTypeId        = data.FuelTypeId,                
              FuelCapacity      = data.FuelCapacity,            
              FuelPerMonth      = data.FuelPerMonth,            
              Mileage           = data.Mileage,                 
@@ -48,7 +49,7 @@ public partial class Logic
              Engine            = data.Engine,
         });
            
-        return VehicleView.From(result);
+        return result.Id;
     }
 
 

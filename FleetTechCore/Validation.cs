@@ -99,7 +99,6 @@ public class Validation
 
     public static void ValidateVehicleData(VehicleData data)
     {
-        Require(data.Code, "Ficha de Vehiculo");
         Require(data.PolicyNumber, "Numero de poliza");
         Require(data.PolicyReference, "Referencia de poliza");
         Require(data.PolicyExpiration, "Expiración de poliza");
@@ -110,7 +109,7 @@ public class Validation
         Require(data.Year, "Año");
         Require(data.LicensePlate, "Matrícula");
         Require(data.Color, "Color");
-        Require(data.FuelType, "Tipo de combustible");
+        Require(data.FuelTypeId, "Tipo de combustible");
         Require(data.FuelCapacity, "Cap. de combustible");
         Require(data.FuelPerMonth, "Combustible al mes");
         Require(data.Mileage, "Kilometraje");

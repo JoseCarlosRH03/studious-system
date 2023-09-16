@@ -25,7 +25,7 @@ namespace FleetTechCore.Models.Fleet;
        public required string   Year                    { get; set; }
        public required string   LicensePlate            { get; set; }
        public required string   Color                   { get; set; }
-       public required int      FuelType                { get; set; }
+       public required int      FuelTypeId             { get; set; }
        public required decimal  FuelCapacity            { get; set; }
        public required decimal  FuelPerMonth            { get; set; }
        public required decimal  Mileage                 { get; set; }

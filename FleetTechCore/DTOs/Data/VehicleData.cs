@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FleetTechCore.Models.Fleet;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace FleetTechCore.DTOs.Data;
 
-    public record VehicleData(
+    public record struct VehicleData(
         string?   Code,
         string    PolicyDescription,
         string    PolicyNumber,
@@ -19,12 +20,10 @@ namespace FleetTechCore.DTOs.Data;
         string    Year,
         string    LicensePlate,
         string    Color,
-        int       FuelType,
-        decimal   FuelCapacity,
-        decimal   FuelPerMonth,
-        decimal   Mileage,
+        int       FuelTypeId,
+        int   FuelCapacity,
+        int FuelPerMonth,
+        int Mileage,
         string    Chassis,
         string    Engine
     );
-    
-
