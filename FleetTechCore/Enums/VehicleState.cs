@@ -2,7 +2,7 @@
 
 public enum VehicleState
 {
-   Activo = 1,
-   Inactivo,
+   Inactivo ,
+   Activo ,
    EnElTaller
 }

@@ -37,6 +37,10 @@ public static class FleetManagement
                 (user, logic) => logic.CreateVehicle(data)))
                 .Produces<int>(),
 
+            app.MapPut("/vehicle", (VehicleData data,Context ctx) => ctx.ExecuteAuthenticated(
+                (user, logic) => logic.UpdateVehicle(data, user)))
+                .Produces<int>(),
+
             app.MapGet("/license/type",(Context ctx) => ctx.Execute(
                 (logic) => logic.GetAllLicenseType())).Produces<List<Item>>(),
 
@@ -47,6 +51,10 @@ public static class FleetManagement
             app.MapGet("/vehicle/{id:int}",( int Id ,Context ctx) => ctx.ExecuteAuthenticated(
                 (user, logic) => logic.GetVehicleById(Id)))
                 .Produces<List<VehicleView>>(),
+
+            app.MapDelete("/vehicle/{id:int}",( int Id ,Context ctx) => ctx.ExecuteAuthenticated(
+                (user, logic) => logic.DeleteVehicle(Id, user)))
+                .Produces<int>(),
         }); 
     }
 }

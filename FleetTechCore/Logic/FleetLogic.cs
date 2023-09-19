@@ -5,6 +5,7 @@ using FleetTechCore.Enums;
 using FleetTechCore.Errors;
 using FleetTechCore.Models.Company;
 using FleetTechCore.Models.Fleet;
+using FleetTechCore.Models.User;
 using Microsoft.VisualBasic.FileIO;
 using System.Drawing;
 using System.Linq;
@@ -13,9 +14,15 @@ namespace FleetTechCore.Logic;
 
 public partial class Logic
 {
+    //drivers
 
     public async Task<List<DriverView>> GetAllDrivers(int start = 0, int count = 20, string? filter = "") =>
         await Data.GetDriver(start, count, filter);
+
+    public async Task<List<Item>> GetAllLicenseType() => (await Data.GetAll<LicenseType>())
+        .Select(l => new Item(l.Id, l.Description))
+        .ToList() ?? throw new NotFound("No se encontro ningun tipo de licencia");
+
     public async Task<DriverView> GetDriver(int id)
     {
         var driver = await Data.GetAsync<Driver>(x => x.Id == id);
@@ -79,15 +86,15 @@ public partial class Logic
         return driver.Id;
     }
 
-    public async Task<List<VehicleView>> GetAllVehicle() => (await Data.GetAll<Vehicle>(null, x => x.FuelType))
-                  .Select(v => VehicleView.From(v))
-                  .ToList()
-                  ?? throw new NotFound("No se encontro ningun conductor");
+
+
+    // vehicle
     public Task<List<Item>> GetAllVehicleState() => (GetVehicleState()) ?? throw new NotFound("No se encontro ningun estado");
     public Task<List<Item>> GetAllVehicleType() => (GetVehicleType()) ?? throw new NotFound("No se encontro ningun tipo");
-    public async Task<List<Item>> GetAllLicenseType() => (await Data.GetAll<LicenseType>())
-        .Select(l => new Item(l.Id, l.Description))
-        .ToList() ?? throw new NotFound("No se encontro ningun tipo de licencia");
+    public async Task<List<VehicleView>> GetAllVehicle() => (await Data.GetAll<Vehicle>(null, x => x.FuelType))
+              .Select(v => VehicleView.From(v))
+              .ToList()
+              ?? throw new NotFound("No se encontro ningun conductor");
     public async Task<int> CreateVehicle(VehicleData data)
     {
         Validation.ValidateVehicleData(data);
@@ -125,8 +132,52 @@ public partial class Logic
 
         var result = await Data.GetVehicleById(Id);
         if (result is null)
-            throw new NotFound("No se encontro ningun tipo");
+            throw new NotFound("No se encontro ningun vehiculo");
 
         return VehicleView.From(result);
     }
+    public async Task<int> UpdateVehicle(VehicleData data, User user)
+    {
+        Validation.ValidateVehicleData(data);
+        var result = await Data.GetAsync<Vehicle>(v => v.Id == data.Id);
+        if (result is  null)
+            throw new AlreadyExists("Ya existe un vehiculo con alguno de los datos suministrados");
+
+        result.Code = data.Code;
+        result.PolicyDescription = data.PolicyDescription;
+        result.PolicyNumber = data.PolicyNumber;
+        result.PolicyReference = data.PolicyReference;
+        result.PolicyExpiration = data.PolicyExpiration;
+        result.Status = data.Status;
+        result.Type = data.Type;
+        result.Brand = data.Brand;
+        result.Model = data.Model;
+        result.Year = data.Year;
+        result.LicensePlate = data.LicensePlate;
+        result.Color = data.Color;
+        result.FuelTypeId = data.FuelTypeId;
+        result.FuelCapacity = data.FuelCapacity;
+        result.FuelPerMonth = data.FuelPerMonth;
+        result.Mileage = data.Mileage;
+        result.Chassis = data.Chassis;
+        result.Engine = data.Engine;
+
+       await Data.Update<Vehicle>(result,user.Id);
+            
+        return result.Id;
+    }
+
+    public async Task<VehicleView> DeleteVehicle(int Id, User user)
+    {
+
+        var result = await Data.GetVehicleById(Id);
+        if (result is null)
+            throw new NotFound("No se encontro ningun vehiculo");
+
+        result.Status = (int)VehicleState.Inactivo;
+        await Data.Update<Vehicle>(result, user.Id);
+        return VehicleView.From(result);
+    }
+
+
 }

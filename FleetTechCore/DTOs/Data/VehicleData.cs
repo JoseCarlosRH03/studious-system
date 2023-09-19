@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 namespace FleetTechCore.DTOs.Data;
 
     public record struct VehicleData(
+        int       Id,
         string?   Code,
         string    PolicyDescription,
         string    PolicyNumber,
