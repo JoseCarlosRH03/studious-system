@@ -2,6 +2,7 @@
 using FleetTechCore.DTOs.Shared;
 using FleetTechCore.DTOs.Views;
 using FleetTechCore.Enums;
+using Microsoft.AspNetCore.Mvc.Filters;
 using static FleetTechAPI.Extensions;
 
 namespace FleetTechAPI.Routes;
@@ -12,10 +13,18 @@ public static class FleetManagement
     {
         Tagged("Manejo de Conductores y Vehículos", new[]
         {
-            app.MapGet("/drives", (Context ctx) => ctx.ExecuteAuthenticated(
-                (user, logic) => logic.GetAllPermissions()))
-                .Produces<List<PermissionView>>(),
-
+            app.MapGet("/driver", (int start, int count, string? filter, Context ctx) => ctx.ExecuteAuthenticated(
+                (user, logic) => logic.GetAllDrivers(start, count, filter)))
+                .Produces<List<DriverView>>(),
+            app.MapPost("/driver", (DriverData data, Context ctx) => ctx.ExecuteAuthenticated(
+                (user, logic) => logic.CreateDriver(data)))
+                .Produces<int>(),
+            app.MapPut("/driver/{id:int}", (int id, DriverData data, Context ctx) => ctx.ExecuteAuthenticated(
+                (user, logic) => logic.UpdateDriver(id, data)))
+                .Produces<int>(),
+            app.MapDelete("/driver/{id:int}", (int id, Context ctx) => ctx.ExecuteAuthenticated(
+                (user, logic) => logic.InactiveDriver(id)))
+                .Produces<int>(),
             app.MapGet("/vehicle/state", (Context ctx) => ctx.Execute(
                 (logic) => logic.GetAllVehicleState()))
                 .Produces<List<Item>>(),
@@ -30,6 +39,6 @@ public static class FleetManagement
 
             app.MapGet("/license/type",(Context ctx) => ctx.Execute(
                 (logic) => logic.GetAllLicenseType())).Produces<List<Item>>(),
-        }); ;
+        }); ; ;
     }
 }
