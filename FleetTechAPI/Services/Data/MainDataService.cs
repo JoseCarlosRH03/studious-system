@@ -1,5 +1,9 @@
-﻿using System.Linq.Expressions;
+﻿using System.Linq;
+using System.Linq.Expressions;
 using FleetTechCore;
+using FleetTechCore.DTOs.Shared;
+using FleetTechCore.DTOs.Views;
+using FleetTechCore.Enums;
 using FleetTechCore.Models;
 using FleetTechCore.Models.Address;
 using FleetTechCore.Models.Company;
@@ -58,6 +62,16 @@ public partial class DataService: DbContext, IDataService
                 : query) ?? query).ToListAsync();
         return response;
     }
+    public Task<List<DriverView>> GetDriver(int start, int count, string? filter) =>
+        Drivers
+            .Include(c => c.LicenseCategory_id)
+            .Where(c => string.IsNullOrWhiteSpace(filter) || c.FirstName.ToLower().Contains(filter.ToLower().Trim()))
+            .OrderByDescending(c => c.Status)
+            .ThenByDescending(c => c.CreatedOn)
+            .Skip(start)
+            .Take(count)
+            .Select(c => DriverView.From(c))
+            .ToListAsync();
 
     public async Task<int> Count<T>(Expression<Func<T, bool>>? expression = null) where T : class =>
         expression is not null ? await Set<T>().Where(expression).CountAsync() : await Set<T>().CountAsync();
