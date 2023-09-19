@@ -45,5 +45,6 @@ public interface IDataService {
    Task<List<StatusItemView>> GetCountries(string? filter);
    Task<bool> ExistsBranchWithCode(string dataCode);
    Task<bool> ExistsCompanyWithCode(string code);
-   Task<Vehicle> GetVehicleById(int Id);
+    Task<List<DriverView>> GetDriver(int start, int count, string? filter);
+    Task<Vehicle> GetVehicleById(int Id);
 }
