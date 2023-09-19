@@ -1,6 +1,7 @@
 ﻿using System.Text.Json;
 using FleetTechCore.Enums;
 using FleetTechCore.Errors;
+using FleetTechCore.Models.Fleet;
 using FleetTechCore.Models.User;
 using Microsoft.EntityFrameworkCore;
 
@@ -68,6 +69,7 @@ public partial class DataService
     #endregion
 
     #region Fleet Management
-        
+        public async Task<Vehicle> GetVehicleById(int Id) =>
+        await Vehicles.Include(v => v.FuelType).FirstOrDefaultAsync(v => v.Id == Id);
     #endregion
 }

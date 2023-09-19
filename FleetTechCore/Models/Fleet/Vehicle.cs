@@ -1,17 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Linq;
-using System.Reflection;
-using System.Runtime.ConstrainedExecution;
-using System.Text;
-using System.Threading.Tasks;
-using static System.Runtime.InteropServices.JavaScript.JSType;
+﻿using FleetTechCore.Models.Fuel;
 
 namespace FleetTechCore.Models.Fleet;
 
-    public class Vehicle: AuditableEntity
+public class Vehicle: AuditableEntity
     {
        public required string   Code                    { get; set; }
        public required string   PolicyDescription       { get; set; }
@@ -32,5 +23,7 @@ namespace FleetTechCore.Models.Fleet;
        public required string   Chassis                 { get; set; }
        public required string   Engine                  { get; set; }
 
-    }
+       public virtual FuelType FuelType                 { get; set; }
+
+}
 

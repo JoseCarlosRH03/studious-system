@@ -15,19 +15,32 @@ public partial class Logic
 {
 
     public async Task<List<Driver>> GetAllDrivers() => (await Data.GetAll<Driver>()).ToList() ?? throw new NotFound("No se encontro ningun conductor");
-    public async Task<List<Vehicle>> GetAllVehicle() => (await Data.GetAll<Vehicle>()).ToList() ?? throw new NotFound("No se encontro ningun conductor");
-    public  Task<List<Item>> GetAllVehicleState() => (GetVehicleState()) ?? throw new NotFound("No se encontro ningun estado");
-    public  Task<List<Item>> GetAllVehicleType() => (GetVehicleType()) ?? throw new NotFound("No se encontro ningun tipo");
+    public async Task<List<VehicleView>> GetAllVehicle() => (await Data.GetAll<Vehicle>(null, x => x.FuelType))
+                 .Select(v => VehicleView.From(v))
+                 .ToList()
+                 ?? throw new NotFound("No se encontro ningun conductor");
+    public Task<List<Item>> GetAllVehicleState() => (GetVehicleState()) ?? throw new NotFound("No se encontro ningun estado");
+    public Task<List<Item>> GetAllVehicleType() => (GetVehicleType()) ?? throw new NotFound("No se encontro ningun tipo");
     public async Task<List<Item>> GetAllLicenseType() => (await Data.GetAll<LicenseType>())
         .Select(l => new Item(l.Id, l.Description))
         .ToList() ?? throw new NotFound("No se encontro ningun tipo de licencia");
+
+    public async Task<VehicleView> GetVehicleById(int Id) {
+
+        var result = await Data.GetVehicleById(Id);
+
+        if(result is null)
+             throw new NotFound("No se encontro ningun tipo");
+
+        return VehicleView.From(result);
+    }
     public async Task<int> CreateVehicle(VehicleData data)
     {
        Validation.ValidateVehicleData(data);
 
         if (await Data.GetAsync<Vehicle>(v => v.Chassis == data.Chassis || v.Code == data.Code || v.LicensePlate == data.LicensePlate) is not null)
             throw new AlreadyExists("Ya exsite un vehiculo con alguno de los datos suministrados");
-        
+
         var result = await Data.Add<Vehicle>( new Vehicle {
              Code              = data.Code,                    
              PolicyDescription = data.PolicyDescription,       
