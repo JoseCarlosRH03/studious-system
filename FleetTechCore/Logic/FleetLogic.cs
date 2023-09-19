@@ -79,7 +79,10 @@ public partial class Logic
         return driver.Id;
     }
 
-    public async Task<List<Vehicle>> GetAllVehicle() => (await Data.GetAll<Vehicle>()).ToList() ?? throw new NotFound("No se encontro ningun vehiculo");
+    public async Task<List<VehicleView>> GetAllVehicle() => (await Data.GetAll<Vehicle>(null, x => x.FuelType))
+                  .Select(v => VehicleView.From(v))
+                  .ToList()
+                  ?? throw new NotFound("No se encontro ningun conductor");
     public Task<List<Item>> GetAllVehicleState() => (GetVehicleState()) ?? throw new NotFound("No se encontro ningun estado");
     public Task<List<Item>> GetAllVehicleType() => (GetVehicleType()) ?? throw new NotFound("No se encontro ningun tipo");
     public async Task<List<Item>> GetAllLicenseType() => (await Data.GetAll<LicenseType>())
