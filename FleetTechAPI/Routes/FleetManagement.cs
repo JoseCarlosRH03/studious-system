@@ -30,6 +30,16 @@ public static class FleetManagement
 
             app.MapGet("/license/type",(Context ctx) => ctx.Execute(
                 (logic) => logic.GetAllLicenseType())).Produces<List<Item>>(),
-        }); ;
+
+            app.MapGet("/vehicles", (Context ctx) => ctx.ExecuteAuthenticated(
+                (user, logic) => logic.GetAllVehicle()))
+                .Produces<List<VehicleView>>(),
+
+            app.MapGet("/vehicle/{id:int}",( int Id ,Context ctx) => ctx.ExecuteAuthenticated(
+                (user, logic) => logic.GetVehicleById(Id)))
+                .Produces<List<VehicleView>>(),
+
+
+        }); 
     }
 }

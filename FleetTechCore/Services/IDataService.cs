@@ -3,6 +3,7 @@ using FleetTechCore.DTOs.Shared;
 using FleetTechCore.DTOs.Views;
 using FleetTechCore.Models;
 using FleetTechCore.Models.Address;
+using FleetTechCore.Models.Fleet;
 using FleetTechCore.Models.User;
 
 namespace FleetTechCore.Services;
@@ -44,4 +45,5 @@ public interface IDataService {
    Task<List<StatusItemView>> GetCountries(string? filter);
    Task<bool> ExistsBranchWithCode(string dataCode);
    Task<bool> ExistsCompanyWithCode(string code);
+   Task<Vehicle> GetVehicleById(int Id);
 }
