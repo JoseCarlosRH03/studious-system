@@ -8,20 +8,23 @@ using System.Threading.Tasks;
 namespace FleetTechCore.DTOs.Views
 {
     public record struct DriverView
-    (   
+    (
         string EmployeeCode,
         string IdentityDocument,
         string FirstName,
         string LastName,
         DateTime DateOfBirth,
         DateTime ExpirationOfTheLicense,
+        DateTime DateOfHire,
         string LicenseFileName,
         string Phone,
         int LicenseCategory_id,
+        int Status,
         LicenseTypeView LicenseDrivers
+
     )
-    { 
-        public static DriverView From(Driver data) => new ()
+    {
+        public static DriverView From(Driver data) => new()
         {
             EmployeeCode = data.EmployeeCode,
             IdentityDocument = data.IdentityDocument,
@@ -31,11 +34,11 @@ namespace FleetTechCore.DTOs.Views
             ExpirationOfTheLicense = data.ExpirationOfTheLicense,
             Phone = data.Phone,
             LicenseCategory_id = data.LicenseCategory_id,
-            LicenseDrivers = LicenseTypeView.From( data.LicenseDrivers )
+            LicenseDrivers = LicenseTypeView.From(data.LicenseDrivers)
         };
     }
 
-    public record struct LicenseTypeView 
+    public record struct LicenseTypeView
     (
         int Id,
         string Description
