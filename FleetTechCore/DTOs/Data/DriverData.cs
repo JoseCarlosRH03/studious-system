@@ -9,17 +9,17 @@ namespace FleetTechCore.DTOs.Data
 {
     public record struct DriverData
     (
-        string EmployeeCode,
-        string IdentityDocument,
-        string FirstName,
-        string LastName,
-        DateTime DateOfBirth,
-        DateTime ExpirationOfTheLicense,
-        DateTime DateOfHire,
-        string LicenseFileName,
-        string Phone,
-        int LicenseCategory_id,
-        int License_id,
-        int Status_id
+        int         Id,
+        string      EmployeeCode,
+        string      IdentityDocument,
+        string      FirstName,
+        string      LastName,
+        DateTime    DateOfBirth,
+        DateTime    ExpirationOfTheLicense,
+        DateTime    DateOfHire,
+        string      LicenseFileName,
+        string      Phone,
+        int         LicenseCategory_id,
+        int         Status_id
     );
 }

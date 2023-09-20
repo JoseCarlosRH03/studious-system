@@ -64,7 +64,7 @@ public partial class DataService: DbContext, IDataService
     }
     public Task<List<DriverView>> GetDriver(int start, int count, string? filter) =>
         Drivers
-            .Include(c => c.LicenseCategory_id)
+            .Include(c => c.LicenseCategory)
             .Where(c => string.IsNullOrWhiteSpace(filter) || c.FirstName.ToLower().Contains(filter.ToLower().Trim()))
             .OrderByDescending(c => c.Status)
             .ThenByDescending(c => c.CreatedOn)

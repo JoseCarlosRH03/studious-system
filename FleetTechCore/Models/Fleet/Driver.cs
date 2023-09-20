@@ -15,12 +15,12 @@ namespace FleetTechCore.Models.Fleet
         public            DateTime DateOfBirth             { get; set; }
         public required   DateTime ExpirationOfTheLicense  { get; set; }
         public required   DateTime DateOfHire              { get; set; }
-        public required   string   LicenseFileName         { get; set; }
+        public            string   LicenseFileName         { get; set; }
         public            string   Phone                   { get; set; }
-        public required   int      LicenseCategory_id      { get; set; }
+        public required   int      LicenseCategoryId      { get; set; }
         public required   int      Status                  { get; set; }  
 
-        public virtual LicenseType LicenseDrivers          { get; set; }
+        public virtual LicenseType LicenseCategory { get; set; }
 
     }
 }

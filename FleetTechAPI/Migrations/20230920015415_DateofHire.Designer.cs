@@ -3,6 +3,7 @@ using System;
 using FleetTechAPI.Services.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FleetTechAPI.Migrations
 {
     [DbContext(typeof(DataService))]
-    partial class DataServiceModelSnapshot : ModelSnapshot
+    [Migration("20230920015415_DateofHire")]
+    partial class DateofHire
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "7.0.10");
@@ -1095,7 +1098,10 @@ namespace FleetTechAPI.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<int>("LicenseCategoryId")
+                    b.Property<int>("LicenseCategory_id")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("LicenseDriversId")
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("LicenseFileName")
@@ -1111,7 +1117,7 @@ namespace FleetTechAPI.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("LicenseCategoryId");
+                    b.HasIndex("LicenseDriversId");
 
                     b.ToTable("Drivers");
                 });
@@ -2096,11 +2102,11 @@ namespace FleetTechAPI.Migrations
                         {
                             Id = new Guid("00000000-0000-0000-0000-000000000001"),
                             AccessFailedCount = 0,
-                            DateCreated = new DateTime(2023, 9, 19, 23, 16, 17, 445, DateTimeKind.Local).AddTicks(7356),
+                            DateCreated = new DateTime(2023, 9, 19, 21, 54, 14, 927, DateTimeKind.Local).AddTicks(1375),
                             Email = "superadmin@gmail.com",
                             FirstName = "Super",
                             LastName = "Admin",
-                            PasswordHash = "AQAAAAIAAYagAAAAENxKQDC0HP9GNenzTIxa+gdJq2uh8vO0gHUdtTR5LO2dAg6kWV7emhrATHBUYDdWPQ==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEPee0HYIatE0X+o00VA/BxY2yjh5uwljFgwUOF/NSaQJyEH55SgrSpB3eVfMdyGyrw==",
                             Phone = "(829) 123-4567",
                             Status = 1,
                             Username = "superadmin"
@@ -2335,13 +2341,13 @@ namespace FleetTechAPI.Migrations
 
             modelBuilder.Entity("FleetTechCore.Models.Fleet.Driver", b =>
                 {
-                    b.HasOne("FleetTechCore.Models.Fleet.LicenseType", "LicenseCategory")
+                    b.HasOne("FleetTechCore.Models.Fleet.LicenseType", "LicenseDrivers")
                         .WithMany()
-                        .HasForeignKey("LicenseCategoryId")
+                        .HasForeignKey("LicenseDriversId")
                         .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
-                    b.Navigation("LicenseCategory");
+                    b.Navigation("LicenseDrivers");
                 });
 
             modelBuilder.Entity("FleetTechCore.Models.Fleet.Vehicle", b =>

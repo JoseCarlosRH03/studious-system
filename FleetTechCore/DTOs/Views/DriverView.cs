@@ -1,4 +1,6 @@
-﻿using FleetTechCore.Models.Fleet;
+﻿using FleetTechCore.DTOs.Shared;
+using FleetTechCore.Enums;
+using FleetTechCore.Models.Fleet;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,9 +20,8 @@ namespace FleetTechCore.DTOs.Views
         DateTime DateOfHire,
         string LicenseFileName,
         string Phone,
-        int LicenseCategory_id,
-        int Status,
-        LicenseTypeView LicenseDrivers
+        Item Status,
+        Item LicenseDrivers
 
     )
     {
@@ -33,21 +34,8 @@ namespace FleetTechCore.DTOs.Views
             DateOfBirth = data.DateOfBirth,
             ExpirationOfTheLicense = data.ExpirationOfTheLicense,
             Phone = data.Phone,
-            LicenseCategory_id = data.LicenseCategory_id,
-            LicenseDrivers = LicenseTypeView.From(data.LicenseDrivers)
-        };
-    }
-
-    public record struct LicenseTypeView
-    (
-        int Id,
-        string Description
-    )
-    {
-        public static LicenseTypeView From(LicenseType data) => new()
-        {
-            Id = data.Id,
-            Description = data.Description
+            Status =  new Item { Id = data.Status, Description = ((GenericStatus)data.Status).ToString()},
+            LicenseDrivers = new Item {Id = data.LicenseCategory.Id, Description = data.LicenseCategory.Description}
         };
     }
 }
