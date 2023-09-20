@@ -43,7 +43,7 @@ public partial class Logic
             FirstName = data.FirstName,
             LastName = data.LastName,
             DateOfBirth = data.DateOfBirth,
-            LicenseCategory_id = data.LicenseCategory_id,
+            LicenseCategoryId = data.LicenseCategory_id,
             ExpirationOfTheLicense = data.ExpirationOfTheLicense,
             IdentityDocument = data.IdentityDocument,
             Phone = data.Phone,
@@ -66,7 +66,7 @@ public partial class Logic
         driver.FirstName = data.FirstName.Trim();
         driver.LastName = data.LastName.Trim();
         driver.DateOfBirth = data.DateOfBirth;
-        driver.LicenseCategory_id = data.LicenseCategory_id;
+        driver.LicenseCategoryId = data.LicenseCategory_id;
         driver.ExpirationOfTheLicense = data.ExpirationOfTheLicense;
         driver.IdentityDocument = data.IdentityDocument;
         driver.Phone = data.Phone;
@@ -135,6 +135,14 @@ public partial class Logic
             throw new NotFound("No se encontro ningun vehiculo");
 
         return VehicleView.From(result);
+    }
+
+    public async Task<DriverView> GetDriverById(int Id)
+    {
+        var result = await Data.GetDriverById(Id);
+        if (result is null)
+            throw new NotFound("No se encontro ningun conductor");
+        return DriverView.From(result);
     }
     public async Task<int> UpdateVehicle(VehicleData data, User user)
     {

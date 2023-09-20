@@ -71,5 +71,8 @@ public partial class DataService
     #region Fleet Management
         public async Task<Vehicle> GetVehicleById(int Id) =>
         await Vehicles.Include(v => v.FuelType).FirstOrDefaultAsync(v => v.Id == Id);
+
+    public async Task<Driver> GetDriverById(int Id) =>
+    await Drivers.Include(d => d.LicenseCategory).FirstOrDefaultAsync(d => d.Id == Id);
     #endregion
 }
