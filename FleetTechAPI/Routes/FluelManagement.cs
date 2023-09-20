@@ -16,8 +16,8 @@ public static class FluelManagement
             app.MapGet("/fuel/type",(Context ctx) => ctx.Execute(
                 (logic) => logic.GetAllFuelType())).Produces<List<Item>>(),
 
-            app.MapPost("station",(StationData data, Context ctx) => ctx.ExecuteAuthenticated(
-                (user ,logic) => logic.))
+            //app.MapPost("station",(StationData data, Context ctx) => ctx.ExecuteAuthenticated(
+            //    (user ,logic) => logic.))
         }); ;
     }
 }

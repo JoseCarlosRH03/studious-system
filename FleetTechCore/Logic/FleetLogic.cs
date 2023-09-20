@@ -136,6 +136,14 @@ public partial class Logic
 
         return VehicleView.From(result);
     }
+
+    public async Task<DriverView> GetDriverById(int Id)
+    {
+        var result = await Data.GetDriverById(Id);
+        if (result is null)
+            throw new NotFound("No se encontro ningun conductor");
+        return DriverView.From(result);
+    }
     public async Task<int> UpdateVehicle(VehicleData data, User user)
     {
         Validation.ValidateVehicleData(data);

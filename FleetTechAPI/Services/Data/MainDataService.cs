@@ -197,7 +197,7 @@ public partial class DataService: DbContext, IDataService
     public DbSet<Country> Countries { get; set; }
     public DbSet<ExtensionProperty> ExtensionProperties { set; get; }
     public DbSet<Extension> Extensions { get; set; }
-    public DbSet<Material> Materials { get; set; }
+    public DbSet<FleetTechCore.Models.Inventory.Material> Materials { get; set; }
     public DbSet<MaterialConsumption> MaterialConsumptions { get; set; }
     public DbSet<MaterialExistence> MaterialExistences { get; set; }
     public DbSet<PermissionArea> PermissionAreas { get; set; }

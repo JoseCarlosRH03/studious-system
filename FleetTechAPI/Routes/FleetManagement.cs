@@ -16,6 +16,9 @@ public static class FleetManagement
             app.MapGet("/driver", (int start, int count, string? filter, Context ctx) => ctx.ExecuteAuthenticated(
                 (user, logic) => logic.GetAllDrivers(start, count, filter)))
                 .Produces<List<DriverView>>(),
+            app.MapGet("/driver/{id:int}", ( int Id ,Context ctx) => ctx.ExecuteAuthenticated(
+                (user, logic) => logic.GetDriverById(Id)))
+                .Produces<List<DriverView>>(),
             app.MapPost("/driver", (DriverData data, Context ctx) => ctx.ExecuteAuthenticated(
                 (user, logic) => logic.CreateDriver(data)))
                 .Produces<int>(),

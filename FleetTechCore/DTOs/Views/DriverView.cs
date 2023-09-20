@@ -11,6 +11,7 @@ namespace FleetTechCore.DTOs.Views
 {
     public record struct DriverView
     (
+        int    Id,
         string EmployeeCode,
         string IdentityDocument,
         string FirstName,
@@ -27,11 +28,13 @@ namespace FleetTechCore.DTOs.Views
     {
         public static DriverView From(Driver data) => new()
         {
+            Id = data.Id,
             EmployeeCode = data.EmployeeCode,
             IdentityDocument = data.IdentityDocument,
             FirstName = data.FirstName,
             LastName = data.LastName,
             DateOfBirth = data.DateOfBirth,
+            DateOfHire = data.DateOfHire,
             ExpirationOfTheLicense = data.ExpirationOfTheLicense,
             Phone = data.Phone,
             Status =  new Item { Id = data.Status, Description = ((GenericStatus)data.Status).ToString()},

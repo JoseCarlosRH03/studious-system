@@ -46,6 +46,7 @@ public interface IDataService {
    Task<bool> ExistsBranchWithCode(string dataCode);
    Task<bool> ExistsCompanyWithCode(string code);
     Task<List<DriverView>> GetDriver(int start, int count, string? filter);
+    Task<Driver> GetDriverById(int id);
     Task<Vehicle> GetVehicleById(int Id);
     Task<bool> ExistsStationWithRnc(string rnc);
 }
