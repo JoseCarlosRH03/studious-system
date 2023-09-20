@@ -9,7 +9,9 @@ namespace FleetTechCore.Models.Fuel
         public required string RNC           { get; set; }
         public required string Phone         { get; set; }
         public          string Email         { get; set; }
-        public          string Address       { get; set; }
+        public required string Address       { get; set; }
+        public required string FuelStationId { get; set; }
+        
 
         public virtual List<Contact> Contacts { get; set; }
     }

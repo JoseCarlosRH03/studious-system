@@ -129,4 +129,14 @@ public class Validation
         Require(data.Phone, "Telefono del conductor");
         Require(data.DateOfHire, "Fecha de contratación");
     }
+
+    public static void ValidateDriverData(StationData data)
+    {
+        Require(data.Code, "Código de la estación");
+        Require(data.CompanyName, "Nombre de la  compañia");
+        Require(data.RNC, "RNC");
+        Require(data.Phone, "Telefono");
+        Require(data.Email, "Correo");
+        Require(data.Address, "Dirección");      
+    }
 }

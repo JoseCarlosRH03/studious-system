@@ -103,7 +103,7 @@ public partial class Logic
             throw new AlreadyExists("Ya existe un vehiculo con alguno de los datos suministrados");
 
         var result = await Data.Add<Vehicle>(new Vehicle
-        {
+        {// pendiente ver que hacer con el code si llega null
             Code = data.Code,
             PolicyDescription = data.PolicyDescription,
             PolicyNumber = data.PolicyNumber,
