@@ -11,6 +11,7 @@ using FleetTechCore.Models.Extensions;
 using FleetTechCore.Models.Fleet;
 using FleetTechCore.Models.Fuel;
 using FleetTechCore.Models.Inventory;
+using FleetTechCore.Models.Supply;
 using FleetTechCore.Models.User;
 using FleetTechCore.Models.WorkShop;
 using FleetTechCore.Services;
@@ -218,4 +219,5 @@ public partial class DataService: DbContext, IDataService
     public DbSet<FuelStation> FuelStations { get; set; }
     public DbSet<LicenseType> Licenses { get; set; }
     public DbSet<FuelType> FuelTypes { get; set; }
+    public DbSet<Supplier> Suppliers { get; set; }
 }

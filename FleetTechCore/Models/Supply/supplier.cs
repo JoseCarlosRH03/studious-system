@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace FleetTechCore.Models.Supply
 {
-    public class supplier: AuditableEntity
+    public class Supplier: AuditableEntity
     {
         public string                   code            { get; set; }
         public required string          name            { get; set; }

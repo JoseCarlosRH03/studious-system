@@ -25,4 +25,7 @@ public partial class DataService
     public Task<bool> ExistsCompanyWithCode(string code) =>
         Companies.AnyAsync(u => u.Code.ToLower() == code.Trim().ToLower());
 
+    public Task<bool> ExistsStationWithRnc(string rnc) =>
+        FuelStations.AnyAsync(u => u.RNC.ToLower() == rnc.Trim().ToLower());
+
 }
