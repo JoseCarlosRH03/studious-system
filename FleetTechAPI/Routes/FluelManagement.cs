@@ -17,7 +17,7 @@ public static class FluelManagement
                 (logic) => logic.GetAllFuelType())).Produces<List<Item>>(),
 
             app.MapPost("station",(StationData data, Context ctx) => ctx.ExecuteAuthenticated(
-                (user ,logic) => logic.))
+                (user ,logic) => logic.CreateStation(data,user)))
         }); ;
     }
 }
