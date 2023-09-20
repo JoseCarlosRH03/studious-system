@@ -24,3 +24,6 @@ FleetTechAPI/obj
 FleetTechAPI/bin
 FleetTechCore/bin
 FleetTechCore/obj
+FleetTechAPI/fleetTech.db
+FleetTechAPI/fleetTech.db-shm
+FleetTechAPI/fleetTech.db-wal
