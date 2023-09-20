@@ -21,9 +21,12 @@ public partial class Logic
 
     public async Task<int> CreateStation(StationData data, User user)
     {
-        if(await Data.ExistsStationWithRnc(data.RNC))  throw new AlreadyExists("Ya existe una estación con este RNC"); 
+        if(await Data.ExistsStationWithRnc(data.RNC))  throw new AlreadyExists("Ya existe una estación con este RNC");
 
+        //var station = new FuelStation
+        //{
 
+        //};
 
 
         return 1;
