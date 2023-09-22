@@ -5,7 +5,9 @@ using FleetTechCore.Enums;
 using FleetTechCore.Errors;
 using FleetTechCore.Models.Company;
 using FleetTechCore.Models.Fleet;
+using FleetTechCore.Models.Shared;
 using FleetTechCore.Models.User;
+using Microsoft.AspNetCore.Http;
 using Microsoft.VisualBasic.FileIO;
 using System.Drawing;
 using System.Linq;
@@ -84,6 +86,66 @@ public partial class Logic
         driver.Status = (int)GenericStatus.Inactivo;
         await Data.Update(driver);
         return driver.Id;
+    }
+
+    public async Task<int> CreateStorageFile(IFormFile data)
+    {
+
+        if (data == null || data.Length == 0)
+            throw new InvalidParameter("Invalid file.");
+        //var driver = await Data.GetAsync<Driver>(x => x.LicenseFileName == data.FileName, x => x.LicenseFileName);
+        //if (driver == null)
+        //    throw new NotFound("No existe este conductor");
+
+        //if (driver.LicenseFileName == data.FileName)
+        //    throw new AlreadyExists("Ya existe un archivo con este nombre");
+
+        byte[] fileBytes;
+        using (var ms = new MemoryStream())
+        {
+            await data.CopyToAsync(ms);
+            fileBytes = ms.ToArray();
+        }
+
+        var file = await Resources.Save(fileBytes, data.ContentType switch
+        {
+            "image/jpeg" => "jpg",
+            "image/png" => "png",
+            "image/gif" => "gif",
+            "application/pdf" => "pdf",
+            "application/vnd.openxmlformats-officedocument.wordprocessingml.document" => "docx",
+            "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" => "xlsx",
+            "application/vnd.openxmlformats-officedocument.presentationml.presentation" => "pptx",
+            "application/vnd.ms-excel" => "xls",
+            "application/msword" => "doc",
+            "application/vnd.ms-powerpoint" => "ppt",
+            "text/plain" => "txt",
+            _ => throw new InvalidParameter("Tipo de archivo no soportado")
+        });
+        var result = await Data.Add(new StorageFile
+        {
+            Name = data.FileName.LastIndexOf('.') > 0 ? data.FileName.Substring(0, data.FileName.LastIndexOf('.')) : data.FileName,
+            FileName = data.FileName,
+            FileSize = data.Length,
+            File = file
+        });
+
+        return result.Id;
+    }
+
+    public async Task<FileView> GetStorageFile(int Id)
+    {
+        var storageFile = await Data.GetAsync<StorageFile>(x => x.Id == Id, x => x.Driver);
+        if (storageFile == null)
+            throw new NotFound("No existe este archivo");
+        var data = await Resources.Load(storageFile.Driver!.EmployeeCode, storageFile.File);
+        return new FileView
+        {
+            Id = storageFile.Id,
+            Data = data.data,
+            FileName = storageFile.FileName,
+            MimeType = data.mimetype
+        };
     }
 
 
