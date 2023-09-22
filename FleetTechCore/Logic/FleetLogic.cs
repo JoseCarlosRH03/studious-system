@@ -37,7 +37,7 @@ public partial class Logic
     {
         Validation.ValidateDriverData(data);
         if (await Data.GetAsync<Driver>(d => d.EmployeeCode == data.EmployeeCode) is not null)
-            throw new AlreadyExists("Ya existe un conductor registrado con ese código");
+            throw new AlreadyExists("Ya existe un conductor registrado con ese cï¿½digo");
         
         StorageFile resultFile = null;
         try
@@ -102,10 +102,13 @@ public partial class Logic
     {
         Validation.ValidateDriverData(data);
         if (await Data.GetAsync<Driver>(d => d.EmployeeCode == data.EmployeeCode) is not null)
-            throw new AlreadyExists("Ya existe un conductor registrado con ese código");
+            throw new AlreadyExists("Ya existe un conductor registrado con ese cï¿½digo");
         var driver = await Data.GetByIdAsync<Driver>(id);
         if (driver == null)
             throw new NotFound("No existe este conductor");
+        var driver = await Data.GetAsync<Driver>(d => d.Id == data.Id);
+        if (driver is null)
+            throw new AlreadyExists("Ya existe un conductor con algunas de estas informaciones");
 
         driver.FirstName = data.FirstName.Trim();
         driver.LastName = data.LastName.Trim();
