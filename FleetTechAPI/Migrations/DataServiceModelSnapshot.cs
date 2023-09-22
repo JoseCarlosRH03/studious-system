@@ -1491,7 +1491,7 @@ namespace FleetTechAPI.Migrations
                         {
                             Id = 155,
                             CreatedBy = new Guid("00000000-0000-0000-0000-000000000001"),
-                            CreatedOn = new DateTime(2023, 9, 21, 22, 21, 19, 740, DateTimeKind.Local).AddTicks(1060),
+                            CreatedOn = new DateTime(2023, 9, 21, 22, 45, 29, 846, DateTimeKind.Local).AddTicks(1139),
                             Name = "Laguna Salada",
                             StateId = 32,
                             Status = 0
@@ -3352,37 +3352,37 @@ namespace FleetTechAPI.Migrations
                         new
                         {
                             Id = 1,
-                            PermissionId = 108,
+                            PermissionId = 48,
                             RoleId = 2
                         },
                         new
                         {
                             Id = 2,
-                            PermissionId = 156,
+                            PermissionId = 47,
                             RoleId = 2
                         },
                         new
                         {
                             Id = 3,
-                            PermissionId = 158,
+                            PermissionId = 46,
                             RoleId = 2
                         },
                         new
                         {
                             Id = 4,
-                            PermissionId = 159,
+                            PermissionId = 45,
                             RoleId = 2
                         },
                         new
                         {
                             Id = 5,
-                            PermissionId = 78,
+                            PermissionId = 44,
                             RoleId = 2
                         },
                         new
                         {
                             Id = 6,
-                            PermissionId = 208,
+                            PermissionId = 43,
                             RoleId = 2
                         });
                 });
@@ -3457,11 +3457,11 @@ namespace FleetTechAPI.Migrations
                         {
                             Id = new Guid("00000000-0000-0000-0000-000000000001"),
                             AccessFailedCount = 0,
-                            DateCreated = new DateTime(2023, 9, 21, 22, 21, 19, 652, DateTimeKind.Local).AddTicks(7915),
+                            DateCreated = new DateTime(2023, 9, 21, 22, 45, 29, 780, DateTimeKind.Local).AddTicks(3004),
                             Email = "superadmin@gmail.com",
                             FirstName = "Super",
                             LastName = "Admin",
-                            PasswordHash = "AQAAAAIAAYagAAAAELKAFP5EtNKVcIBHwwVfCp8omrsMukOZr5j3rDZA+U0JIkAEzhxHz7KRvucusi3Lsg==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEB7aw4n4P5lu4kMtdMM431dFIBycXBka8wuLHyx90cGM6VYbDt+HsADRTyzJUVcS5w==",
                             Phone = "(829) 123-4567",
                             Status = 1,
                             Username = "superadmin"

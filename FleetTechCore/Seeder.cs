@@ -438,37 +438,37 @@ public static class Seeder {
 			{
 				Id = 1,
 				RoleId = 2,
-				PermissionId = 108
-			},
+				PermissionId = 48
+            },
 			new ()
 			{
 				Id = 2,
 				RoleId = 2,
-				PermissionId = 156,
+				PermissionId = 47,
 			},
 			new ()
 			{
 				Id = 3,
 				RoleId = 2,
-				PermissionId = 158,
+				PermissionId = 46,
 			},
 			new ()
 			{
 				Id = 4,
 				RoleId = 2,
-				PermissionId = 159,
+				PermissionId = 45,
 			},
 			new ()
 			{
 				Id = 5,
 				RoleId = 2,
-				PermissionId = 78,
+				PermissionId = 44,
 			},
 			new ()
 			{
 				Id = 6,
 				RoleId = 2,
-				PermissionId = 208,
+				PermissionId = 43,
 			},
 			// 
 		}),
