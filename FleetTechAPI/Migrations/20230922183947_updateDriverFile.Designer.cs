@@ -3,6 +3,7 @@ using System;
 using FleetTechAPI.Services.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FleetTechAPI.Migrations
 {
     [DbContext(typeof(DataService))]
-    partial class DataServiceModelSnapshot : ModelSnapshot
+    [Migration("20230922183947_updateDriverFile")]
+    partial class updateDriverFile
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "7.0.10");
@@ -1491,7 +1494,7 @@ namespace FleetTechAPI.Migrations
                         {
                             Id = 155,
                             CreatedBy = new Guid("00000000-0000-0000-0000-000000000001"),
-                            CreatedOn = new DateTime(2023, 9, 22, 14, 52, 38, 199, DateTimeKind.Local).AddTicks(1214),
+                            CreatedOn = new DateTime(2023, 9, 22, 14, 39, 47, 389, DateTimeKind.Local).AddTicks(1083),
                             Name = "Laguna Salada",
                             StateId = 32,
                             Status = 0
@@ -2288,6 +2291,9 @@ namespace FleetTechAPI.Migrations
                     b.Property<DateTime>("ExpirationOfTheLicense")
                         .HasColumnType("TEXT");
 
+                    b.Property<int>("FileId")
+                        .HasColumnType("INTEGER");
+
                     b.Property<string>("FirstName")
                         .IsRequired()
                         .HasColumnType("TEXT");
@@ -2321,9 +2327,9 @@ namespace FleetTechAPI.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("LicenseCategoryId");
+                    b.HasIndex("FileId");
 
-                    b.HasIndex("LicenseFileId");
+                    b.HasIndex("LicenseCategoryId");
 
                     b.ToTable("Drivers");
                 });
@@ -3462,11 +3468,11 @@ namespace FleetTechAPI.Migrations
                         {
                             Id = new Guid("00000000-0000-0000-0000-000000000001"),
                             AccessFailedCount = 0,
-                            DateCreated = new DateTime(2023, 9, 22, 14, 52, 38, 130, DateTimeKind.Local).AddTicks(4058),
+                            DateCreated = new DateTime(2023, 9, 22, 14, 39, 47, 298, DateTimeKind.Local).AddTicks(4378),
                             Email = "superadmin@gmail.com",
                             FirstName = "Super",
                             LastName = "Admin",
-                            PasswordHash = "AQAAAAIAAYagAAAAEJ4LVsEEgU3VHmkfDq3JlPq8aaLzoEVTJAMpzadBFH19o5db3vA4CFRry3n/eJbFOA==",
+                            PasswordHash = "AQAAAAIAAYagAAAAELq63A0VUApW5UyzLZ/LcrGPFagJ6Qj6R+t0gRlpiuTO/dMTT6MmFdxmTt9FFZ6Vmw==",
                             Phone = "(829) 123-4567",
                             Status = 1,
                             Username = "superadmin"
@@ -3831,21 +3837,21 @@ namespace FleetTechAPI.Migrations
 
             modelBuilder.Entity("FleetTechCore.Models.Fleet.Driver", b =>
                 {
+                    b.HasOne("FleetTechCore.Models.Shared.StorageFile", "File")
+                        .WithMany()
+                        .HasForeignKey("FileId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
                     b.HasOne("FleetTechCore.Models.Fleet.LicenseType", "LicenseCategory")
                         .WithMany()
                         .HasForeignKey("LicenseCategoryId")
                         .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
-                    b.HasOne("FleetTechCore.Models.Shared.StorageFile", "LicenseFile")
-                        .WithMany()
-                        .HasForeignKey("LicenseFileId")
-                        .OnDelete(DeleteBehavior.NoAction)
-                        .IsRequired();
+                    b.Navigation("File");
 
                     b.Navigation("LicenseCategory");
-
-                    b.Navigation("LicenseFile");
                 });
 
             modelBuilder.Entity("FleetTechCore.Models.Fleet.Vehicle", b =>

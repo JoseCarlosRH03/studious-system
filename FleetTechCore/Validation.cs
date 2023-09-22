@@ -125,7 +125,7 @@ public class Validation
         Require(data.IdentityDocument, "Documento de identidad");
         Require(data.DateOfBirth, "Fecha de nacimiento");
         Require(data.ExpirationOfTheLicense, "Expiración de la licencia");
-        Require(data.LicenseCategory_id, "Categoría de la licencia");
+        Require(data.LicenseCategoryId, "Categoría de la licencia");
         Require(data.Phone, "Telefono del conductor");
         Require(data.DateOfHire, "Fecha de contratación");
     }

@@ -6,6 +6,7 @@ using FleetTechCore.Enums;
 using FleetTechCore.Errors;
 using FleetTechCore.Models.Address;
 using FleetTechCore.Models.Company;
+using FleetTechCore.Models.Shared;
 using FleetTechCore.Services;
 using FleetTechCore.Services.Infrastructure;
 using FleetTechCore.Services.Model_Related_Services;
@@ -342,4 +343,12 @@ public partial class Logic
         return list;
     }
 
+    public async Task<(byte[] data, string mimetype,string name)> GetStorageFile(int Id)
+    {
+        var storageFile = await Data.GetAsync<StorageFile>(x => x.Id == Id);
+        if (storageFile == null)
+            throw new NotFound("No existe este archivo");
+        var data  = await Resources.Load(storageFile.File);
+        return (data.data,data.mimetype,storageFile.Name);
+    }
 }

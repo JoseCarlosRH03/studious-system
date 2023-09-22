@@ -59,7 +59,7 @@ app.UseHttpsRedirection();
 app.MapUserManagement();
 app.MapFluelManagement();
 app.MapFleetManagement();
-
+app.MapReports();
 app.Run();
 
 namespace FleetTechAPI {

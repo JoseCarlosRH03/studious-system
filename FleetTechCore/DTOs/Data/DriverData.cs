@@ -1,4 +1,6 @@
 ﻿using FleetTechCore.DTOs.Views;
+using FleetTechCore.Models.Shared;
+using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,7 +21,11 @@ namespace FleetTechCore.DTOs.Data
         DateTime    DateOfHire,
         string      LicenseFileName,
         string      Phone,
-        int         LicenseCategory_id,
-        int         Status_id
+        int         LicenseCategoryId,
+        int         StatusId,
+        string Name,
+        string Type,
+        string Dataurl,
+        int Size
     );
 }

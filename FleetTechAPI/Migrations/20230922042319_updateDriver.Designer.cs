@@ -3,6 +3,7 @@ using System;
 using FleetTechAPI.Services.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FleetTechAPI.Migrations
 {
     [DbContext(typeof(DataService))]
-    partial class DataServiceModelSnapshot : ModelSnapshot
+    [Migration("20230922042319_updateDriver")]
+    partial class updateDriver
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "7.0.10");
@@ -1491,7 +1494,7 @@ namespace FleetTechAPI.Migrations
                         {
                             Id = 155,
                             CreatedBy = new Guid("00000000-0000-0000-0000-000000000001"),
-                            CreatedOn = new DateTime(2023, 9, 22, 14, 52, 38, 199, DateTimeKind.Local).AddTicks(1214),
+                            CreatedOn = new DateTime(2023, 9, 22, 0, 23, 19, 44, DateTimeKind.Local).AddTicks(3600),
                             Name = "Laguna Salada",
                             StateId = 32,
                             Status = 0
@@ -2322,8 +2325,6 @@ namespace FleetTechAPI.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("LicenseCategoryId");
-
-                    b.HasIndex("LicenseFileId");
 
                     b.ToTable("Drivers");
                 });
@@ -3462,11 +3463,11 @@ namespace FleetTechAPI.Migrations
                         {
                             Id = new Guid("00000000-0000-0000-0000-000000000001"),
                             AccessFailedCount = 0,
-                            DateCreated = new DateTime(2023, 9, 22, 14, 52, 38, 130, DateTimeKind.Local).AddTicks(4058),
+                            DateCreated = new DateTime(2023, 9, 22, 0, 23, 18, 979, DateTimeKind.Local).AddTicks(823),
                             Email = "superadmin@gmail.com",
                             FirstName = "Super",
                             LastName = "Admin",
-                            PasswordHash = "AQAAAAIAAYagAAAAEJ4LVsEEgU3VHmkfDq3JlPq8aaLzoEVTJAMpzadBFH19o5db3vA4CFRry3n/eJbFOA==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEOLBjdJu9/aK7y8X/Cu3tcx+7E+mzXbLkhEk+KSrATgkLj0HyMdqmwzj5u7oKlQgTA==",
                             Phone = "(829) 123-4567",
                             Status = 1,
                             Username = "superadmin"
@@ -3837,15 +3838,7 @@ namespace FleetTechAPI.Migrations
                         .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
-                    b.HasOne("FleetTechCore.Models.Shared.StorageFile", "LicenseFile")
-                        .WithMany()
-                        .HasForeignKey("LicenseFileId")
-                        .OnDelete(DeleteBehavior.NoAction)
-                        .IsRequired();
-
                     b.Navigation("LicenseCategory");
-
-                    b.Navigation("LicenseFile");
                 });
 
             modelBuilder.Entity("FleetTechCore.Models.Fleet.Vehicle", b =>

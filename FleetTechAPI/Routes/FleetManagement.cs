@@ -31,9 +31,6 @@ public static class FleetManagement
             app.MapGet("/driver/file/{id:int}", (int id, Context ctx) => ctx.ExecuteAuthenticated(
                 (user, logic) => logic.GetStorageFile(id)))
                 .Produces<FileView>(),
-            app.MapPost("/driver/file", (IFormFile file, Context ctx) => ctx.ExecuteAuthenticated(
-                (user, logic) => logic.CreateStorageFile(file)))
-                .Produces<int>(),
             app.MapGet("/vehicle/state", (Context ctx) => ctx.Execute(
                 (logic) => logic.GetAllVehicleState()))
                 .Produces<List<Item>>(),
