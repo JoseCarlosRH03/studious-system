@@ -2,6 +2,6 @@
 
 public enum GenericStatus
 {
-    Inactivo,
-    Activo
+    Activo = 1,
+    Inactivo
 }
