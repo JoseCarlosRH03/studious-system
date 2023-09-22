@@ -3,6 +3,7 @@ using System;
 using FleetTechAPI.Services.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,14 +11,16 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FleetTechAPI.Migrations
 {
     [DbContext(typeof(DataService))]
-    partial class DataServiceModelSnapshot : ModelSnapshot
+    [Migration("20230922013428_updateNameAddress")]
+    partial class updateNameAddress
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "7.0.10");
 
-            modelBuilder.Entity("FleetTechCore.Models.Address.Address", b =>
+            modelBuilder.Entity("FleetTechCore.Models.Address.Addess", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -63,7 +66,7 @@ namespace FleetTechAPI.Migrations
 
                     b.HasIndex("CityId");
 
-                    b.ToTable("Address");
+                    b.ToTable("Addess");
                 });
 
             modelBuilder.Entity("FleetTechCore.Models.Address.City", b =>
@@ -1491,7 +1494,7 @@ namespace FleetTechAPI.Migrations
                         {
                             Id = 155,
                             CreatedBy = new Guid("00000000-0000-0000-0000-000000000001"),
-                            CreatedOn = new DateTime(2023, 9, 21, 21, 38, 5, 227, DateTimeKind.Local).AddTicks(2727),
+                            CreatedOn = new DateTime(2023, 9, 21, 21, 34, 27, 766, DateTimeKind.Local).AddTicks(5856),
                             Name = "Laguna Salada",
                             StateId = 32,
                             Status = 0
@@ -3420,11 +3423,11 @@ namespace FleetTechAPI.Migrations
                         {
                             Id = new Guid("00000000-0000-0000-0000-000000000001"),
                             AccessFailedCount = 0,
-                            DateCreated = new DateTime(2023, 9, 21, 21, 38, 5, 150, DateTimeKind.Local).AddTicks(3299),
+                            DateCreated = new DateTime(2023, 9, 21, 21, 34, 27, 691, DateTimeKind.Local).AddTicks(6089),
                             Email = "superadmin@gmail.com",
                             FirstName = "Super",
                             LastName = "Admin",
-                            PasswordHash = "AQAAAAIAAYagAAAAEJyVhPht5vq/JHL/vmtuOgOg0eOHkBlYhpnpwGv75Wx2QXrlR2830L/KI1Qu+ZtUiQ==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEP7YVOXWEYUY19OjzQjIKk5aajlmTUWEljn83hEB3MNWYCPXff9zMNVCKmivxYkcmA==",
                             Phone = "(829) 123-4567",
                             Status = 1,
                             Username = "superadmin"
@@ -3688,7 +3691,7 @@ namespace FleetTechAPI.Migrations
                     b.ToTable("FuelGestion");
                 });
 
-            modelBuilder.Entity("FleetTechCore.Models.Address.Address", b =>
+            modelBuilder.Entity("FleetTechCore.Models.Address.Addess", b =>
                 {
                     b.HasOne("FleetTechCore.Models.Address.City", "City")
                         .WithMany()
@@ -3811,7 +3814,7 @@ namespace FleetTechAPI.Migrations
 
             modelBuilder.Entity("FleetTechCore.Models.Fuel.FuelStation", b =>
                 {
-                    b.HasOne("FleetTechCore.Models.Address.Address", "Address")
+                    b.HasOne("FleetTechCore.Models.Address.Addess", "Address")
                         .WithMany()
                         .HasForeignKey("AddressId")
                         .OnDelete(DeleteBehavior.NoAction)
@@ -3859,7 +3862,7 @@ namespace FleetTechAPI.Migrations
 
             modelBuilder.Entity("FleetTechCore.Models.Supply.Supplier", b =>
                 {
-                    b.HasOne("FleetTechCore.Models.Address.Address", "Address")
+                    b.HasOne("FleetTechCore.Models.Address.Addess", "Address")
                         .WithMany()
                         .HasForeignKey("AddressId")
                         .OnDelete(DeleteBehavior.NoAction)
@@ -3976,7 +3979,7 @@ namespace FleetTechAPI.Migrations
 
             modelBuilder.Entity("FleetTechCore.Models.WorkShop.MechanicalWorkshop", b =>
                 {
-                    b.HasOne("FleetTechCore.Models.Address.Address", "Address")
+                    b.HasOne("FleetTechCore.Models.Address.Addess", "Address")
                         .WithMany()
                         .HasForeignKey("AddressId")
                         .OnDelete(DeleteBehavior.NoAction)

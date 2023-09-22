@@ -1,14 +1,11 @@
-﻿using System.Linq;
-using System.Linq.Expressions;
-using FleetTechCore;
-using FleetTechCore.DTOs.Shared;
+﻿using FleetTechCore;
 using FleetTechCore.DTOs.Views;
-using FleetTechCore.Enums;
 using FleetTechCore.Models;
 using FleetTechCore.Models.Address;
 using FleetTechCore.Models.Company;
 using FleetTechCore.Models.Extensions;
 using FleetTechCore.Models.Fleet;
+using FleetTechCore.Models.fuel;
 using FleetTechCore.Models.Fuel;
 using FleetTechCore.Models.Inventory;
 using FleetTechCore.Models.Supply;
@@ -18,6 +15,7 @@ using FleetTechCore.Services;
 using FleetTechCore.Services.Model_Related_Services;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using System.Linq.Expressions;
 
 namespace FleetTechAPI.Services.Data;
 
@@ -212,12 +210,15 @@ public partial class DataService: DbContext, IDataService
     public DbSet<Contact> Contacts { get; set; }
     public DbSet<MaintenanceScheduling> MaintenanceSchedulings { get; set; }
     public DbSet<Mechanic> Mechanics { get; set; }
-    public DbSet<MechanicSpecialty> MechanicSpecialtys { get; set; }
+    public DbSet<MechanicalWorkshop> MechanicalWorkshop { get; set; }
+    public DbSet<MechanicSpecialty> MechanicSpecialties { get; set; }
+    public DbSet<WorksopSpecialty> WorksopSpecialties { get; set; }
     public DbSet<Driver> Drivers { get; set; }
     public DbSet<Vehicle> Vehicles { get; set; }
+    public DbSet<LicenseType> Licenses { get; set; }
     public DbSet<FuelPrice> FuelPrices { get; set; }
     public DbSet<FuelStation> FuelStations { get; set; }
-    public DbSet<LicenseType> Licenses { get; set; }
     public DbSet<FuelType> FuelTypes { get; set; }
     public DbSet<Supplier> Suppliers { get; set; }
+    public DbSet<FuelGestion> FuelGestion { get; set; }
 }
