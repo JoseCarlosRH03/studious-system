@@ -8,6 +8,7 @@ using FleetTechCore.Models.Fleet;
 using FleetTechCore.Models.fuel;
 using FleetTechCore.Models.Fuel;
 using FleetTechCore.Models.Inventory;
+using FleetTechCore.Models.Shared;
 using FleetTechCore.Models.Supply;
 using FleetTechCore.Models.User;
 using FleetTechCore.Models.WorkShop;
@@ -221,4 +222,5 @@ public partial class DataService: DbContext, IDataService
     public DbSet<FuelType> FuelTypes { get; set; }
     public DbSet<Supplier> Suppliers { get; set; }
     public DbSet<FuelGestion> FuelGestion { get; set; }
+    public DbSet<StorageFile> StorageFile { get; set; }
 }

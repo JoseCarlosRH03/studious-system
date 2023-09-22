@@ -1491,7 +1491,7 @@ namespace FleetTechAPI.Migrations
                         {
                             Id = 155,
                             CreatedBy = new Guid("00000000-0000-0000-0000-000000000001"),
-                            CreatedOn = new DateTime(2023, 9, 21, 21, 38, 5, 227, DateTimeKind.Local).AddTicks(2727),
+                            CreatedOn = new DateTime(2023, 9, 21, 22, 12, 43, 835, DateTimeKind.Local).AddTicks(4172),
                             Name = "Laguna Salada",
                             StateId = 32,
                             Status = 0
@@ -2712,6 +2712,47 @@ namespace FleetTechAPI.Migrations
                     b.ToTable("MaterialExistences");
                 });
 
+            modelBuilder.Entity("FleetTechCore.Models.Shared.StorageFile", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("ContentTypeId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<Guid>("CreatedBy")
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("File")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("FileName")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<long>("FileSize")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<Guid?>("LastModifiedBy")
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTime?>("LastModifiedOn")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("StorageFile");
+                });
+
             modelBuilder.Entity("FleetTechCore.Models.Supply.Material", b =>
                 {
                     b.Property<int>("Id")
@@ -3420,11 +3461,11 @@ namespace FleetTechAPI.Migrations
                         {
                             Id = new Guid("00000000-0000-0000-0000-000000000001"),
                             AccessFailedCount = 0,
-                            DateCreated = new DateTime(2023, 9, 21, 21, 38, 5, 150, DateTimeKind.Local).AddTicks(3299),
+                            DateCreated = new DateTime(2023, 9, 21, 22, 12, 43, 785, DateTimeKind.Local).AddTicks(27),
                             Email = "superadmin@gmail.com",
                             FirstName = "Super",
                             LastName = "Admin",
-                            PasswordHash = "AQAAAAIAAYagAAAAEJyVhPht5vq/JHL/vmtuOgOg0eOHkBlYhpnpwGv75Wx2QXrlR2830L/KI1Qu+ZtUiQ==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEMe1wehdn6Exov7+hjJsDuL26AwAr7XRSgcwSGQTU2xN8amhRlNm9qu9CLq/VOrZcA==",
                             Phone = "(829) 123-4567",
                             Status = 1,
                             Username = "superadmin"

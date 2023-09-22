@@ -14,7 +14,5 @@ namespace FleetTechCore.Models.Shared
         public int          ContentTypeId        { get; set; }
         public long         FileSize             { get; set; }
         public string       File                 { get; set; }
-        public int?         DriverId             { get; set; }
-        public virtual      Driver? Driver       { get; set; }
     }
 }

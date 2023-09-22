@@ -49,7 +49,7 @@ public partial class Logic
             ExpirationOfTheLicense = data.ExpirationOfTheLicense,
             IdentityDocument = data.IdentityDocument,
             Phone = data.Phone,
-            LicenseFileName = data.LicenseFileName,
+            //LicenseFileName = data.LicenseFileName,
             DateOfHire = data.DateOfHire,
             Status = (int)GenericStatus.Activo
         });
@@ -72,7 +72,7 @@ public partial class Logic
         driver.ExpirationOfTheLicense = data.ExpirationOfTheLicense;
         driver.IdentityDocument = data.IdentityDocument;
         driver.Phone = data.Phone;
-        driver.LicenseFileName = data.LicenseFileName;
+        //driver.LicenseFileName = data.LicenseFileName;
         driver.DateOfHire = data.DateOfHire;
         await Data.Update(driver);
         return driver.Id;
@@ -135,10 +135,10 @@ public partial class Logic
 
     public async Task<FileView> GetStorageFile(int Id)
     {
-        var storageFile = await Data.GetAsync<StorageFile>(x => x.Id == Id, x => x.Driver);
+        var storageFile = await Data.GetAsync<StorageFile>(x => x.Id == Id);
         if (storageFile == null)
             throw new NotFound("No existe este archivo");
-        var data = await Resources.Load(storageFile.Driver!.EmployeeCode, storageFile.File);
+        var data = await Resources.Load(storageFile.File);
         return new FileView
         {
             Id = storageFile.Id,
