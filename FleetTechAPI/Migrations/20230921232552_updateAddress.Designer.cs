@@ -3,6 +3,7 @@ using System;
 using FleetTechAPI.Services.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,61 +11,14 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FleetTechAPI.Migrations
 {
     [DbContext(typeof(DataService))]
-    partial class DataServiceModelSnapshot : ModelSnapshot
+    [Migration("20230921232552_updateAddress")]
+    partial class updateAddress
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "7.0.10");
-
-            modelBuilder.Entity("FleetTechCore.Models.Address.Address", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
-
-                    b.Property<string>("AddressLine1")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("AddressLine2")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("AddressLine3")
-                        .HasColumnType("TEXT");
-
-                    b.Property<int>("CityId")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<Guid>("CreatedBy")
-                        .HasColumnType("TEXT");
-
-                    b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("TEXT");
-
-                    b.Property<Guid?>("LastModifiedBy")
-                        .HasColumnType("TEXT");
-
-                    b.Property<DateTime?>("LastModifiedOn")
-                        .HasColumnType("TEXT");
-
-                    b.Property<double>("Latitude")
-                        .HasColumnType("REAL");
-
-                    b.Property<double>("Longitude")
-                        .HasColumnType("REAL");
-
-                    b.Property<string>("PlainAddress")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("CityId");
-
-                    b.ToTable("Address");
-                });
 
             modelBuilder.Entity("FleetTechCore.Models.Address.City", b =>
                 {
@@ -106,7 +60,7 @@ namespace FleetTechAPI.Migrations
                             Id = 1,
                             CreatedBy = new Guid("00000000-0000-0000-0000-000000000001"),
                             CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "Distrito Nacional",
+                            Name = "Santo Domingo",
                             StateId = 5,
                             Status = 0
                         },
@@ -115,1318 +69,13 @@ namespace FleetTechAPI.Migrations
                             Id = 2,
                             CreatedBy = new Guid("00000000-0000-0000-0000-000000000001"),
                             CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "Azua de Compostela",
-                            StateId = 1,
-                            Status = 0
-                        },
-                        new
-                        {
-                            Id = 3,
-                            CreatedBy = new Guid("00000000-0000-0000-0000-000000000001"),
-                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "Estebanía",
-                            StateId = 1,
-                            Status = 0
-                        },
-                        new
-                        {
-                            Id = 4,
-                            CreatedBy = new Guid("00000000-0000-0000-0000-000000000001"),
-                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "Guayabal",
-                            StateId = 1,
-                            Status = 0
-                        },
-                        new
-                        {
-                            Id = 5,
-                            CreatedBy = new Guid("00000000-0000-0000-0000-000000000001"),
-                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "Las Charcas",
-                            StateId = 1,
-                            Status = 0
-                        },
-                        new
-                        {
-                            Id = 6,
-                            CreatedBy = new Guid("00000000-0000-0000-0000-000000000001"),
-                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "Las Yayas de Viajama",
-                            StateId = 1,
-                            Status = 0
-                        },
-                        new
-                        {
-                            Id = 7,
-                            CreatedBy = new Guid("00000000-0000-0000-0000-000000000001"),
-                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "Padre Las Casas",
-                            StateId = 1,
-                            Status = 0
-                        },
-                        new
-                        {
-                            Id = 8,
-                            CreatedBy = new Guid("00000000-0000-0000-0000-000000000001"),
-                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "Peralta",
-                            StateId = 1,
-                            Status = 0
-                        },
-                        new
-                        {
-                            Id = 9,
-                            CreatedBy = new Guid("00000000-0000-0000-0000-000000000001"),
-                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "Pueblo Viejo",
-                            StateId = 1,
-                            Status = 0
-                        },
-                        new
-                        {
-                            Id = 10,
-                            CreatedBy = new Guid("00000000-0000-0000-0000-000000000001"),
-                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "Sabana Yegua",
-                            StateId = 1,
-                            Status = 0
-                        },
-                        new
-                        {
-                            Id = 11,
-                            CreatedBy = new Guid("00000000-0000-0000-0000-000000000001"),
-                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "Tábara Arriba",
-                            StateId = 1,
-                            Status = 0
-                        },
-                        new
-                        {
-                            Id = 12,
-                            CreatedBy = new Guid("00000000-0000-0000-0000-000000000001"),
-                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "Neiba",
-                            StateId = 2,
-                            Status = 0
-                        },
-                        new
-                        {
-                            Id = 13,
-                            CreatedBy = new Guid("00000000-0000-0000-0000-000000000001"),
-                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "Galván",
-                            StateId = 2,
-                            Status = 0
-                        },
-                        new
-                        {
-                            Id = 14,
-                            CreatedBy = new Guid("00000000-0000-0000-0000-000000000001"),
-                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "Los Ríos",
-                            StateId = 2,
-                            Status = 0
-                        },
-                        new
-                        {
-                            Id = 15,
-                            CreatedBy = new Guid("00000000-0000-0000-0000-000000000001"),
-                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "Tamayo",
-                            StateId = 2,
-                            Status = 0
-                        },
-                        new
-                        {
-                            Id = 16,
-                            CreatedBy = new Guid("00000000-0000-0000-0000-000000000001"),
-                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "Villa Jaragua",
-                            StateId = 2,
-                            Status = 0
-                        },
-                        new
-                        {
-                            Id = 17,
-                            CreatedBy = new Guid("00000000-0000-0000-0000-000000000001"),
-                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "Barahona",
-                            StateId = 3,
-                            Status = 0
-                        },
-                        new
-                        {
-                            Id = 18,
-                            CreatedBy = new Guid("00000000-0000-0000-0000-000000000001"),
-                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "Cabral",
-                            StateId = 3,
-                            Status = 0
-                        },
-                        new
-                        {
-                            Id = 19,
-                            CreatedBy = new Guid("00000000-0000-0000-0000-000000000001"),
-                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "El Peñón",
-                            StateId = 3,
-                            Status = 0
-                        },
-                        new
-                        {
-                            Id = 20,
-                            CreatedBy = new Guid("00000000-0000-0000-0000-000000000001"),
-                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "Enriquillo",
-                            StateId = 3,
-                            Status = 0
-                        },
-                        new
-                        {
-                            Id = 21,
-                            CreatedBy = new Guid("00000000-0000-0000-0000-000000000001"),
-                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "Fundación",
-                            StateId = 3,
-                            Status = 0
-                        },
-                        new
-                        {
-                            Id = 22,
-                            CreatedBy = new Guid("00000000-0000-0000-0000-000000000001"),
-                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "Jaquimeyes",
-                            StateId = 3,
-                            Status = 0
-                        },
-                        new
-                        {
-                            Id = 23,
-                            CreatedBy = new Guid("00000000-0000-0000-0000-000000000001"),
-                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "La Ciénaga",
-                            StateId = 3,
-                            Status = 0
-                        },
-                        new
-                        {
-                            Id = 24,
-                            CreatedBy = new Guid("00000000-0000-0000-0000-000000000001"),
-                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "Las Salinas",
-                            StateId = 3,
-                            Status = 0
-                        },
-                        new
-                        {
-                            Id = 25,
-                            CreatedBy = new Guid("00000000-0000-0000-0000-000000000001"),
-                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "Paraíso",
-                            StateId = 3,
-                            Status = 0
-                        },
-                        new
-                        {
-                            Id = 26,
-                            CreatedBy = new Guid("00000000-0000-0000-0000-000000000001"),
-                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "Polo",
-                            StateId = 3,
-                            Status = 0
-                        },
-                        new
-                        {
-                            Id = 27,
-                            CreatedBy = new Guid("00000000-0000-0000-0000-000000000001"),
-                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "Vicente Noble",
-                            StateId = 3,
-                            Status = 0
-                        },
-                        new
-                        {
-                            Id = 28,
-                            CreatedBy = new Guid("00000000-0000-0000-0000-000000000001"),
-                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "Dajabón",
-                            StateId = 4,
-                            Status = 0
-                        },
-                        new
-                        {
-                            Id = 29,
-                            CreatedBy = new Guid("00000000-0000-0000-0000-000000000001"),
-                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "El Pino",
-                            StateId = 4,
-                            Status = 0
-                        },
-                        new
-                        {
-                            Id = 30,
-                            CreatedBy = new Guid("00000000-0000-0000-0000-000000000001"),
-                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "Loma de Cabrera",
-                            StateId = 4,
-                            Status = 0
-                        },
-                        new
-                        {
-                            Id = 31,
-                            CreatedBy = new Guid("00000000-0000-0000-0000-000000000001"),
-                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "Partido",
-                            StateId = 4,
-                            Status = 0
-                        },
-                        new
-                        {
-                            Id = 32,
-                            CreatedBy = new Guid("00000000-0000-0000-0000-000000000001"),
-                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "Restauración",
-                            StateId = 4,
-                            Status = 0
-                        },
-                        new
-                        {
-                            Id = 33,
-                            CreatedBy = new Guid("00000000-0000-0000-0000-000000000001"),
-                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "San Francisco de Macorís",
-                            StateId = 6,
-                            Status = 0
-                        },
-                        new
-                        {
-                            Id = 34,
-                            CreatedBy = new Guid("00000000-0000-0000-0000-000000000001"),
-                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "Arenoso",
-                            StateId = 6,
-                            Status = 0
-                        },
-                        new
-                        {
-                            Id = 35,
-                            CreatedBy = new Guid("00000000-0000-0000-0000-000000000001"),
-                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "Castillo",
-                            StateId = 6,
-                            Status = 0
-                        },
-                        new
-                        {
-                            Id = 36,
-                            CreatedBy = new Guid("00000000-0000-0000-0000-000000000001"),
-                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "Eugenio María de Hostos",
-                            StateId = 6,
-                            Status = 0
-                        },
-                        new
-                        {
-                            Id = 37,
-                            CreatedBy = new Guid("00000000-0000-0000-0000-000000000001"),
-                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "Las Guáranas",
-                            StateId = 6,
-                            Status = 0
-                        },
-                        new
-                        {
-                            Id = 38,
-                            CreatedBy = new Guid("00000000-0000-0000-0000-000000000001"),
-                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "Pimentel",
-                            StateId = 6,
-                            Status = 0
-                        },
-                        new
-                        {
-                            Id = 39,
-                            CreatedBy = new Guid("00000000-0000-0000-0000-000000000001"),
-                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "Villa Riva",
-                            StateId = 6,
-                            Status = 0
-                        },
-                        new
-                        {
-                            Id = 40,
-                            CreatedBy = new Guid("00000000-0000-0000-0000-000000000001"),
-                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "El Seibo",
-                            StateId = 8,
-                            Status = 0
-                        },
-                        new
-                        {
-                            Id = 41,
-                            CreatedBy = new Guid("00000000-0000-0000-0000-000000000001"),
-                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "Miches",
-                            StateId = 8,
-                            Status = 0
-                        },
-                        new
-                        {
-                            Id = 42,
-                            CreatedBy = new Guid("00000000-0000-0000-0000-000000000001"),
-                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "Comendador",
-                            StateId = 7,
-                            Status = 0
-                        },
-                        new
-                        {
-                            Id = 43,
-                            CreatedBy = new Guid("00000000-0000-0000-0000-000000000001"),
-                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "Bánica",
-                            StateId = 7,
-                            Status = 0
-                        },
-                        new
-                        {
-                            Id = 44,
-                            CreatedBy = new Guid("00000000-0000-0000-0000-000000000001"),
-                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "El Llano",
-                            StateId = 7,
-                            Status = 0
-                        },
-                        new
-                        {
-                            Id = 45,
-                            CreatedBy = new Guid("00000000-0000-0000-0000-000000000001"),
-                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "Hondo Valle",
-                            StateId = 7,
-                            Status = 0
-                        },
-                        new
-                        {
-                            Id = 46,
-                            CreatedBy = new Guid("00000000-0000-0000-0000-000000000001"),
-                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "Juan Santiago",
-                            StateId = 7,
-                            Status = 0
-                        },
-                        new
-                        {
-                            Id = 47,
-                            CreatedBy = new Guid("00000000-0000-0000-0000-000000000001"),
-                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "Pedro Santana",
-                            StateId = 7,
-                            Status = 0
-                        },
-                        new
-                        {
-                            Id = 48,
-                            CreatedBy = new Guid("00000000-0000-0000-0000-000000000001"),
-                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "Moca",
-                            StateId = 9,
-                            Status = 0
-                        },
-                        new
-                        {
-                            Id = 49,
-                            CreatedBy = new Guid("00000000-0000-0000-0000-000000000001"),
-                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "Cayetano Germosén",
-                            StateId = 9,
-                            Status = 0
-                        },
-                        new
-                        {
-                            Id = 50,
-                            CreatedBy = new Guid("00000000-0000-0000-0000-000000000001"),
-                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "Gaspar Hernández",
-                            StateId = 9,
-                            Status = 0
-                        },
-                        new
-                        {
-                            Id = 51,
-                            CreatedBy = new Guid("00000000-0000-0000-0000-000000000001"),
-                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "Jamao al Norte",
-                            StateId = 9,
-                            Status = 0
-                        },
-                        new
-                        {
-                            Id = 52,
-                            CreatedBy = new Guid("00000000-0000-0000-0000-000000000001"),
-                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "Hato Mayor del Rey",
-                            StateId = 10,
-                            Status = 0
-                        },
-                        new
-                        {
-                            Id = 53,
-                            CreatedBy = new Guid("00000000-0000-0000-0000-000000000001"),
-                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "El Valle",
-                            StateId = 10,
-                            Status = 0
-                        },
-                        new
-                        {
-                            Id = 54,
-                            CreatedBy = new Guid("00000000-0000-0000-0000-000000000001"),
-                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "Sabana de la Mar",
-                            StateId = 10,
-                            Status = 0
-                        },
-                        new
-                        {
-                            Id = 55,
-                            CreatedBy = new Guid("00000000-0000-0000-0000-000000000001"),
-                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "Salcedo",
-                            StateId = 11,
-                            Status = 0
-                        },
-                        new
-                        {
-                            Id = 56,
-                            CreatedBy = new Guid("00000000-0000-0000-0000-000000000001"),
-                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "Tenares",
-                            StateId = 11,
-                            Status = 0
-                        },
-                        new
-                        {
-                            Id = 57,
-                            CreatedBy = new Guid("00000000-0000-0000-0000-000000000001"),
-                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "Villa Tapia",
-                            StateId = 11,
-                            Status = 0
-                        },
-                        new
-                        {
-                            Id = 58,
-                            CreatedBy = new Guid("00000000-0000-0000-0000-000000000001"),
-                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "Jimaní",
-                            StateId = 12,
-                            Status = 0
-                        },
-                        new
-                        {
-                            Id = 59,
-                            CreatedBy = new Guid("00000000-0000-0000-0000-000000000001"),
-                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "Cristóbal",
-                            StateId = 12,
-                            Status = 0
-                        },
-                        new
-                        {
-                            Id = 60,
-                            CreatedBy = new Guid("00000000-0000-0000-0000-000000000001"),
-                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "Duvergé",
-                            StateId = 12,
-                            Status = 0
-                        },
-                        new
-                        {
-                            Id = 61,
-                            CreatedBy = new Guid("00000000-0000-0000-0000-000000000001"),
-                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "La Descubierta",
-                            StateId = 12,
-                            Status = 0
-                        },
-                        new
-                        {
-                            Id = 62,
-                            CreatedBy = new Guid("00000000-0000-0000-0000-000000000001"),
-                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "Mella",
-                            StateId = 12,
-                            Status = 0
-                        },
-                        new
-                        {
-                            Id = 63,
-                            CreatedBy = new Guid("00000000-0000-0000-0000-000000000001"),
-                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "Postrer Río",
-                            StateId = 12,
-                            Status = 0
-                        },
-                        new
-                        {
-                            Id = 64,
-                            CreatedBy = new Guid("00000000-0000-0000-0000-000000000001"),
-                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "Higüey",
-                            StateId = 13,
-                            Status = 0
-                        },
-                        new
-                        {
-                            Id = 65,
-                            CreatedBy = new Guid("00000000-0000-0000-0000-000000000001"),
-                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "San Rafael del Yuma",
-                            StateId = 13,
-                            Status = 0
-                        },
-                        new
-                        {
-                            Id = 66,
-                            CreatedBy = new Guid("00000000-0000-0000-0000-000000000001"),
-                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "La Romana",
-                            StateId = 14,
-                            Status = 0
-                        },
-                        new
-                        {
-                            Id = 67,
-                            CreatedBy = new Guid("00000000-0000-0000-0000-000000000001"),
-                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "Guaymate",
-                            StateId = 14,
-                            Status = 0
-                        },
-                        new
-                        {
-                            Id = 68,
-                            CreatedBy = new Guid("00000000-0000-0000-0000-000000000001"),
-                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "Villa Hermosa",
-                            StateId = 14,
-                            Status = 0
-                        },
-                        new
-                        {
-                            Id = 69,
-                            CreatedBy = new Guid("00000000-0000-0000-0000-000000000001"),
-                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "La Concepción de La Vega",
-                            StateId = 15,
-                            Status = 0
-                        },
-                        new
-                        {
-                            Id = 70,
-                            CreatedBy = new Guid("00000000-0000-0000-0000-000000000001"),
-                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "Constanza",
-                            StateId = 15,
-                            Status = 0
-                        },
-                        new
-                        {
-                            Id = 71,
-                            CreatedBy = new Guid("00000000-0000-0000-0000-000000000001"),
-                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "Jarabacoa",
-                            StateId = 15,
-                            Status = 0
-                        },
-                        new
-                        {
-                            Id = 72,
-                            CreatedBy = new Guid("00000000-0000-0000-0000-000000000001"),
-                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "Jima Abajo",
-                            StateId = 15,
-                            Status = 0
-                        },
-                        new
-                        {
-                            Id = 73,
-                            CreatedBy = new Guid("00000000-0000-0000-0000-000000000001"),
-                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "Nagua",
-                            StateId = 16,
-                            Status = 0
-                        },
-                        new
-                        {
-                            Id = 74,
-                            CreatedBy = new Guid("00000000-0000-0000-0000-000000000001"),
-                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "Cabrera",
-                            StateId = 16,
-                            Status = 0
-                        },
-                        new
-                        {
-                            Id = 75,
-                            CreatedBy = new Guid("00000000-0000-0000-0000-000000000001"),
-                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "El Factor",
-                            StateId = 16,
-                            Status = 0
-                        },
-                        new
-                        {
-                            Id = 76,
-                            CreatedBy = new Guid("00000000-0000-0000-0000-000000000001"),
-                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "Río San Juan",
-                            StateId = 16,
-                            Status = 0
-                        },
-                        new
-                        {
-                            Id = 77,
-                            CreatedBy = new Guid("00000000-0000-0000-0000-000000000001"),
-                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "Bonao",
-                            StateId = 17,
-                            Status = 0
-                        },
-                        new
-                        {
-                            Id = 78,
-                            CreatedBy = new Guid("00000000-0000-0000-0000-000000000001"),
-                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "Maimón",
-                            StateId = 17,
-                            Status = 0
-                        },
-                        new
-                        {
-                            Id = 79,
-                            CreatedBy = new Guid("00000000-0000-0000-0000-000000000001"),
-                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "Piedra Blanca",
-                            StateId = 17,
-                            Status = 0
-                        },
-                        new
-                        {
-                            Id = 80,
-                            CreatedBy = new Guid("00000000-0000-0000-0000-000000000001"),
-                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "Montecristi",
-                            StateId = 18,
-                            Status = 0
-                        },
-                        new
-                        {
-                            Id = 81,
-                            CreatedBy = new Guid("00000000-0000-0000-0000-000000000001"),
-                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "Castañuela",
-                            StateId = 18,
-                            Status = 0
-                        },
-                        new
-                        {
-                            Id = 82,
-                            CreatedBy = new Guid("00000000-0000-0000-0000-000000000001"),
-                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "Guayubín",
-                            StateId = 18,
-                            Status = 0
-                        },
-                        new
-                        {
-                            Id = 83,
-                            CreatedBy = new Guid("00000000-0000-0000-0000-000000000001"),
-                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "Las Matas de Santa Cruz",
-                            StateId = 18,
-                            Status = 0
-                        },
-                        new
-                        {
-                            Id = 84,
-                            CreatedBy = new Guid("00000000-0000-0000-0000-000000000001"),
-                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "Pepillo Salcedo",
-                            StateId = 18,
-                            Status = 0
-                        },
-                        new
-                        {
-                            Id = 85,
-                            CreatedBy = new Guid("00000000-0000-0000-0000-000000000001"),
-                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "Villa Vásquez",
-                            StateId = 18,
-                            Status = 0
-                        },
-                        new
-                        {
-                            Id = 86,
-                            CreatedBy = new Guid("00000000-0000-0000-0000-000000000001"),
-                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "Monte Plata",
-                            StateId = 19,
-                            Status = 0
-                        },
-                        new
-                        {
-                            Id = 87,
-                            CreatedBy = new Guid("00000000-0000-0000-0000-000000000001"),
-                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "Bayaguana",
-                            StateId = 19,
-                            Status = 0
-                        },
-                        new
-                        {
-                            Id = 88,
-                            CreatedBy = new Guid("00000000-0000-0000-0000-000000000001"),
-                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "Peralvillo",
-                            StateId = 19,
-                            Status = 0
-                        },
-                        new
-                        {
-                            Id = 89,
-                            CreatedBy = new Guid("00000000-0000-0000-0000-000000000001"),
-                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "Sabana Grande de Boyá",
-                            StateId = 19,
-                            Status = 0
-                        },
-                        new
-                        {
-                            Id = 90,
-                            CreatedBy = new Guid("00000000-0000-0000-0000-000000000001"),
-                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "Yamasá",
-                            StateId = 19,
-                            Status = 0
-                        },
-                        new
-                        {
-                            Id = 91,
-                            CreatedBy = new Guid("00000000-0000-0000-0000-000000000001"),
-                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "Pedernales",
-                            StateId = 20,
-                            Status = 0
-                        },
-                        new
-                        {
-                            Id = 92,
-                            CreatedBy = new Guid("00000000-0000-0000-0000-000000000001"),
-                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "Oviedo",
-                            StateId = 20,
-                            Status = 0
-                        },
-                        new
-                        {
-                            Id = 93,
-                            CreatedBy = new Guid("00000000-0000-0000-0000-000000000001"),
-                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "Baní",
-                            StateId = 21,
-                            Status = 0
-                        },
-                        new
-                        {
-                            Id = 94,
-                            CreatedBy = new Guid("00000000-0000-0000-0000-000000000001"),
-                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "Nizao",
-                            StateId = 21,
-                            Status = 0
-                        },
-                        new
-                        {
-                            Id = 95,
-                            CreatedBy = new Guid("00000000-0000-0000-0000-000000000001"),
-                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "Puerto Plata",
-                            StateId = 22,
-                            Status = 0
-                        },
-                        new
-                        {
-                            Id = 96,
-                            CreatedBy = new Guid("00000000-0000-0000-0000-000000000001"),
-                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "Altamira",
-                            StateId = 22,
-                            Status = 0
-                        },
-                        new
-                        {
-                            Id = 97,
-                            CreatedBy = new Guid("00000000-0000-0000-0000-000000000001"),
-                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "Guananico",
-                            StateId = 22,
-                            Status = 0
-                        },
-                        new
-                        {
-                            Id = 98,
-                            CreatedBy = new Guid("00000000-0000-0000-0000-000000000001"),
-                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "Imbert",
-                            StateId = 22,
-                            Status = 0
-                        },
-                        new
-                        {
-                            Id = 99,
-                            CreatedBy = new Guid("00000000-0000-0000-0000-000000000001"),
-                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "Los Hidalgos",
-                            StateId = 22,
-                            Status = 0
-                        },
-                        new
-                        {
-                            Id = 100,
-                            CreatedBy = new Guid("00000000-0000-0000-0000-000000000001"),
-                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "Luperón",
-                            StateId = 22,
-                            Status = 0
-                        },
-                        new
-                        {
-                            Id = 101,
-                            CreatedBy = new Guid("00000000-0000-0000-0000-000000000001"),
-                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "Sosúa",
-                            StateId = 22,
-                            Status = 0
-                        },
-                        new
-                        {
-                            Id = 102,
-                            CreatedBy = new Guid("00000000-0000-0000-0000-000000000001"),
-                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "Villa Isabela",
-                            StateId = 22,
-                            Status = 0
-                        },
-                        new
-                        {
-                            Id = 103,
-                            CreatedBy = new Guid("00000000-0000-0000-0000-000000000001"),
-                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "Villa Montellano",
-                            StateId = 22,
-                            Status = 0
-                        },
-                        new
-                        {
-                            Id = 104,
-                            CreatedBy = new Guid("00000000-0000-0000-0000-000000000001"),
-                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "Samaná",
-                            StateId = 23,
-                            Status = 0
-                        },
-                        new
-                        {
-                            Id = 105,
-                            CreatedBy = new Guid("00000000-0000-0000-0000-000000000001"),
-                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "Las Terrenas",
-                            StateId = 23,
-                            Status = 0
-                        },
-                        new
-                        {
-                            Id = 106,
-                            CreatedBy = new Guid("00000000-0000-0000-0000-000000000001"),
-                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "Sánchez",
-                            StateId = 23,
-                            Status = 0
-                        },
-                        new
-                        {
-                            Id = 107,
-                            CreatedBy = new Guid("00000000-0000-0000-0000-000000000001"),
-                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "San Cristóbal",
-                            StateId = 25,
-                            Status = 0
-                        },
-                        new
-                        {
-                            Id = 108,
-                            CreatedBy = new Guid("00000000-0000-0000-0000-000000000001"),
-                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "Bajos de Haina",
-                            StateId = 25,
-                            Status = 0
-                        },
-                        new
-                        {
-                            Id = 109,
-                            CreatedBy = new Guid("00000000-0000-0000-0000-000000000001"),
-                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "Cambita Garabito",
-                            StateId = 25,
-                            Status = 0
-                        },
-                        new
-                        {
-                            Id = 110,
-                            CreatedBy = new Guid("00000000-0000-0000-0000-000000000001"),
-                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "Los Cacaos",
-                            StateId = 25,
-                            Status = 0
-                        },
-                        new
-                        {
-                            Id = 111,
-                            CreatedBy = new Guid("00000000-0000-0000-0000-000000000001"),
-                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "Sabana Grande de Palenque",
-                            StateId = 25,
-                            Status = 0
-                        },
-                        new
-                        {
-                            Id = 112,
-                            CreatedBy = new Guid("00000000-0000-0000-0000-000000000001"),
-                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "San Gregorio de Nigua",
-                            StateId = 25,
-                            Status = 0
-                        },
-                        new
-                        {
-                            Id = 113,
-                            CreatedBy = new Guid("00000000-0000-0000-0000-000000000001"),
-                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "Villa Altagracia",
-                            StateId = 25,
-                            Status = 0
-                        },
-                        new
-                        {
-                            Id = 114,
-                            CreatedBy = new Guid("00000000-0000-0000-0000-000000000001"),
-                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "Yaguate",
-                            StateId = 25,
-                            Status = 0
-                        },
-                        new
-                        {
-                            Id = 115,
-                            CreatedBy = new Guid("00000000-0000-0000-0000-000000000001"),
-                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "San José de Ocoa",
-                            StateId = 26,
-                            Status = 0
-                        },
-                        new
-                        {
-                            Id = 116,
-                            CreatedBy = new Guid("00000000-0000-0000-0000-000000000001"),
-                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "Rancho Arriba",
-                            StateId = 26,
-                            Status = 0
-                        },
-                        new
-                        {
-                            Id = 117,
-                            CreatedBy = new Guid("00000000-0000-0000-0000-000000000001"),
-                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "Sabana Larga",
-                            StateId = 26,
-                            Status = 0
-                        },
-                        new
-                        {
-                            Id = 118,
-                            CreatedBy = new Guid("00000000-0000-0000-0000-000000000001"),
-                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "San Juan de la Maguana",
-                            StateId = 27,
-                            Status = 0
-                        },
-                        new
-                        {
-                            Id = 119,
-                            CreatedBy = new Guid("00000000-0000-0000-0000-000000000001"),
-                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "Bohechío",
-                            StateId = 27,
-                            Status = 0
-                        },
-                        new
-                        {
-                            Id = 120,
-                            CreatedBy = new Guid("00000000-0000-0000-0000-000000000001"),
-                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "El Cercado",
-                            StateId = 27,
-                            Status = 0
-                        },
-                        new
-                        {
-                            Id = 121,
-                            CreatedBy = new Guid("00000000-0000-0000-0000-000000000001"),
-                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "Juan de Herrera",
-                            StateId = 27,
-                            Status = 0
-                        },
-                        new
-                        {
-                            Id = 122,
-                            CreatedBy = new Guid("00000000-0000-0000-0000-000000000001"),
-                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "Las Matas de Farfán",
-                            StateId = 27,
-                            Status = 0
-                        },
-                        new
-                        {
-                            Id = 123,
-                            CreatedBy = new Guid("00000000-0000-0000-0000-000000000001"),
-                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "Vallejuelo",
-                            StateId = 27,
-                            Status = 0
-                        },
-                        new
-                        {
-                            Id = 124,
-                            CreatedBy = new Guid("00000000-0000-0000-0000-000000000001"),
-                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "San Pedro de Macorís",
-                            StateId = 28,
-                            Status = 0
-                        },
-                        new
-                        {
-                            Id = 125,
-                            CreatedBy = new Guid("00000000-0000-0000-0000-000000000001"),
-                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "Consuelo",
-                            StateId = 28,
-                            Status = 0
-                        },
-                        new
-                        {
-                            Id = 126,
-                            CreatedBy = new Guid("00000000-0000-0000-0000-000000000001"),
-                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "Guayacanes",
-                            StateId = 28,
-                            Status = 0
-                        },
-                        new
-                        {
-                            Id = 127,
-                            CreatedBy = new Guid("00000000-0000-0000-0000-000000000001"),
-                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "Quisqueya",
-                            StateId = 28,
-                            Status = 0
-                        },
-                        new
-                        {
-                            Id = 128,
-                            CreatedBy = new Guid("00000000-0000-0000-0000-000000000001"),
-                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "Ramón Santana",
-                            StateId = 28,
-                            Status = 0
-                        },
-                        new
-                        {
-                            Id = 129,
-                            CreatedBy = new Guid("00000000-0000-0000-0000-000000000001"),
-                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "San José de Los Llanos",
-                            StateId = 28,
-                            Status = 0
-                        },
-                        new
-                        {
-                            Id = 130,
-                            CreatedBy = new Guid("00000000-0000-0000-0000-000000000001"),
-                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "Cotuí",
-                            StateId = 24,
-                            Status = 0
-                        },
-                        new
-                        {
-                            Id = 131,
-                            CreatedBy = new Guid("00000000-0000-0000-0000-000000000001"),
-                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "Cevicos",
-                            StateId = 24,
-                            Status = 0
-                        },
-                        new
-                        {
-                            Id = 132,
-                            CreatedBy = new Guid("00000000-0000-0000-0000-000000000001"),
-                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "Fantino",
-                            StateId = 24,
-                            Status = 0
-                        },
-                        new
-                        {
-                            Id = 133,
-                            CreatedBy = new Guid("00000000-0000-0000-0000-000000000001"),
-                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "La Mata",
-                            StateId = 24,
-                            Status = 0
-                        },
-                        new
-                        {
-                            Id = 134,
-                            CreatedBy = new Guid("00000000-0000-0000-0000-000000000001"),
-                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "Santiago",
-                            StateId = 29,
-                            Status = 0
-                        },
-                        new
-                        {
-                            Id = 135,
-                            CreatedBy = new Guid("00000000-0000-0000-0000-000000000001"),
-                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "Bisonó",
-                            StateId = 29,
-                            Status = 0
-                        },
-                        new
-                        {
-                            Id = 136,
-                            CreatedBy = new Guid("00000000-0000-0000-0000-000000000001"),
-                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "Jánico",
-                            StateId = 29,
-                            Status = 0
-                        },
-                        new
-                        {
-                            Id = 137,
-                            CreatedBy = new Guid("00000000-0000-0000-0000-000000000001"),
-                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "Licey al Medio",
-                            StateId = 29,
-                            Status = 0
-                        },
-                        new
-                        {
-                            Id = 138,
-                            CreatedBy = new Guid("00000000-0000-0000-0000-000000000001"),
-                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "Puñal",
-                            StateId = 29,
-                            Status = 0
-                        },
-                        new
-                        {
-                            Id = 139,
-                            CreatedBy = new Guid("00000000-0000-0000-0000-000000000001"),
-                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "Sabana Iglesia",
-                            StateId = 29,
-                            Status = 0
-                        },
-                        new
-                        {
-                            Id = 140,
-                            CreatedBy = new Guid("00000000-0000-0000-0000-000000000001"),
-                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "San José de las Matas",
-                            StateId = 29,
-                            Status = 0
-                        },
-                        new
-                        {
-                            Id = 141,
-                            CreatedBy = new Guid("00000000-0000-0000-0000-000000000001"),
-                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "Tamboril",
-                            StateId = 29,
-                            Status = 0
-                        },
-                        new
-                        {
-                            Id = 142,
-                            CreatedBy = new Guid("00000000-0000-0000-0000-000000000001"),
-                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "Villa González",
-                            StateId = 29,
-                            Status = 0
-                        },
-                        new
-                        {
-                            Id = 143,
-                            CreatedBy = new Guid("00000000-0000-0000-0000-000000000001"),
-                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "San Ignacio de Sabaneta",
-                            StateId = 30,
-                            Status = 0
-                        },
-                        new
-                        {
-                            Id = 144,
-                            CreatedBy = new Guid("00000000-0000-0000-0000-000000000001"),
-                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "Los Almácigos",
-                            StateId = 30,
-                            Status = 0
-                        },
-                        new
-                        {
-                            Id = 145,
-                            CreatedBy = new Guid("00000000-0000-0000-0000-000000000001"),
-                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "Monción",
-                            StateId = 30,
-                            Status = 0
-                        },
-                        new
-                        {
-                            Id = 146,
-                            CreatedBy = new Guid("00000000-0000-0000-0000-000000000001"),
-                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "Santo Domingo Este",
-                            StateId = 31,
-                            Status = 0
-                        },
-                        new
-                        {
-                            Id = 147,
-                            CreatedBy = new Guid("00000000-0000-0000-0000-000000000001"),
-                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "Boca Chica",
                             StateId = 31,
                             Status = 0
                         },
                         new
                         {
-                            Id = 148,
+                            Id = 3,
                             CreatedBy = new Guid("00000000-0000-0000-0000-000000000001"),
                             CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "Los Alcarrizos",
@@ -1435,7 +84,7 @@ namespace FleetTechAPI.Migrations
                         },
                         new
                         {
-                            Id = 149,
+                            Id = 4,
                             CreatedBy = new Guid("00000000-0000-0000-0000-000000000001"),
                             CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "Pedro Brand",
@@ -1444,7 +93,7 @@ namespace FleetTechAPI.Migrations
                         },
                         new
                         {
-                            Id = 150,
+                            Id = 5,
                             CreatedBy = new Guid("00000000-0000-0000-0000-000000000001"),
                             CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "San Antonio de Guerra",
@@ -1453,7 +102,16 @@ namespace FleetTechAPI.Migrations
                         },
                         new
                         {
-                            Id = 151,
+                            Id = 6,
+                            CreatedBy = new Guid("00000000-0000-0000-0000-000000000001"),
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "Santo Domingo Este",
+                            StateId = 31,
+                            Status = 0
+                        },
+                        new
+                        {
+                            Id = 7,
                             CreatedBy = new Guid("00000000-0000-0000-0000-000000000001"),
                             CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "Santo Domingo Norte",
@@ -1462,7 +120,7 @@ namespace FleetTechAPI.Migrations
                         },
                         new
                         {
-                            Id = 152,
+                            Id = 8,
                             CreatedBy = new Guid("00000000-0000-0000-0000-000000000001"),
                             CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "Santo Domingo Oeste",
@@ -1471,29 +129,173 @@ namespace FleetTechAPI.Migrations
                         },
                         new
                         {
-                            Id = 153,
+                            Id = 9,
                             CreatedBy = new Guid("00000000-0000-0000-0000-000000000001"),
                             CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "Mao",
-                            StateId = 32,
+                            Name = "Puerto Plata",
+                            StateId = 22,
                             Status = 0
                         },
                         new
                         {
-                            Id = 154,
+                            Id = 10,
                             CreatedBy = new Guid("00000000-0000-0000-0000-000000000001"),
                             CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "Esperanza",
-                            StateId = 32,
+                            Name = "Altamira",
+                            StateId = 22,
                             Status = 0
                         },
                         new
                         {
-                            Id = 155,
+                            Id = 11,
                             CreatedBy = new Guid("00000000-0000-0000-0000-000000000001"),
-                            CreatedOn = new DateTime(2023, 9, 21, 21, 38, 5, 227, DateTimeKind.Local).AddTicks(2727),
-                            Name = "Laguna Salada",
-                            StateId = 32,
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "Guananico",
+                            StateId = 22,
+                            Status = 0
+                        },
+                        new
+                        {
+                            Id = 12,
+                            CreatedBy = new Guid("00000000-0000-0000-0000-000000000001"),
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "Imbert",
+                            StateId = 22,
+                            Status = 0
+                        },
+                        new
+                        {
+                            Id = 13,
+                            CreatedBy = new Guid("00000000-0000-0000-0000-000000000001"),
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "Los Hidalgos",
+                            StateId = 22,
+                            Status = 0
+                        },
+                        new
+                        {
+                            Id = 14,
+                            CreatedBy = new Guid("00000000-0000-0000-0000-000000000001"),
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "Luperón",
+                            StateId = 22,
+                            Status = 0
+                        },
+                        new
+                        {
+                            Id = 15,
+                            CreatedBy = new Guid("00000000-0000-0000-0000-000000000001"),
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "Sosúa",
+                            StateId = 22,
+                            Status = 0
+                        },
+                        new
+                        {
+                            Id = 16,
+                            CreatedBy = new Guid("00000000-0000-0000-0000-000000000001"),
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "Villa Isabela",
+                            StateId = 22,
+                            Status = 0
+                        },
+                        new
+                        {
+                            Id = 17,
+                            CreatedBy = new Guid("00000000-0000-0000-0000-000000000001"),
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "Villa Montellano",
+                            StateId = 22,
+                            Status = 0
+                        },
+                        new
+                        {
+                            Id = 18,
+                            CreatedBy = new Guid("00000000-0000-0000-0000-000000000001"),
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "Baitoa",
+                            StateId = 29,
+                            Status = 0
+                        },
+                        new
+                        {
+                            Id = 19,
+                            CreatedBy = new Guid("00000000-0000-0000-0000-000000000001"),
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "Jánico",
+                            StateId = 29,
+                            Status = 0
+                        },
+                        new
+                        {
+                            Id = 20,
+                            CreatedBy = new Guid("00000000-0000-0000-0000-000000000001"),
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "Licey al Medio",
+                            StateId = 29,
+                            Status = 0
+                        },
+                        new
+                        {
+                            Id = 21,
+                            CreatedBy = new Guid("00000000-0000-0000-0000-000000000001"),
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "Puñal",
+                            StateId = 29,
+                            Status = 0
+                        },
+                        new
+                        {
+                            Id = 22,
+                            CreatedBy = new Guid("00000000-0000-0000-0000-000000000001"),
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "Sabana Iglesia",
+                            StateId = 29,
+                            Status = 0
+                        },
+                        new
+                        {
+                            Id = 23,
+                            CreatedBy = new Guid("00000000-0000-0000-0000-000000000001"),
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "San José de las Matas",
+                            StateId = 29,
+                            Status = 0
+                        },
+                        new
+                        {
+                            Id = 24,
+                            CreatedBy = new Guid("00000000-0000-0000-0000-000000000001"),
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "Santiago",
+                            StateId = 29,
+                            Status = 0
+                        },
+                        new
+                        {
+                            Id = 25,
+                            CreatedBy = new Guid("00000000-0000-0000-0000-000000000001"),
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "Tamboril",
+                            StateId = 29,
+                            Status = 0
+                        },
+                        new
+                        {
+                            Id = 26,
+                            CreatedBy = new Guid("00000000-0000-0000-0000-000000000001"),
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "Villa Bisonó",
+                            StateId = 29,
+                            Status = 0
+                        },
+                        new
+                        {
+                            Id = 27,
+                            CreatedBy = new Guid("00000000-0000-0000-0000-000000000001"),
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "Villa González",
+                            StateId = 29,
                             Status = 0
                         });
                 });
@@ -1651,6 +453,55 @@ namespace FleetTechAPI.Migrations
                             Name = "Colombia",
                             Status = 0
                         });
+                });
+
+            modelBuilder.Entity("FleetTechCore.Models.Address.MainAddess", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("AddressLine1")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("AddressLine2")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("AddressLine3")
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("CityId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<Guid>("CreatedBy")
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("TEXT");
+
+                    b.Property<Guid?>("LastModifiedBy")
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTime?>("LastModifiedOn")
+                        .HasColumnType("TEXT");
+
+                    b.Property<double>("Latitude")
+                        .HasColumnType("REAL");
+
+                    b.Property<double>("Longitude")
+                        .HasColumnType("REAL");
+
+                    b.Property<string>("PlainAddress")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CityId");
+
+                    b.ToTable("MainAddess");
                 });
 
             modelBuilder.Entity("FleetTechCore.Models.Address.State", b =>
@@ -1901,7 +752,7 @@ namespace FleetTechAPI.Migrations
                             CountryId = 1,
                             CreatedBy = new Guid("00000000-0000-0000-0000-000000000001"),
                             CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "Sánchez Ramírez",
+                            Name = "San Cristóbal",
                             Status = 0
                         },
                         new
@@ -1910,7 +761,7 @@ namespace FleetTechAPI.Migrations
                             CountryId = 1,
                             CreatedBy = new Guid("00000000-0000-0000-0000-000000000001"),
                             CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "San Cristóbal",
+                            Name = "San José de Ocoa",
                             Status = 0
                         },
                         new
@@ -1919,7 +770,7 @@ namespace FleetTechAPI.Migrations
                             CountryId = 1,
                             CreatedBy = new Guid("00000000-0000-0000-0000-000000000001"),
                             CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "San José de Ocoa",
+                            Name = "San Juan",
                             Status = 0
                         },
                         new
@@ -1928,7 +779,7 @@ namespace FleetTechAPI.Migrations
                             CountryId = 1,
                             CreatedBy = new Guid("00000000-0000-0000-0000-000000000001"),
                             CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "San Juan",
+                            Name = "San Pedro de Macorís",
                             Status = 0
                         },
                         new
@@ -1937,7 +788,7 @@ namespace FleetTechAPI.Migrations
                             CountryId = 1,
                             CreatedBy = new Guid("00000000-0000-0000-0000-000000000001"),
                             CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "San Pedro de Macorís",
+                            Name = "Sánchez Ramírez",
                             Status = 0
                         },
                         new
@@ -3420,11 +2271,11 @@ namespace FleetTechAPI.Migrations
                         {
                             Id = new Guid("00000000-0000-0000-0000-000000000001"),
                             AccessFailedCount = 0,
-                            DateCreated = new DateTime(2023, 9, 21, 21, 38, 5, 150, DateTimeKind.Local).AddTicks(3299),
+                            DateCreated = new DateTime(2023, 9, 21, 19, 25, 51, 642, DateTimeKind.Local).AddTicks(4603),
                             Email = "superadmin@gmail.com",
                             FirstName = "Super",
                             LastName = "Admin",
-                            PasswordHash = "AQAAAAIAAYagAAAAEJyVhPht5vq/JHL/vmtuOgOg0eOHkBlYhpnpwGv75Wx2QXrlR2830L/KI1Qu+ZtUiQ==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEAU3FYig7qodK5Cnkqs1CHpZ8FNrNwZ6dhuJhWYRw0g4ISbcgE9RN1ZtWnPS9733Bw==",
                             Phone = "(829) 123-4567",
                             Status = 1,
                             Username = "superadmin"
@@ -3688,17 +2539,6 @@ namespace FleetTechAPI.Migrations
                     b.ToTable("FuelGestion");
                 });
 
-            modelBuilder.Entity("FleetTechCore.Models.Address.Address", b =>
-                {
-                    b.HasOne("FleetTechCore.Models.Address.City", "City")
-                        .WithMany()
-                        .HasForeignKey("CityId")
-                        .OnDelete(DeleteBehavior.NoAction)
-                        .IsRequired();
-
-                    b.Navigation("City");
-                });
-
             modelBuilder.Entity("FleetTechCore.Models.Address.City", b =>
                 {
                     b.HasOne("FleetTechCore.Models.Address.State", "State")
@@ -3726,6 +2566,17 @@ namespace FleetTechAPI.Migrations
                         .WithMany("Contacts")
                         .HasForeignKey("SupplierId")
                         .OnDelete(DeleteBehavior.NoAction);
+                });
+
+            modelBuilder.Entity("FleetTechCore.Models.Address.MainAddess", b =>
+                {
+                    b.HasOne("FleetTechCore.Models.Address.City", "City")
+                        .WithMany()
+                        .HasForeignKey("CityId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.Navigation("City");
                 });
 
             modelBuilder.Entity("FleetTechCore.Models.Address.State", b =>
@@ -3811,7 +2662,7 @@ namespace FleetTechAPI.Migrations
 
             modelBuilder.Entity("FleetTechCore.Models.Fuel.FuelStation", b =>
                 {
-                    b.HasOne("FleetTechCore.Models.Address.Address", "Address")
+                    b.HasOne("FleetTechCore.Models.Address.MainAddess", "Address")
                         .WithMany()
                         .HasForeignKey("AddressId")
                         .OnDelete(DeleteBehavior.NoAction)
@@ -3859,7 +2710,7 @@ namespace FleetTechAPI.Migrations
 
             modelBuilder.Entity("FleetTechCore.Models.Supply.Supplier", b =>
                 {
-                    b.HasOne("FleetTechCore.Models.Address.Address", "Address")
+                    b.HasOne("FleetTechCore.Models.Address.MainAddess", "Address")
                         .WithMany()
                         .HasForeignKey("AddressId")
                         .OnDelete(DeleteBehavior.NoAction)
@@ -3976,7 +2827,7 @@ namespace FleetTechAPI.Migrations
 
             modelBuilder.Entity("FleetTechCore.Models.WorkShop.MechanicalWorkshop", b =>
                 {
-                    b.HasOne("FleetTechCore.Models.Address.Address", "Address")
+                    b.HasOne("FleetTechCore.Models.Address.MainAddess", "Address")
                         .WithMany()
                         .HasForeignKey("AddressId")
                         .OnDelete(DeleteBehavior.NoAction)

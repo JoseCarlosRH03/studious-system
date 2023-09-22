@@ -3,6 +3,7 @@ using System;
 using FleetTechAPI.Services.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,61 +11,14 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FleetTechAPI.Migrations
 {
     [DbContext(typeof(DataService))]
-    partial class DataServiceModelSnapshot : ModelSnapshot
+    [Migration("20230922013004_updateCityandState")]
+    partial class updateCityandState
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "7.0.10");
-
-            modelBuilder.Entity("FleetTechCore.Models.Address.Address", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
-
-                    b.Property<string>("AddressLine1")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("AddressLine2")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("AddressLine3")
-                        .HasColumnType("TEXT");
-
-                    b.Property<int>("CityId")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<Guid>("CreatedBy")
-                        .HasColumnType("TEXT");
-
-                    b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("TEXT");
-
-                    b.Property<Guid?>("LastModifiedBy")
-                        .HasColumnType("TEXT");
-
-                    b.Property<DateTime?>("LastModifiedOn")
-                        .HasColumnType("TEXT");
-
-                    b.Property<double>("Latitude")
-                        .HasColumnType("REAL");
-
-                    b.Property<double>("Longitude")
-                        .HasColumnType("REAL");
-
-                    b.Property<string>("PlainAddress")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("CityId");
-
-                    b.ToTable("Address");
-                });
 
             modelBuilder.Entity("FleetTechCore.Models.Address.City", b =>
                 {
@@ -1491,7 +1445,7 @@ namespace FleetTechAPI.Migrations
                         {
                             Id = 155,
                             CreatedBy = new Guid("00000000-0000-0000-0000-000000000001"),
-                            CreatedOn = new DateTime(2023, 9, 21, 21, 38, 5, 227, DateTimeKind.Local).AddTicks(2727),
+                            CreatedOn = new DateTime(2023, 9, 21, 21, 30, 3, 788, DateTimeKind.Local).AddTicks(531),
                             Name = "Laguna Salada",
                             StateId = 32,
                             Status = 0
@@ -1651,6 +1605,55 @@ namespace FleetTechAPI.Migrations
                             Name = "Colombia",
                             Status = 0
                         });
+                });
+
+            modelBuilder.Entity("FleetTechCore.Models.Address.MainAddess", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("AddressLine1")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("AddressLine2")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("AddressLine3")
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("CityId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<Guid>("CreatedBy")
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("TEXT");
+
+                    b.Property<Guid?>("LastModifiedBy")
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTime?>("LastModifiedOn")
+                        .HasColumnType("TEXT");
+
+                    b.Property<double>("Latitude")
+                        .HasColumnType("REAL");
+
+                    b.Property<double>("Longitude")
+                        .HasColumnType("REAL");
+
+                    b.Property<string>("PlainAddress")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CityId");
+
+                    b.ToTable("MainAddess");
                 });
 
             modelBuilder.Entity("FleetTechCore.Models.Address.State", b =>
@@ -3420,11 +3423,11 @@ namespace FleetTechAPI.Migrations
                         {
                             Id = new Guid("00000000-0000-0000-0000-000000000001"),
                             AccessFailedCount = 0,
-                            DateCreated = new DateTime(2023, 9, 21, 21, 38, 5, 150, DateTimeKind.Local).AddTicks(3299),
+                            DateCreated = new DateTime(2023, 9, 21, 21, 30, 3, 721, DateTimeKind.Local).AddTicks(8689),
                             Email = "superadmin@gmail.com",
                             FirstName = "Super",
                             LastName = "Admin",
-                            PasswordHash = "AQAAAAIAAYagAAAAEJyVhPht5vq/JHL/vmtuOgOg0eOHkBlYhpnpwGv75Wx2QXrlR2830L/KI1Qu+ZtUiQ==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEHh4on/TklfBwbbsuEdt1UkQlRZjx/e1v4A05lqwr7q/78uIVr4LB/aLV67lwibsuQ==",
                             Phone = "(829) 123-4567",
                             Status = 1,
                             Username = "superadmin"
@@ -3688,17 +3691,6 @@ namespace FleetTechAPI.Migrations
                     b.ToTable("FuelGestion");
                 });
 
-            modelBuilder.Entity("FleetTechCore.Models.Address.Address", b =>
-                {
-                    b.HasOne("FleetTechCore.Models.Address.City", "City")
-                        .WithMany()
-                        .HasForeignKey("CityId")
-                        .OnDelete(DeleteBehavior.NoAction)
-                        .IsRequired();
-
-                    b.Navigation("City");
-                });
-
             modelBuilder.Entity("FleetTechCore.Models.Address.City", b =>
                 {
                     b.HasOne("FleetTechCore.Models.Address.State", "State")
@@ -3726,6 +3718,17 @@ namespace FleetTechAPI.Migrations
                         .WithMany("Contacts")
                         .HasForeignKey("SupplierId")
                         .OnDelete(DeleteBehavior.NoAction);
+                });
+
+            modelBuilder.Entity("FleetTechCore.Models.Address.MainAddess", b =>
+                {
+                    b.HasOne("FleetTechCore.Models.Address.City", "City")
+                        .WithMany()
+                        .HasForeignKey("CityId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.Navigation("City");
                 });
 
             modelBuilder.Entity("FleetTechCore.Models.Address.State", b =>
@@ -3811,7 +3814,7 @@ namespace FleetTechAPI.Migrations
 
             modelBuilder.Entity("FleetTechCore.Models.Fuel.FuelStation", b =>
                 {
-                    b.HasOne("FleetTechCore.Models.Address.Address", "Address")
+                    b.HasOne("FleetTechCore.Models.Address.MainAddess", "Address")
                         .WithMany()
                         .HasForeignKey("AddressId")
                         .OnDelete(DeleteBehavior.NoAction)
@@ -3859,7 +3862,7 @@ namespace FleetTechAPI.Migrations
 
             modelBuilder.Entity("FleetTechCore.Models.Supply.Supplier", b =>
                 {
-                    b.HasOne("FleetTechCore.Models.Address.Address", "Address")
+                    b.HasOne("FleetTechCore.Models.Address.MainAddess", "Address")
                         .WithMany()
                         .HasForeignKey("AddressId")
                         .OnDelete(DeleteBehavior.NoAction)
@@ -3976,7 +3979,7 @@ namespace FleetTechAPI.Migrations
 
             modelBuilder.Entity("FleetTechCore.Models.WorkShop.MechanicalWorkshop", b =>
                 {
-                    b.HasOne("FleetTechCore.Models.Address.Address", "Address")
+                    b.HasOne("FleetTechCore.Models.Address.MainAddess", "Address")
                         .WithMany()
                         .HasForeignKey("AddressId")
                         .OnDelete(DeleteBehavior.NoAction)

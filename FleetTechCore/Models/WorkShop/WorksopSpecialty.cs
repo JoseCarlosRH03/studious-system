@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace FleetTechCore.Models.WorkShop
 {
-    public class MechanicSpecialty: Specialty
+    public class WorksopSpecialty:Specialty
     {
-        public required int     MechanicId  { get; set; }
-
+        public int WorksopId { get; set; }
     }
 }

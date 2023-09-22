@@ -8,8 +8,8 @@ namespace FleetTechCore.Models.Fuel
 {
     public class FuelType
     {
-        public required int Id { get; set; }
-        public required string Name { get; set; }
+        public required int     Id      { get; set; }
+        public required string  Name    { get; set; }
 
     }
 }
