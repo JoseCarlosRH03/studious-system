@@ -2,8 +2,6 @@
 using FleetTechCore.Enums;
 using FleetTechCore.Models.Company;
 
-using FleetTechCore.Models.Company;
-
 namespace FleetTechCore.DTOs.Views;
 
 public record struct BranchView(

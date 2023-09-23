@@ -130,13 +130,15 @@ public class Validation
         Require(data.DateOfHire, "Fecha de contratación");
     }
 
-    public static void ValidateDriverData(StationData data)
+    public static void ValidateDriverData(ServicePlaseView data)
     {
         Require(data.Code, "Código de la estación");
         Require(data.CompanyName, "Nombre de la  compañia");
         Require(data.RNC, "RNC");
         Require(data.Phone, "Telefono");
         Require(data.Email, "Correo");
-        Require(data.Address, "Dirección");      
+        Require(data.AddressLine1, "Dirección");      
+        Require(data.AddressLine2, "Dirección");
+        Require(data.CityId, "Ciudad");
     }
 }

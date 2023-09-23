@@ -3,15 +3,9 @@ using FleetTechCore.DTOs.Shared;
 using FleetTechCore.DTOs.Views;
 using FleetTechCore.Enums;
 using FleetTechCore.Errors;
-using FleetTechCore.Models.Company;
 using FleetTechCore.Models.Fleet;
 using FleetTechCore.Models.Shared;
 using FleetTechCore.Models.User;
-using Microsoft.AspNetCore.Http;
-using Microsoft.VisualBasic.FileIO;
-using System.Drawing;
-using System.Linq;
-using System.Reflection;
 namespace FleetTechCore.Logic;
 
 public partial class Logic
@@ -64,6 +58,7 @@ public partial class Logic
                     "text/plain" => "txt",
                     _ => throw new InvalidParameter("Tipo de archivo no soportado")
                 });
+              
                 resultFile = await Data.Add(new StorageFile
                 {
                     Name = data.Name.LastIndexOf('.') > 0 ? data.Name.Substring(0, data.Name.LastIndexOf('.')) : data.Name,
@@ -101,15 +96,11 @@ public partial class Logic
     public async Task<int> UpdateDriver(int id, DriverData data)
     {
         Validation.ValidateDriverData(data);
-        if (await Data.GetAsync<Driver>(d => d.EmployeeCode == data.EmployeeCode) is not null)
-            throw new AlreadyExists("Ya existe un conductor registrado con ese c�digo");
+
         var driver = await Data.GetByIdAsync<Driver>(id);
         if (driver == null)
             throw new NotFound("No existe este conductor");
-        var driver = await Data.GetAsync<Driver>(d => d.Id == data.Id);
-        if (driver is null)
-            throw new AlreadyExists("Ya existe un conductor con algunas de estas informaciones");
-
+      
         driver.FirstName = data.FirstName.Trim();
         driver.LastName = data.LastName.Trim();
         driver.DateOfBirth = data.DateOfBirth;
@@ -131,23 +122,6 @@ public partial class Logic
         await Data.Update(driver);
         return driver.Id;
     }
-
-    //public async Task<FileView> GetStorageFile(int Id)
-    //{
-    //    var storageFile = await Data.GetAsync<StorageFile>(x => x.Id == Id);
-    //    if (storageFile == null)
-    //        throw new NotFound("No existe este archivo");
-    //    var data = await Resources.Load(storageFile.File);
-    //    return new FileView
-    //    {
-    //        Id = storageFile.Id,
-    //        Data = data.data,
-    //        FileName = storageFile.FileName,
-    //        MimeType = data.mimetype
-    //    };
-    //}
-
-
 
     // vehicle
     public Task<List<Item>> GetAllVehicleState() => (GetVehicleState()) ?? throw new NotFound("No se encontro ningun estado");

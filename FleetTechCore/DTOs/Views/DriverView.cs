@@ -7,8 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FleetTechCore.DTOs.Views
-{
+namespace FleetTechCore.DTOs.Views;
+
     public record struct DriverView
     (
         int    Id,
@@ -43,4 +43,3 @@ namespace FleetTechCore.DTOs.Views
             FileId = data.LicenseFileId
         };
     }
-}

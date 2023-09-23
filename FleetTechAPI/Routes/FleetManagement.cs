@@ -34,30 +34,21 @@ public static class FleetManagement
             app.MapGet("/vehicle/state", (Context ctx) => ctx.Execute(
                 (logic) => logic.GetAllVehicleState()))
                 .Produces<List<Item>>(),
-
             app.MapGet("/vehicle/type", (Context ctx) => ctx.Execute(
                 (logic) => logic.GetAllVehicleType()))
                 .Produces<List<Item>>(),
-
             app.MapPost("/vehicle", (VehicleData data,Context ctx) => ctx.ExecuteAuthenticated(
                 (user, logic) => logic.CreateVehicle(data)))
                 .Produces<int>(),
-
             app.MapPut("/vehicle", (VehicleData data,Context ctx) => ctx.ExecuteAuthenticated(
                 (user, logic) => logic.UpdateVehicle(data, user)))
                 .Produces<int>(),
-
-            app.MapGet("/license/type",(Context ctx) => ctx.Execute(
-                (logic) => logic.GetAllLicenseType())).Produces<List<Item>>(),
-
             app.MapGet("/vehicles", (Context ctx) => ctx.ExecuteAuthenticated(
                 (user, logic) => logic.GetAllVehicle()))
                 .Produces<List<VehicleView>>(),
-
             app.MapGet("/vehicle/{id:int}",( int Id ,Context ctx) => ctx.ExecuteAuthenticated(
                 (user, logic) => logic.GetVehicleById(Id)))
                 .Produces<List<VehicleView>>(),
-
             app.MapDelete("/vehicle/{id:int}",( int Id ,Context ctx) => ctx.ExecuteAuthenticated(
                 (user, logic) => logic.DeleteVehicle(Id, user)))
                 .Produces<int>(),
