@@ -33,7 +33,7 @@ public partial class Logic
         if (await Data.GetAsync<Driver>(d => d.EmployeeCode == data.EmployeeCode) is not null)
             throw new AlreadyExists("Ya existe un conductor registrado con ese c�digo");
 
-        int? resultFile = 0;
+        int? resultFile = null;
 
         try
         {

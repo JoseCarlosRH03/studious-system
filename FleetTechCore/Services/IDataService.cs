@@ -4,6 +4,7 @@ using FleetTechCore.DTOs.Views;
 using FleetTechCore.Models;
 using FleetTechCore.Models.Address;
 using FleetTechCore.Models.Fleet;
+using FleetTechCore.Models.Fuel;
 using FleetTechCore.Models.User;
 
 namespace FleetTechCore.Services;
@@ -50,4 +51,5 @@ public interface IDataService {
     Task<Vehicle> GetVehicleById(int Id);
     Task<bool> ExistsStationWithRnc(string rnc);
     Task<List<ServicePlaseView>> GetAllFuelStation();
+    Task<FuelStation> GetFuelStationById(int Id);
 }

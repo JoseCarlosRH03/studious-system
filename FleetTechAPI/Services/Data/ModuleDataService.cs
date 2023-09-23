@@ -1,7 +1,4 @@
-﻿using System.Text.Json;
-using FleetTechCore.DTOs.Views;
-using FleetTechCore.Enums;
-using FleetTechCore.Errors;
+﻿using FleetTechCore.DTOs.Views;
 using FleetTechCore.Models.Fleet;
 using FleetTechCore.Models.Fuel;
 using FleetTechCore.Models.User;
@@ -84,7 +81,15 @@ public partial class DataService
         .Include(f => f.Contacts)
         .Include(f => f.Address)
             .ThenInclude(f => f.City)
+                .ThenInclude(f => f.State)
         .Select(f => ServicePlaseView.From(f))
         .ToListAsync();
+    public async Task<FuelStation> GetFuelStationById(int Id) =>
+       await FuelStations
+       .Include(f => f.Contacts)
+       .Include(f => f.Address)
+           .ThenInclude(f => f.City)
+               .ThenInclude(f => f.State)
+       .FirstOrDefaultAsync( f => f.Id == Id);
     #endregion
 }

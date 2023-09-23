@@ -13,6 +13,7 @@ public record struct ServicePlaseView
         string AddressLine2,
         string AddressLine3,
         int CityId,
+        string City,
         List<ContactView> Contacts
     ){
         public static ServicePlaseView From(ServicePlace data) => new()
@@ -27,6 +28,7 @@ public record struct ServicePlaseView
             AddressLine2 = data.Address.AddressLine2,
             AddressLine3 = data.Address.AddressLine3,
             CityId = data.Address.CityId,
+            City = $"{data.Address.City.Name} | {data.Address.City.State.Name}",
             Contacts = data.Contacts.Select(c => ContactView.From(c)).ToList(),
 
         };     
