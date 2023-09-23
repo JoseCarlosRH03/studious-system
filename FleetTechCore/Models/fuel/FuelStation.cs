@@ -1,4 +1,4 @@
-﻿using FleetTechCore.Models.Address;
+﻿using FleetTechCore.Model;
 
 namespace FleetTechCore.Models.Fuel
 {

@@ -1,15 +1,10 @@
 ﻿using FleetTechCore.DTOs.Shared;
 using FleetTechCore.Enums;
 using FleetTechCore.Models.Fleet;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace FleetTechCore.DTOs.Views;
 
-    public record struct VehicleView
+public record struct VehicleView
     (
         int      Id, 
         string   Code,

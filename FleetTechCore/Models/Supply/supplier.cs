@@ -1,9 +1,4 @@
-﻿using FleetTechCore.Models.Address;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using FleetTechCore.Model;
 
 namespace FleetTechCore.Models.Supply
 {

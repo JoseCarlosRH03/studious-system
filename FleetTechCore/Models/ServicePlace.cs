@@ -1,12 +1,8 @@
-﻿using FleetTechCore.Models.Address;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using FleetTechCore.Models;
+using FleetTechCore.Models.Address;
 
-namespace FleetTechCore.Models
-{
+namespace FleetTechCore.Model;
+
     public class ServicePlace:AuditableEntity
     {
         public          string          Code        { get; set; }
@@ -17,8 +13,8 @@ namespace FleetTechCore.Models
         public          int             AddressId   { get; set; }
         
         
-        public virtual Address.Address Address  { get; set; }
+        public virtual Address Address  { get; set; }
 
         public virtual ICollection<Contact> Contacts { get; set; }
     }
-}
+

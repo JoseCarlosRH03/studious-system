@@ -1,23 +1,34 @@
-﻿using FleetTechCore.Models.Address;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using static System.Runtime.InteropServices.JavaScript.JSType;
+﻿using FleetTechCore.Model;
 
 namespace FleetTechCore.DTOs.Views;
 
-    public record struct  ServicePlaseView
-    (   int Id,
-        string Code, 
+public record struct ServicePlaseView
+    (int Id,
+        string Code,
         string CompanyName,
         string RNC,
-        string Phone, 
+        string Phone,
         string Email,
-        string AddressLine1, 
-        string AddressLine2, 
+        string AddressLine1,
+        string AddressLine2,
         string AddressLine3,
-        int    CityId,
+        int CityId,
         List<ContactView> Contacts
-    );
+    ){
+        public static ServicePlaseView From(ServicePlace data) => new()
+        {
+            Id = data.Id,
+            Code = data.Code,
+            CompanyName = data.CompanyName,
+            RNC = data.RNC,
+            Phone = data.Phone,
+            Email = data.Email,
+            AddressLine1 = data.Address.AddressLine1,
+            AddressLine2 = data.Address.AddressLine2,
+            AddressLine3 = data.Address.AddressLine3,
+            CityId = data.Address.CityId,
+            Contacts = data.Contacts.Select(c => ContactView.From(c)).ToList(),
+
+        };     
+
+     };

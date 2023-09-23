@@ -1,8 +1,6 @@
 ﻿using FleetTechCore.DTOs.Data;
 using FleetTechCore.DTOs.Shared;
 using FleetTechCore.DTOs.Views;
-using FleetTechCore.Enums;
-using FleetTechCore.Models.Fuel;
 using static FleetTechAPI.Extensions;
 
 namespace FleetTechAPI.Routes;
@@ -16,7 +14,7 @@ public static class FluelManagement
             app.MapGet("/fuel/type",(Context ctx) => ctx.Execute(
                 (logic) => logic.GetAllFuelType())).Produces<List<Item>>(),
 
-            app.MapPost("station",(ServicePlaseView data, Context ctx) => ctx.ExecuteAuthenticated(
+            app.MapPost("station",(ServicePlaseData data, Context ctx) => ctx.ExecuteAuthenticated(
                 (user ,logic) => logic.CreateStation(data,user)))
         }); ;
     }
