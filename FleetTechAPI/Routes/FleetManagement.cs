@@ -23,19 +23,19 @@ public static class FleetManagement
                 (user, logic) => logic.CreateDriver(data)))
                 .Produces<int>(),
             app.MapPut("/driver/{id:int}", (int id, DriverData data, Context ctx) => ctx.ExecuteAuthenticated(
-                (user, logic) => logic.UpdateDriver(id, data)))
+                (user, logic) => logic.UpdateDriver(id, data, user)))
                 .Produces<int>(),
             app.MapDelete("/driver/{id:int}", (int id, Context ctx) => ctx.ExecuteAuthenticated(
-                (user, logic) => logic.InactiveDriver(id)))
+                (user, logic) => logic.InactiveDriver(id, user)))
                 .Produces<int>(),
             app.MapGet("/driver/file/{id:int}", (int id, Context ctx) => ctx.ExecuteAuthenticated(
                 (user, logic) => logic.GetStorageFile(id)))
                 .Produces<FileView>(),
-            app.MapGet("/vehicle/state", (Context ctx) => ctx.Execute(
-                (logic) => logic.GetAllVehicleState()))
+            app.MapGet("/vehicle/state", (Context ctx) => ctx.ExecuteAuthenticated(
+                (user,logic) => logic.GetAllVehicleState()))
                 .Produces<List<Item>>(),
-            app.MapGet("/vehicle/type", (Context ctx) => ctx.Execute(
-                (logic) => logic.GetAllVehicleType()))
+            app.MapGet("/vehicle/type", (Context ctx) => ctx.ExecuteAuthenticated(
+                (user,logic) => logic.GetAllVehicleType()))
                 .Produces<List<Item>>(),
             app.MapPost("/vehicle", (VehicleData data,Context ctx) => ctx.ExecuteAuthenticated(
                 (user, logic) => logic.CreateVehicle(data)))

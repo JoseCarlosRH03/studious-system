@@ -23,7 +23,7 @@ namespace FleetTechCore.DTOs.Views;
         string Phone,
         Item Status,
         Item LicenseDrivers,
-        int FileId
+        int? FileId
 
     )
     {
@@ -40,6 +40,6 @@ namespace FleetTechCore.DTOs.Views;
             Phone = data.Phone,
             Status =  new Item { Id = data.Status, Description = ((GenericStatus)data.Status).ToString()},
             LicenseDrivers = new Item {Id = data.LicenseCategory.Id, Description = data.LicenseCategory.Description},
-            FileId = data.LicenseFileId
+            FileId = data?.LicenseFileId
         };
     }

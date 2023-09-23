@@ -1,5 +1,6 @@
 using FleetTechCore.DTOs.Data;
 using FleetTechCore.DTOs.Shared;
+using FleetTechCore.DTOs.Views;
 using FleetTechCore.Errors;
 using FleetTechCore.Models.Address;
 using FleetTechCore.Models.Fuel;
@@ -10,8 +11,10 @@ namespace FleetTechCore.Logic;
 public partial class Logic
 {
 
-    public async Task<List<Item>> GetAllFuelType () => (await Data.GetAll<FuelType>())
+    public async Task<List<Item>> GetAllFuelType() => (await Data.GetAll<FuelType>())
         .Select(f => new Item(f.Id,f.Name)).ToList() ?? throw new NotFound("No se encontro ningun tipo de combustible");
+
+    public async Task<List<ServicePlaseView>> GetAllFuelSation() => (await Data.GetAllFuelStation()); 
 
     public async Task<int> CreateStation(ServicePlaseData data, User user)
     {

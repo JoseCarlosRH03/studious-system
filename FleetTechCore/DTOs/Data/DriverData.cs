@@ -23,6 +23,8 @@ namespace FleetTechCore.DTOs.Data
         string      Phone,
         int         LicenseCategoryId,
         int         StatusId,
+        // poner en una clase 
+        int    FileId,
         string Name,
         string Type,
         string Dataurl,

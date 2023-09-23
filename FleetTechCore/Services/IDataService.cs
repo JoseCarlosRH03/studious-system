@@ -49,4 +49,5 @@ public interface IDataService {
     Task<Driver> GetDriverById(int id);
     Task<Vehicle> GetVehicleById(int Id);
     Task<bool> ExistsStationWithRnc(string rnc);
+    Task<List<ServicePlaseView>> GetAllFuelStation();
 }

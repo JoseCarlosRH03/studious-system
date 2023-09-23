@@ -6,10 +6,13 @@ using FleetTechCore.Enums;
 using FleetTechCore.Errors;
 using FleetTechCore.Models.Address;
 using FleetTechCore.Models.Company;
+using FleetTechCore.Models.Fleet;
 using FleetTechCore.Models.Shared;
 using FleetTechCore.Services;
 using FleetTechCore.Services.Infrastructure;
 using FleetTechCore.Services.Model_Related_Services;
+using System.Resources;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace FleetTechCore.Logic;
 
@@ -350,5 +353,57 @@ public partial class Logic
             throw new NotFound("No existe este archivo");
         var data  = await Resources.Load(storageFile.File);
         return (data.data,data.mimetype,storageFile.Name);
+    }
+
+
+    public async Task<int?> SaveFail(string Name, string Type, string Dataurl, int Size,Guid UserId =default(Guid), int? FileId = 0)
+    {
+        var base64 = Dataurl.IndexOf("base64,") + 7;
+
+        byte[] fileBytes = Convert.FromBase64String(Dataurl.Substring(base64));
+        StorageFile resultFile = null;
+
+        var file = await Resources.Save(fileBytes, Type switch
+        {
+            "image/jpeg" => "jpg",
+            "image/png" => "png",
+            "image/gif" => "gif",
+            "application/pdf" => "pdf",
+            "application/vnd.openxmlformats-officedocument.wordprocessingml.document" => "docx",
+            "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" => "xlsx",
+            "application/vnd.openxmlformats-officedocument.presentationml.presentation" => "pptx",
+            "application/vnd.ms-excel" => "xls",
+            "application/msword" => "doc",
+            "application/vnd.ms-powerpoint" => "ppt",
+            "text/plain" => "txt",
+            _ => throw new InvalidParameter("Tipo de archivo no soportado")
+        });
+
+        if(FileId > 0)
+            resultFile = await Data.GetByIdAsync<StorageFile>(FileId);
+
+        if (FileId == 0 && resultFile is null)
+        {
+            resultFile = await Data.Add(new StorageFile
+            {
+                Name = Name.LastIndexOf('.') > 0 ? Name.Substring(0, Name.LastIndexOf('.')) : Name,
+                FileName = Name,
+                FileSize = Size,
+                File = file
+            });
+        }
+        else
+        {
+            await Resources.Remove(resultFile.Name);
+
+            resultFile.File = file;
+            resultFile.Name = Name.LastIndexOf('.') > 0 ? Name.Substring(0, Name.LastIndexOf('.')) : Name;
+            resultFile.FileSize = Size;
+
+            await Data.Update<StorageFile>(resultFile, UserId);
+        }
+      
+
+        return FileId == 0?resultFile.Id: FileId;
     }
 }
