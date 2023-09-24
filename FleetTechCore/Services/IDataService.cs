@@ -52,4 +52,7 @@ public interface IDataService {
     Task<bool> ExistsStationWithRnc(string rnc);
     Task<List<ServicePlaseView>> GetAllFuelStation();
     Task<FuelStation> GetFuelStationById(int Id);
+    Task<List<PriceView>> GetAllFuelPrice();
+    Task<FuelPrice> GetFuelPriceById(int Id);
+
 }

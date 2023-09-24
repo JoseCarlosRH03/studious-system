@@ -8,9 +8,13 @@ namespace FleetTechCore.Models.Fuel
 {
     public class FuelPrice: AuditableEntity
     {
-        public required int     FuelType    { get; set; }
-        public required int     DateFrom    { get; set; }
-        public required int     DateTo      { get; set; }
-        public required decimal Price       { get; set; }
+        public required int          FuelTypeId    { get; set; }
+        public required DateTime     DateFrom      { get; set; }
+        public required DateTime     DateTo        { get; set; }
+        public required decimal      Price         { get; set; }
+        public required int         Status         { get; set; }
+
+        public virtual FuelType      FuelType      { get; set; }
+
     }
 }

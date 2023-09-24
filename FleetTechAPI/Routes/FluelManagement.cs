@@ -25,6 +25,21 @@ public static class FluelManagement
             app.MapGet("/fuel/station/{id:int}",(int Id, Context ctx) => ctx.ExecuteAuthenticated(
                 (user ,logic) => logic.GetFuelSationById(Id)))
             .Produces<ServicePlaseView>(),
+            app.MapGet("/fuel/price", (Context ctx) => ctx.ExecuteAuthenticated(
+                (user, logic) => logic.GetAllPrice()))
+            .Produces<List<PriceView>>(),
+            app.MapGet("fuel/price/{id: int}", (int Id, Context ctx) => ctx.ExecuteAuthenticated(
+                (user, logic) => logic.GetFuelPriceById(Id)))
+            .Produces<PriceView>(),
+            app.MapPost("/fuelprice", (FuelPriceData data, Context ctx) => ctx.ExecuteAuthenticated(
+                (user, logic) => logic.CreateFuelPrice(data, user)))
+            .Produces<int>(),
+            app.MapPut("fuelprice/{id:int}", (int id, FuelPriceData data, Context ctx) => ctx.ExecuteAuthenticated(
+                (user, logic) => logic.UpdateFuelPrice(id, data, user)))
+            .Produces<int>(),
+            app.MapDelete("fuelprice/{id:int}", (int id, Context ctx) => ctx.ExecuteAuthenticated(
+                (user, logic) => logic.InactiveFuelPrice(id, user)))
+            .Produces<int>(),
         }); ;
     }
 }
