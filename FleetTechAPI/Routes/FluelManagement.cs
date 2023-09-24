@@ -25,6 +25,9 @@ public static class FluelManagement
             app.MapGet("/fuel/station/{id:int}",(int Id, Context ctx) => ctx.ExecuteAuthenticated(
                 (user ,logic) => logic.GetFuelSationById(Id)))
             .Produces<ServicePlaseView>(),
+            app.MapDelete("/fuel/station/{id:int}",(int Id, Context ctx) => ctx.ExecuteAuthenticated(
+                (user ,logic) => logic.DeleteFuelSatio(Id, user)))
+            .Produces<int>(),
         }); ;
     }
 }

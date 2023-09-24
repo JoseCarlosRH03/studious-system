@@ -1,6 +1,7 @@
 using FleetTechCore.DTOs.Data;
 using FleetTechCore.DTOs.Shared;
 using FleetTechCore.DTOs.Views;
+using FleetTechCore.Enums;
 using FleetTechCore.Errors;
 using FleetTechCore.Models.Address;
 using FleetTechCore.Models.Fuel;
@@ -62,9 +63,6 @@ public partial class Logic
 
     public async Task<int> UpdateStation(ServicePlaseData data, User user)
     {
-        // confirmar validaciones 
-        if (await Data.ExistsStationWithRnc(data.RNC)) throw new AlreadyExists("Ya existe una estación con este RNC");
-
         var station = await Data.GetFuelStationById(data.Id);
 
         if (station == null) throw new NotFound("No se encontro estacion de combustible");
@@ -75,6 +73,7 @@ public partial class Logic
             station.RNC = data.RNC;
             station.Phone = data.Phone;
             station.Email = data.Email;
+            station.Status = data.StatusId;
 
             await Data.Update( station,user.Id);
 
@@ -111,6 +110,17 @@ public partial class Logic
             }
 
         });
+
+        return station.Id;
+    }
+
+    public async Task<int> DeleteFuelSatio(int Id, User user)
+    {
+        var station = await Data.GetFuelStationById(Id);
+
+        if (station == null) throw new NotFound("No se encontro estacion de combustible");
+        station.Status = (int)GenericStatus.Inactivo;
+        await Data.Update(station, user.Id);
 
         return station.Id;
     }

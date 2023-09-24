@@ -1,4 +1,6 @@
-﻿using FleetTechCore.Model;
+﻿using FleetTechCore.DTOs.Shared;
+using FleetTechCore.Enums;
+using FleetTechCore.Model;
 
 namespace FleetTechCore.DTOs.Views;
 
@@ -14,6 +16,7 @@ public record struct ServicePlaseView
         string AddressLine3,
         int CityId,
         string City,
+        Item Status,
         List<ContactView> Contacts
     ){
         public static ServicePlaseView From(ServicePlace data) => new()
@@ -30,6 +33,7 @@ public record struct ServicePlaseView
             CityId = data.Address.CityId,
             City = $"{data.Address.City.Name} | {data.Address.City.State.Name}",
             Contacts = data.Contacts.Select(c => ContactView.From(c)).ToList(),
+            Status = new Item { Id = data.Status, Description = ((GenericStatus)data.Status).ToString() }
 
         };     
 
