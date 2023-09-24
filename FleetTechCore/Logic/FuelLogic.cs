@@ -114,6 +114,16 @@ public partial class Logic
 
         return station.Id;
     }
+    public async Task<int> DeleteFuelSatio(int Id, User user)
+    {
+        var station = await Data.GetFuelStationById(Id);
+
+        if (station == null) throw new NotFound("No se encontro estacion de combustible");
+        station.Status = (int)GenericStatus.Inactivo;
+        await Data.Update(station, user.Id);
+
+        return station.Id;
+    }
 
     public async Task<List<PriceView>> GetAllPrice() => (await Data.GetAllFuelPrice());
     public async Task<PriceView> GetFuelPriceById(int Id)
