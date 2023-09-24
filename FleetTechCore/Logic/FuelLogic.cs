@@ -4,6 +4,7 @@ using FleetTechCore.DTOs.Views;
 using FleetTechCore.Enums;
 using FleetTechCore.Errors;
 using FleetTechCore.Models.Address;
+using FleetTechCore.Models.Fleet;
 using FleetTechCore.Models.Fuel;
 using FleetTechCore.Models.User;
 
@@ -27,7 +28,7 @@ public partial class Logic
     public async Task<int> CreateStation(ServicePlaseData data, User user)
     {
         // confirmar validaciones 
-        if(await Data.ExistsStationWithRnc(data.RNC))  throw new AlreadyExists("Ya existe una estación con este RNC");
+        if(await Data.ExistsStationWithRnc(data.RNC))  throw new AlreadyExists("Ya existe una estaciï¿½n con este RNC");
 
         FuelStation station = new FuelStation
         {
@@ -114,14 +115,67 @@ public partial class Logic
         return station.Id;
     }
 
-    public async Task<int> DeleteFuelSatio(int Id, User user)
+    public async Task<List<PriceView>> GetAllPrice() => (await Data.GetAllFuelPrice());
+    public async Task<PriceView> GetFuelPriceById(int Id)
     {
-        var station = await Data.GetFuelStationById(Id);
+        var price = await Data.GetFuelPriceById(Id);
+        if (price == null) throw new NotFound("No se encontro ningun precio de combustible");
 
-        if (station == null) throw new NotFound("No se encontro estacion de combustible");
-        station.Status = (int)GenericStatus.Inactivo;
-        await Data.Update(station, user.Id);
+        return PriceView.From(price);
+    }
 
-        return station.Id;
+    public async Task<int> CreateFuelPrice(FuelPriceData data, User user)
+    {
+        Validation.ValidateFuelPriceData(data);
+        try
+        {
+            var result = await Data.Add<FuelPrice>(new FuelPrice
+            {
+                FuelTypeId = data.FuelTypeId,
+                DateFrom = data.DateFrom,
+                DateTo = data.DateTo,
+                Price = data.price,
+                Status = (int)GenericStatus.Activo
+            });
+
+            return result.Id;
+        }
+        catch (Exception ex)
+        {
+
+            throw ex;
+        }
+    }
+
+    public async Task<int> UpdateFuelPrice(int id, FuelPriceData data, User user)
+    {
+        Validation.ValidateFuelPriceData(data);
+        var price = await Data.GetByIdAsync<FuelPrice>(id);
+
+        await Data.Atomic(async () =>
+        {
+            if (price == null) throw new NotFound("No existe este precio de combustible");
+            price.FuelTypeId = data.FuelTypeId;
+            price.DateFrom = data.DateFrom;
+            price.DateTo = data.DateTo;
+            price.Price = data.price;
+            price.Status = (int)GenericStatus.Activo;
+            await Data.Update<FuelPrice>(price);
+        });
+
+        return price.Id;
+    }
+
+    public async Task<int> InactiveFuelPrice(int id, User user)
+    {
+        var price = await Data.GetByIdAsync<FuelPrice>(id);
+        await Data.Atomic(async () =>
+        {
+            if (price == null) throw new NotFound("No existe este precio de combustible");
+            price.Status = (int)GenericStatus.Inactivo;
+            await Data.Update<FuelPrice>(price, user.Id);
+        });
+
+        return price.Id;
     }
 }

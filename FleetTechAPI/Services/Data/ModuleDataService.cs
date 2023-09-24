@@ -91,5 +91,16 @@ public partial class DataService
            .ThenInclude(f => f.City)
                .ThenInclude(f => f.State)
        .FirstOrDefaultAsync( f => f.Id == Id);
+
+    public async Task<List<PriceView>> GetAllFuelPrice() => 
+        await FuelPrices
+        .Include(p => p.FuelType)
+        .Select(p => PriceView.From(p))
+        .ToListAsync();
+
+    public async Task<FuelPrice> GetFuelPriceById(int id) =>
+        await FuelPrices
+        .Include(p => p.FuelType)
+        .FirstOrDefaultAsync(p => p.Id == id);
     #endregion
 }

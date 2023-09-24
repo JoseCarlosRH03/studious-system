@@ -141,4 +141,12 @@ public class Validation
         Require(data.AddressLine2, "Dirección");
         Require(data.CityId, "Ciudad");
     }
+
+    public static void ValidateFuelPriceData(FuelPriceData data)
+    {
+        Require(data.FuelTypeId, "Tipo de combustible");
+        Require(data.DateFrom, "Fecha desde");
+        Require(data.DateTo, "Fecha hasta");
+        Require(data.price, "Precio del combustible");
+    }
 }
