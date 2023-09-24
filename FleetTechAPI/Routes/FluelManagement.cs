@@ -11,8 +11,6 @@ public static class FluelManagement
     {
         Tagged("Manejo de Combustible", new[]
         {
-            app.MapGet("/fuel/type",(Context ctx) => ctx.Execute(
-                (logic) => logic.GetAllFuelType())).Produces<List<Item>>(),
             app.MapPost("/station",(ServicePlaseData data, Context ctx) => ctx.ExecuteAuthenticated(
                 (user ,logic) => logic.CreateStation(data,user)))
             .Produces<int>(),
@@ -28,10 +26,12 @@ public static class FluelManagement
            app.MapDelete("/fuel/station/{id:int}",(int Id, Context ctx) => ctx.ExecuteAuthenticated(
                 (user ,logic) => logic.DeleteFuelSatio(Id, user))).
                 Produces<int>(),
+            app.MapGet("/fuel/type",(Context ctx) => ctx.Execute(
+                (logic) => logic.GetAllFuelType())).Produces<List<Item>>(),
             app.MapGet("/fuel/price", (Context ctx) => ctx.ExecuteAuthenticated(
                 (user, logic) => logic.GetAllPrice()))
             .Produces<List<PriceView>>(),
-            app.MapGet("fuel/price/{id: int}", (int Id, Context ctx) => ctx.ExecuteAuthenticated(
+            app.MapGet("fuel/price/{id:int}", (int Id, Context ctx) => ctx.ExecuteAuthenticated(
                 (user, logic) => logic.GetFuelPriceById(Id)))
             .Produces<PriceView>(),
             app.MapPost("/fuel/price", (FuelPriceData data, Context ctx) => ctx.ExecuteAuthenticated(
