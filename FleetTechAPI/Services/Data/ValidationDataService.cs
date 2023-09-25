@@ -22,5 +22,7 @@ public partial class DataService
         FuelStations.AnyAsync(u => u.RNC.ToLower() == rnc.Trim().ToLower());
     public Task<bool> ExistsSuplyWithRnc(string rnc) =>
     Suppliers.AnyAsync(u => u.RNC.ToLower() == rnc.Trim().ToLower());
+    public Task<bool> ExistsMechanicalWorkshopWithRnc(string rnc) =>
+    MechanicalWorkshop.AnyAsync(u => u.RNC.ToLower() == rnc.Trim().ToLower());
 
 }

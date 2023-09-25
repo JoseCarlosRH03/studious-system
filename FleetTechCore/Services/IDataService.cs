@@ -7,6 +7,7 @@ using FleetTechCore.Models.Fleet;
 using FleetTechCore.Models.Fuel;
 using FleetTechCore.Models.Supply;
 using FleetTechCore.Models.User;
+using FleetTechCore.Models.WorkShop;
 
 namespace FleetTechCore.Services;
 
@@ -58,5 +59,8 @@ public interface IDataService {
     Task<Supplier> GetSupplyById(int Id);
     Task<List<SupplyView>> GetAllSupply();
     Task<bool> ExistsSuplyWithRnc(string rnc);
+    Task<MechanicalWorkshop> GetMechanicalWorkshopById(int Id);
+    Task<List<MechanicalWorkshopView>> GetAllMechanicalWorkshop();
+    Task<bool> ExistsMechanicalWorkshopWithRnc(string rnc);
 
 }
