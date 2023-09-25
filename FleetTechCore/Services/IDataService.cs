@@ -5,6 +5,7 @@ using FleetTechCore.Models;
 using FleetTechCore.Models.Address;
 using FleetTechCore.Models.Fleet;
 using FleetTechCore.Models.Fuel;
+using FleetTechCore.Models.Supply;
 using FleetTechCore.Models.User;
 
 namespace FleetTechCore.Services;
@@ -54,5 +55,8 @@ public interface IDataService {
     Task<FuelStation> GetFuelStationById(int Id);
     Task<List<PriceView>> GetAllFuelPrice();
     Task<FuelPrice> GetFuelPriceById(int Id);
+    Task<Supplier> GetSupplyById(int Id);
+    Task<List<SupplyView>> GetAllSupply();
+    Task<bool> ExistsSuplyWithRnc(string rnc);
 
 }
