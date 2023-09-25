@@ -1,14 +1,17 @@
 ﻿using FleetTechCore.DTOs.Shared;
 using FleetTechCore.Enums;
 using FleetTechCore.Model;
+using FleetTechCore.Models.Supply;
 
 namespace FleetTechCore.DTOs.Views;
 
-public record struct ServicePlaseView
+public record struct SupplyView
     (int Id,
         string Code,
         string CompanyName,
         string RNC,
+        string Name,
+        string Position,
         string Phone,
         string Email,
         string AddressLine1,
@@ -19,12 +22,14 @@ public record struct ServicePlaseView
         Item Status,
         List<ContactView> Contacts
     ){
-        public static ServicePlaseView From(ServicePlace data) => new()
+        public static SupplyView From(Supplier data) => new()
         {
             Id = data.Id,
             Code = data.Code,
             CompanyName = data.CompanyName,
             RNC = data.RNC,
+            Name = data.Name,
+            Position = data.Position,
             Phone = data.Phone,
             Email = data.Email,
             AddressLine1 = data.Address.AddressLine1,

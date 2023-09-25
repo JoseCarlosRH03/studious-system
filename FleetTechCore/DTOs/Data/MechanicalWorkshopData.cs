@@ -1,6 +1,6 @@
 ﻿namespace FleetTechCore.DTOs.Data
 {
-    public record struct ServicePlaseData
+    public record struct MechanicalWorkshopData
     (   int Id,
         string Code, 
         string CompanyName,

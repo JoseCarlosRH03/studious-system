@@ -61,6 +61,8 @@ app.MapFluelManagement();
 app.MapFleetManagement();
 app.MapReports();
 app.MapMainManagement();
+app.MapSupplyManagement();
+app.MapWorkshopManagement();
 app.Run();
 
 namespace FleetTechAPI {

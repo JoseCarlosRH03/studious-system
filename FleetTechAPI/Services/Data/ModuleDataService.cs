@@ -1,7 +1,10 @@
-﻿using FleetTechCore.DTOs.Views;
+﻿using FleetTechCore.DTOs.Data;
+using FleetTechCore.DTOs.Views;
 using FleetTechCore.Models.Fleet;
 using FleetTechCore.Models.Fuel;
+using FleetTechCore.Models.Supply;
 using FleetTechCore.Models.User;
+using FleetTechCore.Models.WorkShop;
 using Microsoft.EntityFrameworkCore;
 
 namespace FleetTechAPI.Services.Data;
@@ -102,5 +105,41 @@ public partial class DataService
         await FuelPrices
         .Include(p => p.FuelType)
         .FirstOrDefaultAsync(p => p.Id == id);
+    #endregion
+
+    #region  Supply Managemen
+    public async Task<List<SupplyView>> GetAllSupply() =>
+        await Suppliers
+        .Include(s => s.Contacts)
+        .Include(s => s.Address)
+            .ThenInclude(s => s.City)
+                .ThenInclude(s => s.State)
+        .Select(f => SupplyView.From(f))
+        .ToListAsync();
+    public async Task<Supplier> GetSupplyById(int Id) =>
+       await Suppliers
+       .Include(s => s.Contacts)
+       .Include(s => s.Address)
+           .ThenInclude(s => s.City)
+               .ThenInclude(s => s.State)
+       .FirstOrDefaultAsync(s => s.Id == Id);
+    #endregion
+
+    #region  Mechanical Managemen
+    public async Task<List<MechanicalWorkshopView>> GetAllMechanicalWorkshop() =>
+        await MechanicalWorkshop
+        .Include(m => m.Contacts)
+        .Include(m => m.Address)
+            .ThenInclude(m => m.City)
+                .ThenInclude(m => m.State)
+        .Select(f => MechanicalWorkshopView.From(f))
+        .ToListAsync();
+    public async Task<MechanicalWorkshop> GetMechanicalWorkshopById(int Id) =>
+       await MechanicalWorkshop
+       .Include(m => m.Contacts)
+       .Include(m => m.Address)
+           .ThenInclude(m => m.City)
+               .ThenInclude(m => m.State)
+       .FirstOrDefaultAsync(m => m.Id == Id);
     #endregion
 }

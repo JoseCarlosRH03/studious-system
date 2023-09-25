@@ -3,6 +3,7 @@ using System;
 using FleetTechAPI.Services.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FleetTechAPI.Migrations
 {
     [DbContext(typeof(DataService))]
-    partial class DataServiceModelSnapshot : ModelSnapshot
+    [Migration("20230924021122_statusServicePlase")]
+    partial class statusServicePlase
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "7.0.10");
@@ -1491,7 +1494,7 @@ namespace FleetTechAPI.Migrations
                         {
                             Id = 155,
                             CreatedBy = new Guid("00000000-0000-0000-0000-000000000001"),
-                            CreatedOn = new DateTime(2023, 9, 23, 22, 58, 50, 168, DateTimeKind.Local).AddTicks(7989),
+                            CreatedOn = new DateTime(2023, 9, 23, 22, 11, 22, 49, DateTimeKind.Local).AddTicks(6141),
                             Name = "Laguna Salada",
                             StateId = 32,
                             Status = 0
@@ -2491,13 +2494,13 @@ namespace FleetTechAPI.Migrations
                     b.Property<DateTime>("CreatedOn")
                         .HasColumnType("TEXT");
 
-                    b.Property<DateTime>("DateFrom")
-                        .HasColumnType("TEXT");
+                    b.Property<int>("DateFrom")
+                        .HasColumnType("INTEGER");
 
-                    b.Property<DateTime>("DateTo")
-                        .HasColumnType("TEXT");
+                    b.Property<int>("DateTo")
+                        .HasColumnType("INTEGER");
 
-                    b.Property<int>("FuelTypeId")
+                    b.Property<int>("FuelType")
                         .HasColumnType("INTEGER");
 
                     b.Property<Guid?>("LastModifiedBy")
@@ -2509,12 +2512,7 @@ namespace FleetTechAPI.Migrations
                     b.Property<decimal>("Price")
                         .HasColumnType("decimal(18,6)");
 
-                    b.Property<int>("Status")
-                        .HasColumnType("INTEGER");
-
                     b.HasKey("Id");
-
-                    b.HasIndex("FuelTypeId");
 
                     b.ToTable("FuelPrices");
                 });
@@ -3472,11 +3470,11 @@ namespace FleetTechAPI.Migrations
                         {
                             Id = new Guid("00000000-0000-0000-0000-000000000001"),
                             AccessFailedCount = 0,
-                            DateCreated = new DateTime(2023, 9, 23, 22, 58, 50, 120, DateTimeKind.Local).AddTicks(4467),
+                            DateCreated = new DateTime(2023, 9, 23, 22, 11, 21, 977, DateTimeKind.Local).AddTicks(5610),
                             Email = "superadmin@gmail.com",
                             FirstName = "Super",
                             LastName = "Admin",
-                            PasswordHash = "AQAAAAIAAYagAAAAEKuK8Zi0R+LtfDrTNMbdz4YKiBxic4lRX4DCjSmZTA6ge+QOOjRkb/NFcsopsdbsxA==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEOwWik83krY10xsOvqSctEObT55wIT8SXVTF0jECG0vsbS0lmsdUR6fC7Csc2GAXhw==",
                             Phone = "(829) 123-4567",
                             Status = 1,
                             Username = "superadmin"
@@ -3861,17 +3859,6 @@ namespace FleetTechAPI.Migrations
                 });
 
             modelBuilder.Entity("FleetTechCore.Models.Fleet.Vehicle", b =>
-                {
-                    b.HasOne("FleetTechCore.Models.Fuel.FuelType", "FuelType")
-                        .WithMany()
-                        .HasForeignKey("FuelTypeId")
-                        .OnDelete(DeleteBehavior.NoAction)
-                        .IsRequired();
-
-                    b.Navigation("FuelType");
-                });
-
-            modelBuilder.Entity("FleetTechCore.Models.Fuel.FuelPrice", b =>
                 {
                     b.HasOne("FleetTechCore.Models.Fuel.FuelType", "FuelType")
                         .WithMany()

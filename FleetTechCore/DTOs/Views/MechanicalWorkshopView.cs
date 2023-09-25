@@ -1,10 +1,10 @@
 ﻿using FleetTechCore.DTOs.Shared;
 using FleetTechCore.Enums;
-using FleetTechCore.Model;
+using FleetTechCore.Models.WorkShop;
 
 namespace FleetTechCore.DTOs.Views;
 
-public record struct ServicePlaseView
+public record struct MechanicalWorkshopView
     (int Id,
         string Code,
         string CompanyName,
@@ -19,7 +19,7 @@ public record struct ServicePlaseView
         Item Status,
         List<ContactView> Contacts
     ){
-        public static ServicePlaseView From(ServicePlace data) => new()
+        public static MechanicalWorkshopView From(MechanicalWorkshop data) => new()
         {
             Id = data.Id,
             Code = data.Code,
