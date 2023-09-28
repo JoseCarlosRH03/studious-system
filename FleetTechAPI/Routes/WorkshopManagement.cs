@@ -26,7 +26,6 @@ public static class WorkshopManagement
            app.MapDelete("/mechanical/workshop/{id:int}",(int Id, Context ctx) => ctx.ExecuteAuthenticated(
                 (user ,logic) => logic.DeleteMechanicalWorkshop(Id, user))).
                 Produces<int>(),
-           
-        }); ;
+        }); 
     }
 }

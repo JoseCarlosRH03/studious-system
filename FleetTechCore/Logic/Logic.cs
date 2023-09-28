@@ -8,6 +8,7 @@ using FleetTechCore.Models.Address;
 using FleetTechCore.Models.Company;
 using FleetTechCore.Models.Fleet;
 using FleetTechCore.Models.Shared;
+using FleetTechCore.Models.WorkShop;
 using FleetTechCore.Services;
 using FleetTechCore.Services.Infrastructure;
 using FleetTechCore.Services.Model_Related_Services;
@@ -405,5 +406,49 @@ public partial class Logic
       
 
         return FileId == 0?resultFile.Id: FileId;
+    }
+
+    public async Task<object> ManagemmentContact(List<ContactData> data, int idEntity,string entytyName, ICollection<Contact> entityDataBase)
+    {
+        List<Contact> toConctact = new List<Contact>();
+
+        if (data is not null)
+
+            switch (entytyName)
+            { 
+                case "FuelStation":
+                    toConctact.AddRange(data.Select(c => new Contact { Name = c.Name, Telephone = c.Phone, Email = c.Email, FuelStationId = idEntity }));
+                    break;
+                case "MechanicalWorkshop":
+                         toConctact.AddRange(data.Select(c => new Contact { Name = c.Name, Telephone = c.Phone, Email = c.Email, MechanicalWorkshopId = idEntity }));
+                    break;
+                case "supply":
+                         toConctact.AddRange(data.Select(c => new Contact { Name = c.Name, Telephone = c.Phone, Email = c.Email, SupplierId = idEntity }));
+                    break;
+            }
+        else 
+            await Data.DeleteRange(entityDataBase); 
+        
+
+        if(toConctact is not null)
+        {
+            var newContact = toConctact.Where(c => c.Id == 0).ToList();
+
+            var delete = entityDataBase.Except(toConctact).ToList();
+            if (delete?.Count > 0) await Data.DeleteRange<Contact>(delete);
+
+            if (newContact.Count > 0) await Data.AddRange<Contact>(newContact);
+
+            var updateContact = toConctact.Intersect(entityDataBase).ToList();
+            if (updateContact?.Count > 0)
+            {
+                foreach (var contact in updateContact)
+                {
+                    await Data.Update<Contact>(contact);
+                }
+            }
+        }
+
+        return null;
     }
 }

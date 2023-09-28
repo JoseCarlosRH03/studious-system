@@ -59,54 +59,34 @@ public partial class Logic
 
     public async Task<int> UpdateMechanicalWorkshop(MechanicalWorkshopData data, User user)
     {
-        var supply = await Data.GetMechanicalWorkshopById(data.Id);
+        var workshop = await Data.GetMechanicalWorkshopById(data.Id);
 
-        if (supply == null) throw new NotFound("No se encontro suplidor");
+        if (workshop == null) throw new NotFound("No se encontro suplidor");
         await Data.Atomic(async () => {
 
-            supply.Code = data.Code;
-            supply.CompanyName = data.CompanyName;
-            supply.RNC = data.RNC;
-            supply.Phone = data.Phone;
-            supply.Email = data.Email;
-            supply.Status = data.StatusId;
-            await Data.Update( supply,user.Id);
+            workshop.Code = data.Code;
+            workshop.CompanyName = data.CompanyName;
+            workshop.RNC = data.RNC;
+            workshop.Phone = data.Phone;
+            workshop.Email = data.Email;
+            workshop.Status = data.StatusId;
+            await Data.Update( workshop,user.Id);
 
-            supply.Address.PlainAddress = $"{data.AddressLine1} {data.AddressLine2} {data.AddressLine3}";
-            supply.Address.AddressLine1 = data.AddressLine1;
-            supply.Address.AddressLine2 = data.AddressLine2;
-            supply.Address.AddressLine3 = data.AddressLine3;
-            supply.Address.CityId = data.CityId;
+            workshop.Address.PlainAddress = $"{data.AddressLine1} {data.AddressLine2} {data.AddressLine3}";
+            workshop.Address.AddressLine1 = data.AddressLine1;
+            workshop.Address.AddressLine2 = data.AddressLine2;
+            workshop.Address.AddressLine3 = data.AddressLine3;
+            workshop.Address.CityId = data.CityId;
 
-            await Data.Update(supply.Address, user.Id);
+            await Data.Update(workshop.Address, user.Id);
+            
+            await ManagemmentContact(data.Contacts,workshop.Id,"MechanicalWorkshop" , workshop.Contacts);
 
-            if(data.Contacts.Count == 0)
-            {
-              await Data.DeleteRange(supply.Contacts);
-            }
-            else
-            {
-                var toConctact = data.Contacts.Select(c => new Contact { Name = c.Name, Telephone = c.Phone, Email = c.Email, MechanicalWorkshopId = supply.Id });
-                var newContact = toConctact.Where(c => c.Id == 0).ToList();
-
-                var delete = supply.Contacts.Except(toConctact).ToList();
-                if (delete?.Count > 0) await Data.DeleteRange<Contact>(delete);
-
-                if (newContact.Count > 0) await Data.AddRange<Contact>(newContact);
-
-                var updateContact = toConctact.Intersect(supply.Contacts).ToList();
-                if (updateContact?.Count > 0) 
-                {
-                    foreach (var contact in updateContact)
-                    {
-                        await Data.Update<Contact>(contact);
-                    }
-                }
-            }
+            
 
         });
 
-        return supply.Id;
+        return workshop.Id;
     }
     public async Task<int> DeleteMechanicalWorkshop(int Id, User user)
     {
