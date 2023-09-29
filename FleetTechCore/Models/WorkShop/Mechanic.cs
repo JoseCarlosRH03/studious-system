@@ -8,10 +8,12 @@ namespace FleetTechCore.Models.WorkShop
 {
     public class Mechanic: AuditableEntity
     {
-        public              int       Code { get; set; }
-        public required     string    Name { get; set; }
-        public required     string    JobTitle { get; set; }
-        public              string    Email { get; set; }
+        public              string    Code      { get; set; }
+        public required     string    Name      { get; set; }
+        public required     string    JobTitle  { get; set; }
+        public              string    Email     { get; set; }
+        public              string    Phone     { get; set; }
+        public              int       Status    { get; set; }
 
         public virtual List<Specialty> Specialties { get; set; }
 

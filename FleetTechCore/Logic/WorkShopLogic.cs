@@ -13,11 +13,11 @@ public partial class Logic
 {
     public async Task<List<MechanicalWorkshopView>> GetAllMechanicalWorkshop() => (await Data.GetAllMechanicalWorkshop());
     public async Task<MechanicalWorkshopView> GetMechanicalWorkshopById(int Id) {
-        var supply = await Data.GetMechanicalWorkshopById(Id);
+        var Workshop = await Data.GetMechanicalWorkshopById(Id);
 
-        if (supply == null) throw new NotFound("No se encontro suplidor");
+        if (Workshop == null) throw new NotFound("No se encontro Taller");
 
-        return MechanicalWorkshopView.From(supply);
+        return MechanicalWorkshopView.From(Workshop);
     }
 
     public async Task<int> CreateMechanicalWorkshop(MechanicalWorkshopData data, User user)
@@ -97,10 +97,78 @@ public partial class Logic
     {
         var supply = await Data.GetMechanicalWorkshopById(Id);
 
-        if (supply == null) throw new NotFound("No se encontro estacion de combustible");
+        if (supply == null) throw new NotFound("No se encontro estacion de Taller");
         supply.Status = (int)GenericStatus.Inactivo;
         await Data.Update(supply, user.Id);
 
         return supply.Id;
     }
+
+
+    public async Task<List<MechanicView>> GetAllMechanic() => (await Data.GetAllMechanic());
+    public async Task<MechanicView> GetMechanicById(int Id)
+    {
+        var Mechanic = await Data.GetMechanicById(Id);
+
+        if (Mechanic == null) throw new NotFound("No se encontro Mecanico");
+
+        return MechanicView.From(Mechanic);
+    }
+
+    public async Task<int> CreateMechanic(MechanicData data, User user)
+    {
+
+        Mechanic mechanic = new Mechanic
+        {
+            Code = data.Code,
+            Phone = data.Phone,
+            Name = data.Name,
+            Email = data.Email,
+            JobTitle = data.JobTitle,
+            Status = (int)GenericStatus.Activo
+        };
+
+        await Data.Atomic(async () => {
+           
+            await Data.Add(mechanic);
+
+            if (data.Specialties != null)
+            {
+                var specialties = data.Specialties.Select(c => new Specialty { Description = c.Description, MechanicalWorkshopId = mechanic.Id });
+                await Data.AddRange(specialties);
+            }
+        });
+
+        return mechanic.Id;
+    }
+
+    public async Task<int> UpdateMechanic(MechanicData data, User user)
+    {
+        var mechanic = await Data.GetMechanicById(data.Id);
+
+        if (mechanic == null) throw new NotFound("No se encontro Mecanico");
+        await Data.Atomic(async () => {
+
+            mechanic.Code = data.Code;
+            mechanic.Phone = data.Phone;
+            mechanic.Email = data.Email;
+            mechanic.Status = data.Status;
+            await Data.Update(mechanic, user.Id);
+
+            await ManagemmentSpecialty(data.Specialties, mechanic.Id, "MechanicalWorkshop", mechanic.Specialties);
+        });
+
+        return mechanic.Id;
+    }
+    public async Task<int> DeleteMechanic(int Id, User user)
+    {
+        var supply = await Data.GetMechanicById(Id);
+
+        if (supply == null) throw new NotFound("No se encontro estacion de Mecanico");
+        supply.Status = (int)GenericStatus.Inactivo;
+        await Data.Update(supply, user.Id);
+
+        return supply.Id;
+    }
+
 }

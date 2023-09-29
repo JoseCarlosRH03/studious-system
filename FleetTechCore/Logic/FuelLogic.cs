@@ -120,7 +120,7 @@ public partial class Logic
         {
             var existingFuelPrices = await Data.GetAllFuelPrice();
 
-            if (existingFuelPrices.Any(fp => fp.FuelType.Id == data.FuelTypeId && fp.DateStart == data.DateFrom))
+            if (existingFuelPrices.Any(fp => fp.FuelType.Id == data.FuelTypeId && fp.DateStart == data.DateEnd))
             {
                 throw new Exception("Ya existe un precio de combustible con el mismo tipo de combustible y fecha.");
             }
@@ -128,9 +128,9 @@ public partial class Logic
             var result = await Data.Add<FuelPrice>(new FuelPrice
             {
                 FuelTypeId = data.FuelTypeId,
-                DateFrom = data.DateFrom,
-                DateTo = data.DateTo,
-                Price = data.price,
+                DateFrom = data.DateStart,
+                DateTo = data.DateEnd,
+                Price = data.Price,
                 Status = (int)GenericStatus.Activo
             });
 
@@ -151,9 +151,9 @@ public partial class Logic
         {
             if (price == null) throw new NotFound("No existe este precio de combustible");
             price.FuelTypeId = data.FuelTypeId;
-            price.DateFrom = data.DateFrom;
-            price.DateTo = data.DateTo;
-            price.Price = data.price;
+            price.DateFrom = data.DateStart;
+            price.DateTo = data.DateEnd;
+            price.Price = data.Price;
             price.Status = (int)GenericStatus.Activo;
             await Data.Update<FuelPrice>(price);
         });

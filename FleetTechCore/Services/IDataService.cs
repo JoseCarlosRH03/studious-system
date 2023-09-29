@@ -62,5 +62,7 @@ public interface IDataService {
     Task<MechanicalWorkshop> GetMechanicalWorkshopById(int Id);
     Task<List<MechanicalWorkshopView>> GetAllMechanicalWorkshop();
     Task<bool> ExistsMechanicalWorkshopWithRnc(string rnc);
+    Task<Mechanic> GetMechanicById(int Id);
+    Task<List<MechanicView>> GetAllMechanic();
 
 }

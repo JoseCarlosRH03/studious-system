@@ -143,5 +143,15 @@ public partial class DataService
            .ThenInclude(m => m.City)
                .ThenInclude(m => m.State)
        .FirstOrDefaultAsync(m => m.Id == Id);
+
+    public async Task<List<MechanicView>> GetAllMechanic() =>
+        await Mechanics
+        .Include(m => m.Specialties)
+        .Select(f => MechanicView.From(f))
+        .ToListAsync();
+    public async Task<Mechanic> GetMechanicById(int Id) =>
+       await Mechanics
+       .Include(m => m.Specialties)
+       .FirstOrDefaultAsync(m => m.Id == Id);
     #endregion
 }

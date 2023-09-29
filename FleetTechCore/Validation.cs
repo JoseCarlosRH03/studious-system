@@ -145,8 +145,8 @@ public class Validation
     public static void ValidateFuelPriceData(FuelPriceData data)
     {
         Require(data.FuelTypeId, "Tipo de combustible");
-        Require(data.DateFrom, "Fecha desde");
-        Require(data.DateTo, "Fecha hasta");
-        Require(data.price, "Precio del combustible");
+        Require(data.DateStart, "Fecha desde");
+        Require(data.DateEnd, "Fecha hasta");
+        Require(data.Price, "Precio del combustible");
     }
 }

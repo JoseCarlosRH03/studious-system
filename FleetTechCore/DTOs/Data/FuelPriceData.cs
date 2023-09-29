@@ -10,8 +10,8 @@ namespace FleetTechCore.DTOs.Data
     (
         int         Id,
         int         FuelTypeId,
-        DateTime    DateFrom,
-        DateTime    DateTo,
-        decimal     price
+        DateTime    DateStart,
+        DateTime    DateEnd,
+        decimal     Price
     );
 }
