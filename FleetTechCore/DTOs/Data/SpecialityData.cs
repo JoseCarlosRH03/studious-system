@@ -9,7 +9,7 @@ namespace FleetTechCore.DTOs.Data
     public record struct SpecialityData
     (
         int     Id,
-        string  Name
-      
+        string Description
+
     );
 }

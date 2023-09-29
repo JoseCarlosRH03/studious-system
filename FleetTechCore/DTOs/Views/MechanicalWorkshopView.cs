@@ -17,8 +17,10 @@ public record struct MechanicalWorkshopView
         int CityId,
         string City,
         Item Status,
-        List<ContactView> Contacts
-    ){
+        List<ContactView> Contacts,
+        List<Item> Specialties
+    )
+{
         public static MechanicalWorkshopView From(MechanicalWorkshop data) => new()
         {
             Id = data.Id,
@@ -33,6 +35,7 @@ public record struct MechanicalWorkshopView
             CityId = data.Address.CityId,
             City = $"{data.Address.City.Name} | {data.Address.City.State.Name}",
             Contacts = data.Contacts.Select(c => ContactView.From(c)).ToList(),
+            Specialties = data.Specialties.Select(s => new Item { Description = s.Description, Id = s.Id}).ToList(),
             Status = new Item { Id = data.Status, Description = ((GenericStatus)data.Status).ToString() }
 
         };     

@@ -129,6 +129,7 @@ public partial class DataService
     public async Task<List<MechanicalWorkshopView>> GetAllMechanicalWorkshop() =>
         await MechanicalWorkshop
         .Include(m => m.Contacts)
+        .Include(m => m.Specialties)
         .Include(m => m.Address)
             .ThenInclude(m => m.City)
                 .ThenInclude(m => m.State)
@@ -137,6 +138,7 @@ public partial class DataService
     public async Task<MechanicalWorkshop> GetMechanicalWorkshopById(int Id) =>
        await MechanicalWorkshop
        .Include(m => m.Contacts)
+       .Include(m => m.Specialties)
        .Include(m => m.Address)
            .ThenInclude(m => m.City)
                .ThenInclude(m => m.State)

@@ -37,8 +37,9 @@ public partial class Logic
             RNC = data.RNC,
             Phone = data.Phone,
             Email = data.Email,
+            Status = (int)GenericStatus.Activo
 
-        };
+    };
 
        await Data.Atomic( async () => { 
             var address = await Data.Add(new Address
@@ -86,7 +87,7 @@ public partial class Logic
 
             await Data.Update(station.Address, user.Id);
 
-            await ManagemmentContact(data.Contacts, station.Id, "FuelStation", station.Contacts);
+            await ManagemmentContact(data.Contacts, station.Id, "FuelStation", station.Contacts.ToList());
 
         });
 

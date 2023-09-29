@@ -170,6 +170,8 @@ public partial class DataService: DbContext, IDataService
             {
                 if (property.PropertyType == typeof(decimal) || property.PropertyType == typeof(decimal?))
                     builder.Property(property.Name).HasColumnType("decimal(18,6)");
+                if (property.PropertyType == typeof(DateTime) || property.PropertyType == typeof(DateTime?))
+                    builder.Property(property.Name).HasColumnType("datetime");
             }
 
             foreach (var readonly_property in type.GetProperties().Where(p => !p.CanWrite))
@@ -212,8 +214,6 @@ public partial class DataService: DbContext, IDataService
     public DbSet<MaintenanceScheduling> MaintenanceSchedulings { get; set; }
     public DbSet<Mechanic> Mechanics { get; set; }
     public DbSet<MechanicalWorkshop> MechanicalWorkshop { get; set; }
-    public DbSet<MechanicSpecialty> MechanicSpecialties { get; set; }
-    public DbSet<WorksopSpecialty> WorksopSpecialties { get; set; }
     public DbSet<Driver> Drivers { get; set; }
     public DbSet<Vehicle> Vehicles { get; set; }
     public DbSet<LicenseType> Licenses { get; set; }

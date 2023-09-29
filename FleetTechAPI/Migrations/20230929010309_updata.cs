@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace FleetTechAPI.Migrations
 {
     /// <inheritdoc />
-    public partial class updateDatabase : Migration
+    public partial class updata : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -36,9 +36,9 @@ namespace FleetTechAPI.Migrations
                     DatePattern = table.Column<string>(type: "TEXT", nullable: false),
                     TimePattern = table.Column<string>(type: "TEXT", nullable: false),
                     CreatedBy = table.Column<Guid>(type: "TEXT", nullable: false),
-                    CreatedOn = table.Column<DateTime>(type: "TEXT", nullable: false),
+                    CreatedOn = table.Column<DateTime>(type: "datetime", nullable: false),
                     LastModifiedBy = table.Column<Guid>(type: "TEXT", nullable: true),
-                    LastModifiedOn = table.Column<DateTime>(type: "TEXT", nullable: true)
+                    LastModifiedOn = table.Column<DateTime>(type: "datetime", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -55,9 +55,9 @@ namespace FleetTechAPI.Migrations
                     Demonym = table.Column<string>(type: "TEXT", nullable: false),
                     Status = table.Column<int>(type: "INTEGER", nullable: false),
                     CreatedBy = table.Column<Guid>(type: "TEXT", nullable: false),
-                    CreatedOn = table.Column<DateTime>(type: "TEXT", nullable: false),
+                    CreatedOn = table.Column<DateTime>(type: "datetime", nullable: false),
                     LastModifiedBy = table.Column<Guid>(type: "TEXT", nullable: true),
-                    LastModifiedOn = table.Column<DateTime>(type: "TEXT", nullable: true)
+                    LastModifiedOn = table.Column<DateTime>(type: "datetime", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -73,9 +73,9 @@ namespace FleetTechAPI.Migrations
                     Name = table.Column<string>(type: "TEXT", nullable: false),
                     Status = table.Column<int>(type: "INTEGER", nullable: false),
                     CreatedBy = table.Column<Guid>(type: "TEXT", nullable: false),
-                    CreatedOn = table.Column<DateTime>(type: "TEXT", nullable: false),
+                    CreatedOn = table.Column<DateTime>(type: "datetime", nullable: false),
                     LastModifiedBy = table.Column<Guid>(type: "TEXT", nullable: true),
-                    LastModifiedOn = table.Column<DateTime>(type: "TEXT", nullable: true)
+                    LastModifiedOn = table.Column<DateTime>(type: "datetime", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -95,33 +95,13 @@ namespace FleetTechAPI.Migrations
                     Mileage = table.Column<decimal>(type: "decimal(18,6)", nullable: false),
                     FuelCapacity = table.Column<decimal>(type: "decimal(18,6)", nullable: false),
                     CreatedBy = table.Column<Guid>(type: "TEXT", nullable: false),
-                    CreatedOn = table.Column<DateTime>(type: "TEXT", nullable: false),
+                    CreatedOn = table.Column<DateTime>(type: "datetime", nullable: false),
                     LastModifiedBy = table.Column<Guid>(type: "TEXT", nullable: true),
-                    LastModifiedOn = table.Column<DateTime>(type: "TEXT", nullable: true)
+                    LastModifiedOn = table.Column<DateTime>(type: "datetime", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_FuelGestion", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "FuelPrices",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "INTEGER", nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
-                    FuelType = table.Column<int>(type: "INTEGER", nullable: false),
-                    DateFrom = table.Column<int>(type: "INTEGER", nullable: false),
-                    DateTo = table.Column<int>(type: "INTEGER", nullable: false),
-                    Price = table.Column<decimal>(type: "decimal(18,6)", nullable: false),
-                    CreatedBy = table.Column<Guid>(type: "TEXT", nullable: false),
-                    CreatedOn = table.Column<DateTime>(type: "TEXT", nullable: false),
-                    LastModifiedBy = table.Column<Guid>(type: "TEXT", nullable: true),
-                    LastModifiedOn = table.Column<DateTime>(type: "TEXT", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_FuelPrices", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -162,9 +142,9 @@ namespace FleetTechAPI.Migrations
                     Unit = table.Column<string>(type: "TEXT", nullable: false),
                     Cost = table.Column<decimal>(type: "decimal(18,6)", nullable: false),
                     CreatedBy = table.Column<Guid>(type: "TEXT", nullable: false),
-                    CreatedOn = table.Column<DateTime>(type: "TEXT", nullable: false),
+                    CreatedOn = table.Column<DateTime>(type: "datetime", nullable: false),
                     LastModifiedBy = table.Column<Guid>(type: "TEXT", nullable: true),
-                    LastModifiedOn = table.Column<DateTime>(type: "TEXT", nullable: true)
+                    LastModifiedOn = table.Column<DateTime>(type: "datetime", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -182,9 +162,9 @@ namespace FleetTechAPI.Migrations
                     JobTitle = table.Column<string>(type: "TEXT", nullable: false),
                     Email = table.Column<string>(type: "TEXT", nullable: false),
                     CreatedBy = table.Column<Guid>(type: "TEXT", nullable: false),
-                    CreatedOn = table.Column<DateTime>(type: "TEXT", nullable: false),
+                    CreatedOn = table.Column<DateTime>(type: "datetime", nullable: false),
                     LastModifiedBy = table.Column<Guid>(type: "TEXT", nullable: true),
-                    LastModifiedOn = table.Column<DateTime>(type: "TEXT", nullable: true)
+                    LastModifiedOn = table.Column<DateTime>(type: "datetime", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -242,9 +222,9 @@ namespace FleetTechAPI.Migrations
                     FileSize = table.Column<long>(type: "INTEGER", nullable: false),
                     File = table.Column<string>(type: "TEXT", nullable: false),
                     CreatedBy = table.Column<Guid>(type: "TEXT", nullable: false),
-                    CreatedOn = table.Column<DateTime>(type: "TEXT", nullable: false),
+                    CreatedOn = table.Column<DateTime>(type: "datetime", nullable: false),
                     LastModifiedBy = table.Column<Guid>(type: "TEXT", nullable: true),
-                    LastModifiedOn = table.Column<DateTime>(type: "TEXT", nullable: true)
+                    LastModifiedOn = table.Column<DateTime>(type: "datetime", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -261,9 +241,9 @@ namespace FleetTechAPI.Migrations
                     CountryId = table.Column<int>(type: "INTEGER", nullable: false),
                     Status = table.Column<int>(type: "INTEGER", nullable: false),
                     CreatedBy = table.Column<Guid>(type: "TEXT", nullable: false),
-                    CreatedOn = table.Column<DateTime>(type: "TEXT", nullable: false),
+                    CreatedOn = table.Column<DateTime>(type: "datetime", nullable: false),
                     LastModifiedBy = table.Column<Guid>(type: "TEXT", nullable: true),
-                    LastModifiedOn = table.Column<DateTime>(type: "TEXT", nullable: true)
+                    LastModifiedOn = table.Column<DateTime>(type: "datetime", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -285,9 +265,9 @@ namespace FleetTechAPI.Migrations
                     Value = table.Column<string>(type: "TEXT", nullable: false),
                     ExtensionId = table.Column<int>(type: "INTEGER", nullable: false),
                     CreatedBy = table.Column<Guid>(type: "TEXT", nullable: false),
-                    CreatedOn = table.Column<DateTime>(type: "TEXT", nullable: false),
+                    CreatedOn = table.Column<DateTime>(type: "datetime", nullable: false),
                     LastModifiedBy = table.Column<Guid>(type: "TEXT", nullable: true),
-                    LastModifiedOn = table.Column<DateTime>(type: "TEXT", nullable: true)
+                    LastModifiedOn = table.Column<DateTime>(type: "datetime", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -296,6 +276,32 @@ namespace FleetTechAPI.Migrations
                         name: "FK_ExtensionProperties_Extensions_ExtensionId",
                         column: x => x.ExtensionId,
                         principalTable: "Extensions",
+                        principalColumn: "Id");
+                });
+
+            migrationBuilder.CreateTable(
+                name: "FuelPrices",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    FuelTypeId = table.Column<int>(type: "INTEGER", nullable: false),
+                    DateFrom = table.Column<DateTime>(type: "datetime", nullable: false),
+                    DateTo = table.Column<DateTime>(type: "datetime", nullable: false),
+                    Price = table.Column<decimal>(type: "decimal(18,6)", nullable: false),
+                    Status = table.Column<int>(type: "INTEGER", nullable: false),
+                    CreatedBy = table.Column<Guid>(type: "TEXT", nullable: false),
+                    CreatedOn = table.Column<DateTime>(type: "datetime", nullable: false),
+                    LastModifiedBy = table.Column<Guid>(type: "TEXT", nullable: true),
+                    LastModifiedOn = table.Column<DateTime>(type: "datetime", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_FuelPrices", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_FuelPrices_FuelTypes_FuelTypeId",
+                        column: x => x.FuelTypeId,
+                        principalTable: "FuelTypes",
                         principalColumn: "Id");
                 });
 
@@ -309,7 +315,7 @@ namespace FleetTechAPI.Migrations
                     PolicyDescription = table.Column<string>(type: "TEXT", nullable: false),
                     PolicyNumber = table.Column<string>(type: "TEXT", nullable: false),
                     PolicyReference = table.Column<string>(type: "TEXT", nullable: false),
-                    PolicyExpiration = table.Column<DateTime>(type: "TEXT", nullable: false),
+                    PolicyExpiration = table.Column<DateTime>(type: "datetime", nullable: false),
                     Status = table.Column<int>(type: "INTEGER", nullable: false),
                     Type = table.Column<int>(type: "INTEGER", nullable: false),
                     Brand = table.Column<string>(type: "TEXT", nullable: false),
@@ -324,9 +330,9 @@ namespace FleetTechAPI.Migrations
                     Chassis = table.Column<string>(type: "TEXT", nullable: false),
                     Engine = table.Column<string>(type: "TEXT", nullable: false),
                     CreatedBy = table.Column<Guid>(type: "TEXT", nullable: false),
-                    CreatedOn = table.Column<DateTime>(type: "TEXT", nullable: false),
+                    CreatedOn = table.Column<DateTime>(type: "datetime", nullable: false),
                     LastModifiedBy = table.Column<Guid>(type: "TEXT", nullable: true),
-                    LastModifiedOn = table.Column<DateTime>(type: "TEXT", nullable: true)
+                    LastModifiedOn = table.Column<DateTime>(type: "datetime", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -335,37 +341,6 @@ namespace FleetTechAPI.Migrations
                         name: "FK_Vehicles_FuelTypes_FuelTypeId",
                         column: x => x.FuelTypeId,
                         principalTable: "FuelTypes",
-                        principalColumn: "Id");
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Drivers",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "INTEGER", nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
-                    EmployeeCode = table.Column<string>(type: "TEXT", nullable: false),
-                    IdentityDocument = table.Column<string>(type: "TEXT", nullable: false),
-                    FirstName = table.Column<string>(type: "TEXT", nullable: false),
-                    LastName = table.Column<string>(type: "TEXT", nullable: false),
-                    DateOfBirth = table.Column<DateTime>(type: "TEXT", nullable: false),
-                    ExpirationOfTheLicense = table.Column<DateTime>(type: "TEXT", nullable: false),
-                    DateOfHire = table.Column<DateTime>(type: "TEXT", nullable: false),
-                    Phone = table.Column<string>(type: "TEXT", nullable: false),
-                    LicenseCategoryId = table.Column<int>(type: "INTEGER", nullable: false),
-                    Status = table.Column<int>(type: "INTEGER", nullable: false),
-                    CreatedBy = table.Column<Guid>(type: "TEXT", nullable: false),
-                    CreatedOn = table.Column<DateTime>(type: "TEXT", nullable: false),
-                    LastModifiedBy = table.Column<Guid>(type: "TEXT", nullable: true),
-                    LastModifiedOn = table.Column<DateTime>(type: "TEXT", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Drivers", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Drivers_Licenses_LicenseCategoryId",
-                        column: x => x.LicenseCategoryId,
-                        principalTable: "Licenses",
                         principalColumn: "Id");
                 });
 
@@ -386,25 +361,6 @@ namespace FleetTechAPI.Migrations
                         name: "FK_MaterialConsumptions_Materials_MaterialId",
                         column: x => x.MaterialId,
                         principalTable: "Materials",
-                        principalColumn: "Id");
-                });
-
-            migrationBuilder.CreateTable(
-                name: "MechanicSpecialties",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "INTEGER", nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
-                    MechanicId = table.Column<int>(type: "INTEGER", nullable: false),
-                    Description = table.Column<string>(type: "TEXT", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_MechanicSpecialties", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_MechanicSpecialties_Mechanics_MechanicId",
-                        column: x => x.MechanicId,
-                        principalTable: "Mechanics",
                         principalColumn: "Id");
                 });
 
@@ -433,6 +389,43 @@ namespace FleetTechAPI.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Drivers",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    EmployeeCode = table.Column<string>(type: "TEXT", nullable: false),
+                    IdentityDocument = table.Column<string>(type: "TEXT", nullable: false),
+                    FirstName = table.Column<string>(type: "TEXT", nullable: false),
+                    LastName = table.Column<string>(type: "TEXT", nullable: false),
+                    DateOfBirth = table.Column<DateTime>(type: "datetime", nullable: false),
+                    ExpirationOfTheLicense = table.Column<DateTime>(type: "datetime", nullable: false),
+                    DateOfHire = table.Column<DateTime>(type: "datetime", nullable: false),
+                    LicenseFileId = table.Column<int>(type: "INTEGER", nullable: true),
+                    Phone = table.Column<string>(type: "TEXT", nullable: false),
+                    LicenseCategoryId = table.Column<int>(type: "INTEGER", nullable: false),
+                    Status = table.Column<int>(type: "INTEGER", nullable: false),
+                    CreatedBy = table.Column<Guid>(type: "TEXT", nullable: false),
+                    CreatedOn = table.Column<DateTime>(type: "datetime", nullable: false),
+                    LastModifiedBy = table.Column<Guid>(type: "TEXT", nullable: true),
+                    LastModifiedOn = table.Column<DateTime>(type: "datetime", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Drivers", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Drivers_Licenses_LicenseCategoryId",
+                        column: x => x.LicenseCategoryId,
+                        principalTable: "Licenses",
+                        principalColumn: "Id");
+                    table.ForeignKey(
+                        name: "FK_Drivers_StorageFile_LicenseFileId",
+                        column: x => x.LicenseFileId,
+                        principalTable: "StorageFile",
+                        principalColumn: "Id");
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Cities",
                 columns: table => new
                 {
@@ -442,9 +435,9 @@ namespace FleetTechAPI.Migrations
                     StateId = table.Column<int>(type: "INTEGER", nullable: false),
                     Status = table.Column<int>(type: "INTEGER", nullable: false),
                     CreatedBy = table.Column<Guid>(type: "TEXT", nullable: false),
-                    CreatedOn = table.Column<DateTime>(type: "TEXT", nullable: false),
+                    CreatedOn = table.Column<DateTime>(type: "datetime", nullable: false),
                     LastModifiedBy = table.Column<Guid>(type: "TEXT", nullable: true),
-                    LastModifiedOn = table.Column<DateTime>(type: "TEXT", nullable: true)
+                    LastModifiedOn = table.Column<DateTime>(type: "datetime", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -467,9 +460,9 @@ namespace FleetTechAPI.Migrations
                     Status = table.Column<int>(type: "INTEGER", nullable: false),
                     VehicleId = table.Column<int>(type: "INTEGER", nullable: false),
                     CreatedBy = table.Column<Guid>(type: "TEXT", nullable: false),
-                    CreatedOn = table.Column<DateTime>(type: "TEXT", nullable: false),
+                    CreatedOn = table.Column<DateTime>(type: "datetime", nullable: false),
                     LastModifiedBy = table.Column<Guid>(type: "TEXT", nullable: true),
-                    LastModifiedOn = table.Column<DateTime>(type: "TEXT", nullable: true)
+                    LastModifiedOn = table.Column<DateTime>(type: "datetime", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -519,9 +512,9 @@ namespace FleetTechAPI.Migrations
                     AddressLine3 = table.Column<string>(type: "TEXT", nullable: true),
                     CityId = table.Column<int>(type: "INTEGER", nullable: false),
                     CreatedBy = table.Column<Guid>(type: "TEXT", nullable: false),
-                    CreatedOn = table.Column<DateTime>(type: "TEXT", nullable: false),
+                    CreatedOn = table.Column<DateTime>(type: "datetime", nullable: false),
                     LastModifiedBy = table.Column<Guid>(type: "TEXT", nullable: true),
-                    LastModifiedOn = table.Column<DateTime>(type: "TEXT", nullable: true)
+                    LastModifiedOn = table.Column<DateTime>(type: "datetime", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -547,9 +540,9 @@ namespace FleetTechAPI.Migrations
                     Phone = table.Column<string>(type: "TEXT", nullable: false),
                     Status = table.Column<int>(type: "INTEGER", nullable: false),
                     CreatedBy = table.Column<Guid>(type: "TEXT", nullable: false),
-                    CreatedOn = table.Column<DateTime>(type: "TEXT", nullable: false),
+                    CreatedOn = table.Column<DateTime>(type: "datetime", nullable: false),
                     LastModifiedBy = table.Column<Guid>(type: "TEXT", nullable: true),
-                    LastModifiedOn = table.Column<DateTime>(type: "TEXT", nullable: true)
+                    LastModifiedOn = table.Column<DateTime>(type: "datetime", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -586,9 +579,9 @@ namespace FleetTechAPI.Migrations
                     UsernamePrefix = table.Column<string>(type: "TEXT", nullable: true),
                     CompanySettingsId = table.Column<int>(type: "INTEGER", nullable: true),
                     CreatedBy = table.Column<Guid>(type: "TEXT", nullable: false),
-                    CreatedOn = table.Column<DateTime>(type: "TEXT", nullable: false),
+                    CreatedOn = table.Column<DateTime>(type: "datetime", nullable: false),
                     LastModifiedBy = table.Column<Guid>(type: "TEXT", nullable: true),
-                    LastModifiedOn = table.Column<DateTime>(type: "TEXT", nullable: true)
+                    LastModifiedOn = table.Column<DateTime>(type: "datetime", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -612,15 +605,16 @@ namespace FleetTechAPI.Migrations
                     Id = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     CreatedBy = table.Column<Guid>(type: "TEXT", nullable: false),
-                    CreatedOn = table.Column<DateTime>(type: "TEXT", nullable: false),
+                    CreatedOn = table.Column<DateTime>(type: "datetime", nullable: false),
                     LastModifiedBy = table.Column<Guid>(type: "TEXT", nullable: true),
-                    LastModifiedOn = table.Column<DateTime>(type: "TEXT", nullable: true),
+                    LastModifiedOn = table.Column<DateTime>(type: "datetime", nullable: true),
                     Code = table.Column<string>(type: "TEXT", nullable: false),
                     CompanyName = table.Column<string>(type: "TEXT", nullable: false),
                     RNC = table.Column<string>(type: "TEXT", nullable: false),
                     Phone = table.Column<string>(type: "TEXT", nullable: false),
                     Email = table.Column<string>(type: "TEXT", nullable: false),
-                    AddressId = table.Column<int>(type: "INTEGER", nullable: false)
+                    AddressId = table.Column<int>(type: "INTEGER", nullable: false),
+                    Status = table.Column<int>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -639,15 +633,16 @@ namespace FleetTechAPI.Migrations
                     Id = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     CreatedBy = table.Column<Guid>(type: "TEXT", nullable: false),
-                    CreatedOn = table.Column<DateTime>(type: "TEXT", nullable: false),
+                    CreatedOn = table.Column<DateTime>(type: "datetime", nullable: false),
                     LastModifiedBy = table.Column<Guid>(type: "TEXT", nullable: true),
-                    LastModifiedOn = table.Column<DateTime>(type: "TEXT", nullable: true),
+                    LastModifiedOn = table.Column<DateTime>(type: "datetime", nullable: true),
                     Code = table.Column<string>(type: "TEXT", nullable: false),
                     CompanyName = table.Column<string>(type: "TEXT", nullable: false),
                     RNC = table.Column<string>(type: "TEXT", nullable: false),
                     Phone = table.Column<string>(type: "TEXT", nullable: false),
                     Email = table.Column<string>(type: "TEXT", nullable: false),
-                    AddressId = table.Column<int>(type: "INTEGER", nullable: false)
+                    AddressId = table.Column<int>(type: "INTEGER", nullable: false),
+                    Status = table.Column<int>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -668,15 +663,16 @@ namespace FleetTechAPI.Migrations
                     Name = table.Column<string>(type: "TEXT", nullable: false),
                     Position = table.Column<string>(type: "TEXT", nullable: false),
                     CreatedBy = table.Column<Guid>(type: "TEXT", nullable: false),
-                    CreatedOn = table.Column<DateTime>(type: "TEXT", nullable: false),
+                    CreatedOn = table.Column<DateTime>(type: "datetime", nullable: false),
                     LastModifiedBy = table.Column<Guid>(type: "TEXT", nullable: true),
-                    LastModifiedOn = table.Column<DateTime>(type: "TEXT", nullable: true),
+                    LastModifiedOn = table.Column<DateTime>(type: "datetime", nullable: true),
                     Code = table.Column<string>(type: "TEXT", nullable: false),
                     CompanyName = table.Column<string>(type: "TEXT", nullable: false),
                     RNC = table.Column<string>(type: "TEXT", nullable: false),
                     Phone = table.Column<string>(type: "TEXT", nullable: false),
                     Email = table.Column<string>(type: "TEXT", nullable: false),
-                    AddressId = table.Column<int>(type: "INTEGER", nullable: false)
+                    AddressId = table.Column<int>(type: "INTEGER", nullable: false),
+                    Status = table.Column<int>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -702,12 +698,12 @@ namespace FleetTechAPI.Migrations
                     Email = table.Column<string>(type: "TEXT", nullable: false),
                     PasswordHash = table.Column<string>(type: "TEXT", nullable: false),
                     Phone = table.Column<string>(type: "TEXT", nullable: true),
-                    DateCreated = table.Column<DateTime>(type: "TEXT", nullable: false),
+                    DateCreated = table.Column<DateTime>(type: "datetime", nullable: false),
                     AccessFailedCount = table.Column<int>(type: "INTEGER", nullable: false),
-                    LockoutEnd = table.Column<DateTime>(type: "TEXT", nullable: true),
-                    DateLastLogin = table.Column<DateTime>(type: "TEXT", nullable: true),
-                    DateLastLoginFieldService = table.Column<DateTime>(type: "TEXT", nullable: true),
-                    DateLastPasswordChange = table.Column<DateTime>(type: "TEXT", nullable: true),
+                    LockoutEnd = table.Column<DateTime>(type: "datetime", nullable: true),
+                    DateLastLogin = table.Column<DateTime>(type: "datetime", nullable: true),
+                    DateLastLoginFieldService = table.Column<DateTime>(type: "datetime", nullable: true),
+                    DateLastPasswordChange = table.Column<DateTime>(type: "datetime", nullable: true),
                     BranchId = table.Column<int>(type: "INTEGER", nullable: true)
                 },
                 constraints: table =>
@@ -721,22 +717,27 @@ namespace FleetTechAPI.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "WorksopSpecialties",
+                name: "Specialty",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    WorksopId = table.Column<int>(type: "INTEGER", nullable: false),
                     MechanicalWorkshopId = table.Column<int>(type: "INTEGER", nullable: true),
+                    MechanicId = table.Column<int>(type: "INTEGER", nullable: true),
                     Description = table.Column<string>(type: "TEXT", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_WorksopSpecialties", x => x.Id);
+                    table.PrimaryKey("PK_Specialty", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_WorksopSpecialties_MechanicalWorkshop_MechanicalWorkshopId",
+                        name: "FK_Specialty_MechanicalWorkshop_MechanicalWorkshopId",
                         column: x => x.MechanicalWorkshopId,
                         principalTable: "MechanicalWorkshop",
+                        principalColumn: "Id");
+                    table.ForeignKey(
+                        name: "FK_Specialty_Mechanics_MechanicId",
+                        column: x => x.MechanicId,
+                        principalTable: "Mechanics",
                         principalColumn: "Id");
                 });
 
@@ -748,7 +749,7 @@ namespace FleetTechAPI.Migrations
                         .Annotation("Sqlite:Autoincrement", true),
                     Name = table.Column<string>(type: "TEXT", nullable: false),
                     Telephone = table.Column<string>(type: "TEXT", nullable: false),
-                    Email = table.Column<string>(type: "TEXT", nullable: false),
+                    Email = table.Column<string>(type: "TEXT", nullable: true),
                     FuelStationId = table.Column<int>(type: "INTEGER", nullable: true),
                     MechanicalWorkshopId = table.Column<int>(type: "INTEGER", nullable: true),
                     SupplierId = table.Column<int>(type: "INTEGER", nullable: true)
@@ -789,9 +790,9 @@ namespace FleetTechAPI.Migrations
                     Status = table.Column<int>(type: "INTEGER", nullable: false),
                     SupplierId = table.Column<int>(type: "INTEGER", nullable: true),
                     CreatedBy = table.Column<Guid>(type: "TEXT", nullable: false),
-                    CreatedOn = table.Column<DateTime>(type: "TEXT", nullable: false),
+                    CreatedOn = table.Column<DateTime>(type: "datetime", nullable: false),
                     LastModifiedBy = table.Column<Guid>(type: "TEXT", nullable: true),
-                    LastModifiedOn = table.Column<DateTime>(type: "TEXT", nullable: true)
+                    LastModifiedOn = table.Column<DateTime>(type: "datetime", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -983,7 +984,7 @@ namespace FleetTechAPI.Migrations
             migrationBuilder.InsertData(
                 table: "Users",
                 columns: new[] { "Id", "AccessFailedCount", "BranchId", "DateCreated", "DateLastLogin", "DateLastLoginFieldService", "DateLastPasswordChange", "Document", "Email", "FirstName", "LastName", "LockoutEnd", "PasswordHash", "Phone", "ProfilePicture", "Status", "Username" },
-                values: new object[] { new Guid("00000000-0000-0000-0000-000000000001"), 0, null, new DateTime(2023, 9, 21, 22, 45, 29, 780, DateTimeKind.Local).AddTicks(3004), null, null, null, null, "superadmin@gmail.com", "Super", "Admin", null, "AQAAAAIAAYagAAAAEB7aw4n4P5lu4kMtdMM431dFIBycXBka8wuLHyx90cGM6VYbDt+HsADRTyzJUVcS5w==", "(829) 123-4567", null, 1, "superadmin" });
+                values: new object[] { new Guid("00000000-0000-0000-0000-000000000001"), 0, null, new DateTime(2023, 9, 28, 21, 3, 9, 20, DateTimeKind.Local).AddTicks(7186), null, null, null, null, "superadmin@gmail.com", "Super", "Admin", null, "AQAAAAIAAYagAAAAEBOPxgE+UlXBKLhvFSyTjcXdU8qXVAGEINNfoo1bq8/lOY+AMPtam5M8EM18EEHJGQ==", "(829) 123-4567", null, 1, "superadmin" });
 
             migrationBuilder.InsertData(
                 table: "Permissions",
@@ -1243,7 +1244,7 @@ namespace FleetTechAPI.Migrations
                     { 152, new Guid("00000000-0000-0000-0000-000000000001"), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, null, "Santo Domingo Oeste", 31, 0 },
                     { 153, new Guid("00000000-0000-0000-0000-000000000001"), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, null, "Mao", 32, 0 },
                     { 154, new Guid("00000000-0000-0000-0000-000000000001"), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, null, "Esperanza", 32, 0 },
-                    { 155, new Guid("00000000-0000-0000-0000-000000000001"), new DateTime(2023, 9, 21, 22, 45, 29, 846, DateTimeKind.Local).AddTicks(1139), null, null, "Laguna Salada", 32, 0 }
+                    { 155, new Guid("00000000-0000-0000-0000-000000000001"), new DateTime(2023, 9, 28, 21, 3, 9, 87, DateTimeKind.Local).AddTicks(5787), null, null, "Laguna Salada", 32, 0 }
                 });
 
             migrationBuilder.InsertData(
@@ -1315,9 +1316,19 @@ namespace FleetTechAPI.Migrations
                 column: "LicenseCategoryId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Drivers_LicenseFileId",
+                table: "Drivers",
+                column: "LicenseFileId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_ExtensionProperties_ExtensionId",
                 table: "ExtensionProperties",
                 column: "ExtensionId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_FuelPrices_FuelTypeId",
+                table: "FuelPrices",
+                column: "FuelTypeId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_FuelStations_AddressId",
@@ -1355,11 +1366,6 @@ namespace FleetTechAPI.Migrations
                 column: "AddressId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_MechanicSpecialties_MechanicId",
-                table: "MechanicSpecialties",
-                column: "MechanicId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_Permissions_PermissionAreaId",
                 table: "Permissions",
                 column: "PermissionAreaId");
@@ -1378,6 +1384,16 @@ namespace FleetTechAPI.Migrations
                 name: "IX_RoleClaims_RoleId",
                 table: "RoleClaims",
                 column: "RoleId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Specialty_MechanicalWorkshopId",
+                table: "Specialty",
+                column: "MechanicalWorkshopId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Specialty_MechanicId",
+                table: "Specialty",
+                column: "MechanicId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_States_CountryId",
@@ -1418,11 +1434,6 @@ namespace FleetTechAPI.Migrations
                 name: "IX_Vehicles_FuelTypeId",
                 table: "Vehicles",
                 column: "FuelTypeId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_WorksopSpecialties_MechanicalWorkshopId",
-                table: "WorksopSpecialties",
-                column: "MechanicalWorkshopId");
         }
 
         /// <inheritdoc />
@@ -1459,22 +1470,16 @@ namespace FleetTechAPI.Migrations
                 name: "MaterialExistences");
 
             migrationBuilder.DropTable(
-                name: "MechanicSpecialties");
-
-            migrationBuilder.DropTable(
                 name: "RoleClaims");
 
             migrationBuilder.DropTable(
-                name: "StorageFile");
+                name: "Specialty");
 
             migrationBuilder.DropTable(
                 name: "UserClaims");
 
             migrationBuilder.DropTable(
                 name: "UserRoles");
-
-            migrationBuilder.DropTable(
-                name: "WorksopSpecialties");
 
             migrationBuilder.DropTable(
                 name: "CompanySettings");
@@ -1484,6 +1489,9 @@ namespace FleetTechAPI.Migrations
 
             migrationBuilder.DropTable(
                 name: "Licenses");
+
+            migrationBuilder.DropTable(
+                name: "StorageFile");
 
             migrationBuilder.DropTable(
                 name: "Extensions");
@@ -1498,6 +1506,9 @@ namespace FleetTechAPI.Migrations
                 name: "Materials");
 
             migrationBuilder.DropTable(
+                name: "MechanicalWorkshop");
+
+            migrationBuilder.DropTable(
                 name: "Mechanics");
 
             migrationBuilder.DropTable(
@@ -1510,10 +1521,10 @@ namespace FleetTechAPI.Migrations
                 name: "Users");
 
             migrationBuilder.DropTable(
-                name: "MechanicalWorkshop");
+                name: "FuelTypes");
 
             migrationBuilder.DropTable(
-                name: "FuelTypes");
+                name: "Address");
 
             migrationBuilder.DropTable(
                 name: "PermissionAreas");
@@ -1523,9 +1534,6 @@ namespace FleetTechAPI.Migrations
 
             migrationBuilder.DropTable(
                 name: "Branches");
-
-            migrationBuilder.DropTable(
-                name: "Address");
 
             migrationBuilder.DropTable(
                 name: "BranchTypes");

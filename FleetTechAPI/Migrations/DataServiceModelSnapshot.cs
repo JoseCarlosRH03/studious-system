@@ -41,13 +41,13 @@ namespace FleetTechAPI.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("datetime");
 
                     b.Property<Guid?>("LastModifiedBy")
                         .HasColumnType("TEXT");
 
                     b.Property<DateTime?>("LastModifiedOn")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("datetime");
 
                     b.Property<double>("Latitude")
                         .HasColumnType("REAL");
@@ -76,13 +76,13 @@ namespace FleetTechAPI.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("datetime");
 
                     b.Property<Guid?>("LastModifiedBy")
                         .HasColumnType("TEXT");
 
                     b.Property<DateTime?>("LastModifiedOn")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("datetime");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -1491,7 +1491,7 @@ namespace FleetTechAPI.Migrations
                         {
                             Id = 155,
                             CreatedBy = new Guid("00000000-0000-0000-0000-000000000001"),
-                            CreatedOn = new DateTime(2023, 9, 23, 22, 58, 50, 168, DateTimeKind.Local).AddTicks(7989),
+                            CreatedOn = new DateTime(2023, 9, 28, 21, 3, 9, 87, DateTimeKind.Local).AddTicks(5787),
                             Name = "Laguna Salada",
                             StateId = 32,
                             Status = 0
@@ -1545,7 +1545,7 @@ namespace FleetTechAPI.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("datetime");
 
                     b.Property<string>("Demonym")
                         .IsRequired()
@@ -1555,7 +1555,7 @@ namespace FleetTechAPI.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<DateTime?>("LastModifiedOn")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("datetime");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -1665,13 +1665,13 @@ namespace FleetTechAPI.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("datetime");
 
                     b.Property<Guid?>("LastModifiedBy")
                         .HasColumnType("TEXT");
 
                     b.Property<DateTime?>("LastModifiedOn")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("datetime");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -2001,13 +2001,13 @@ namespace FleetTechAPI.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("datetime");
 
                     b.Property<Guid?>("LastModifiedBy")
                         .HasColumnType("TEXT");
 
                     b.Property<DateTime?>("LastModifiedOn")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("datetime");
 
                     b.Property<string>("Locality")
                         .IsRequired()
@@ -2086,7 +2086,7 @@ namespace FleetTechAPI.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("datetime");
 
                     b.Property<string>("Email")
                         .IsRequired()
@@ -2096,7 +2096,7 @@ namespace FleetTechAPI.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<DateTime?>("LastModifiedOn")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("datetime");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -2160,7 +2160,7 @@ namespace FleetTechAPI.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("datetime");
 
                     b.Property<string>("DatePattern")
                         .IsRequired()
@@ -2170,7 +2170,7 @@ namespace FleetTechAPI.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<DateTime?>("LastModifiedOn")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("datetime");
 
                     b.Property<string>("TimePattern")
                         .IsRequired()
@@ -2206,13 +2206,13 @@ namespace FleetTechAPI.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("datetime");
 
                     b.Property<Guid?>("LastModifiedBy")
                         .HasColumnType("TEXT");
 
                     b.Property<DateTime?>("LastModifiedOn")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("datetime");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -2236,7 +2236,7 @@ namespace FleetTechAPI.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("datetime");
 
                     b.Property<int>("ExtensionId")
                         .HasColumnType("INTEGER");
@@ -2245,7 +2245,7 @@ namespace FleetTechAPI.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<DateTime?>("LastModifiedOn")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("datetime");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -2272,20 +2272,20 @@ namespace FleetTechAPI.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("datetime");
 
                     b.Property<DateTime>("DateOfBirth")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("datetime");
 
                     b.Property<DateTime>("DateOfHire")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("datetime");
 
                     b.Property<string>("EmployeeCode")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<DateTime>("ExpirationOfTheLicense")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("datetime");
 
                     b.Property<string>("FirstName")
                         .IsRequired()
@@ -2299,7 +2299,7 @@ namespace FleetTechAPI.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<DateTime?>("LastModifiedOn")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("datetime");
 
                     b.Property<string>("LastName")
                         .IsRequired()
@@ -2415,7 +2415,7 @@ namespace FleetTechAPI.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("datetime");
 
                     b.Property<string>("Engine")
                         .IsRequired()
@@ -2434,7 +2434,7 @@ namespace FleetTechAPI.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<DateTime?>("LastModifiedOn")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("datetime");
 
                     b.Property<string>("LicensePlate")
                         .IsRequired()
@@ -2452,7 +2452,7 @@ namespace FleetTechAPI.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<DateTime>("PolicyExpiration")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("datetime");
 
                     b.Property<string>("PolicyNumber")
                         .IsRequired()
@@ -2489,13 +2489,13 @@ namespace FleetTechAPI.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("datetime");
 
                     b.Property<DateTime>("DateFrom")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("datetime");
 
                     b.Property<DateTime>("DateTo")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("datetime");
 
                     b.Property<int>("FuelTypeId")
                         .HasColumnType("INTEGER");
@@ -2504,7 +2504,7 @@ namespace FleetTechAPI.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<DateTime?>("LastModifiedOn")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("datetime");
 
                     b.Property<decimal>("Price")
                         .HasColumnType("decimal(18,6)");
@@ -2540,7 +2540,7 @@ namespace FleetTechAPI.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("datetime");
 
                     b.Property<string>("Email")
                         .IsRequired()
@@ -2550,7 +2550,7 @@ namespace FleetTechAPI.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<DateTime?>("LastModifiedOn")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("datetime");
 
                     b.Property<string>("Phone")
                         .IsRequired()
@@ -2649,7 +2649,7 @@ namespace FleetTechAPI.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("datetime");
 
                     b.Property<string>("Description")
                         .IsRequired()
@@ -2659,7 +2659,7 @@ namespace FleetTechAPI.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<DateTime?>("LastModifiedOn")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("datetime");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -2733,7 +2733,7 @@ namespace FleetTechAPI.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("datetime");
 
                     b.Property<string>("File")
                         .IsRequired()
@@ -2750,7 +2750,7 @@ namespace FleetTechAPI.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<DateTime?>("LastModifiedOn")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("datetime");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -2759,6 +2759,31 @@ namespace FleetTechAPI.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("StorageFile");
+                });
+
+            modelBuilder.Entity("FleetTechCore.Models.Specialty", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<int?>("MechanicId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int?>("MechanicalWorkshopId")
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("MechanicId");
+
+                    b.HasIndex("MechanicalWorkshopId");
+
+                    b.ToTable("Specialty");
                 });
 
             modelBuilder.Entity("FleetTechCore.Models.Supply.Material", b =>
@@ -2786,7 +2811,7 @@ namespace FleetTechAPI.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("datetime");
 
                     b.Property<string>("Description")
                         .IsRequired()
@@ -2796,7 +2821,7 @@ namespace FleetTechAPI.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<DateTime?>("LastModifiedOn")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("datetime");
 
                     b.Property<int>("Materials")
                         .HasColumnType("INTEGER");
@@ -2838,7 +2863,7 @@ namespace FleetTechAPI.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("datetime");
 
                     b.Property<string>("Email")
                         .IsRequired()
@@ -2848,7 +2873,7 @@ namespace FleetTechAPI.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<DateTime?>("LastModifiedOn")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("datetime");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -3415,16 +3440,16 @@ namespace FleetTechAPI.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<DateTime>("DateCreated")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("datetime");
 
                     b.Property<DateTime?>("DateLastLogin")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("datetime");
 
                     b.Property<DateTime?>("DateLastLoginFieldService")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("datetime");
 
                     b.Property<DateTime?>("DateLastPasswordChange")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("datetime");
 
                     b.Property<string>("Document")
                         .HasColumnType("TEXT");
@@ -3442,7 +3467,7 @@ namespace FleetTechAPI.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<DateTime?>("LockoutEnd")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("datetime");
 
                     b.Property<string>("PasswordHash")
                         .IsRequired()
@@ -3472,11 +3497,11 @@ namespace FleetTechAPI.Migrations
                         {
                             Id = new Guid("00000000-0000-0000-0000-000000000001"),
                             AccessFailedCount = 0,
-                            DateCreated = new DateTime(2023, 9, 23, 22, 58, 50, 120, DateTimeKind.Local).AddTicks(4467),
+                            DateCreated = new DateTime(2023, 9, 28, 21, 3, 9, 20, DateTimeKind.Local).AddTicks(7186),
                             Email = "superadmin@gmail.com",
                             FirstName = "Super",
                             LastName = "Admin",
-                            PasswordHash = "AQAAAAIAAYagAAAAEKuK8Zi0R+LtfDrTNMbdz4YKiBxic4lRX4DCjSmZTA6ge+QOOjRkb/NFcsopsdbsxA==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEBOPxgE+UlXBKLhvFSyTjcXdU8qXVAGEINNfoo1bq8/lOY+AMPtam5M8EM18EEHJGQ==",
                             Phone = "(829) 123-4567",
                             Status = 1,
                             Username = "superadmin"
@@ -3543,7 +3568,7 @@ namespace FleetTechAPI.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("datetime");
 
                     b.Property<decimal>("Description")
                         .HasColumnType("decimal(18,6)");
@@ -3552,7 +3577,7 @@ namespace FleetTechAPI.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<DateTime?>("LastModifiedOn")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("datetime");
 
                     b.Property<decimal>("Mileage")
                         .HasColumnType("decimal(18,6)");
@@ -3583,7 +3608,7 @@ namespace FleetTechAPI.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("datetime");
 
                     b.Property<string>("Email")
                         .IsRequired()
@@ -3597,7 +3622,7 @@ namespace FleetTechAPI.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<DateTime?>("LastModifiedOn")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("datetime");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -3606,26 +3631,6 @@ namespace FleetTechAPI.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Mechanics");
-                });
-
-            modelBuilder.Entity("FleetTechCore.Models.WorkShop.MechanicSpecialty", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
-
-                    b.Property<string>("Description")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<int>("MechanicId")
-                        .HasColumnType("INTEGER");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("MechanicId");
-
-                    b.ToTable("MechanicSpecialties");
                 });
 
             modelBuilder.Entity("FleetTechCore.Models.WorkShop.MechanicalWorkshop", b =>
@@ -3649,7 +3654,7 @@ namespace FleetTechAPI.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("datetime");
 
                     b.Property<string>("Email")
                         .IsRequired()
@@ -3659,7 +3664,7 @@ namespace FleetTechAPI.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<DateTime?>("LastModifiedOn")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("datetime");
 
                     b.Property<string>("Phone")
                         .IsRequired()
@@ -3679,29 +3684,6 @@ namespace FleetTechAPI.Migrations
                     b.ToTable("MechanicalWorkshop");
                 });
 
-            modelBuilder.Entity("FleetTechCore.Models.WorkShop.WorksopSpecialty", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
-
-                    b.Property<string>("Description")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<int?>("MechanicalWorkshopId")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int>("WorksopId")
-                        .HasColumnType("INTEGER");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("MechanicalWorkshopId");
-
-                    b.ToTable("WorksopSpecialties");
-                });
-
             modelBuilder.Entity("FleetTechCore.Models.fuel.FuelGestion", b =>
                 {
                     b.Property<int>("Id")
@@ -3712,7 +3694,7 @@ namespace FleetTechAPI.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("datetime");
 
                     b.Property<int>("Driver")
                         .HasColumnType("INTEGER");
@@ -3727,7 +3709,7 @@ namespace FleetTechAPI.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<DateTime?>("LastModifiedOn")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("datetime");
 
                     b.Property<decimal>("Mileage")
                         .HasColumnType("decimal(18,6)");
@@ -3922,6 +3904,19 @@ namespace FleetTechAPI.Migrations
                     b.Navigation("User");
                 });
 
+            modelBuilder.Entity("FleetTechCore.Models.Specialty", b =>
+                {
+                    b.HasOne("FleetTechCore.Models.WorkShop.Mechanic", null)
+                        .WithMany("Specialties")
+                        .HasForeignKey("MechanicId")
+                        .OnDelete(DeleteBehavior.NoAction);
+
+                    b.HasOne("FleetTechCore.Models.WorkShop.MechanicalWorkshop", null)
+                        .WithMany("Specialties")
+                        .HasForeignKey("MechanicalWorkshopId")
+                        .OnDelete(DeleteBehavior.NoAction);
+                });
+
             modelBuilder.Entity("FleetTechCore.Models.Supply.Material", b =>
                 {
                     b.HasOne("FleetTechCore.Models.Supply.Supplier", null)
@@ -4038,15 +4033,6 @@ namespace FleetTechAPI.Migrations
                     b.Navigation("Vehicle");
                 });
 
-            modelBuilder.Entity("FleetTechCore.Models.WorkShop.MechanicSpecialty", b =>
-                {
-                    b.HasOne("FleetTechCore.Models.WorkShop.Mechanic", null)
-                        .WithMany("Specialty")
-                        .HasForeignKey("MechanicId")
-                        .OnDelete(DeleteBehavior.NoAction)
-                        .IsRequired();
-                });
-
             modelBuilder.Entity("FleetTechCore.Models.WorkShop.MechanicalWorkshop", b =>
                 {
                     b.HasOne("FleetTechCore.Models.Address.Address", "Address")
@@ -4056,14 +4042,6 @@ namespace FleetTechAPI.Migrations
                         .IsRequired();
 
                     b.Navigation("Address");
-                });
-
-            modelBuilder.Entity("FleetTechCore.Models.WorkShop.WorksopSpecialty", b =>
-                {
-                    b.HasOne("FleetTechCore.Models.WorkShop.MechanicalWorkshop", null)
-                        .WithMany("Specialties")
-                        .HasForeignKey("MechanicalWorkshopId")
-                        .OnDelete(DeleteBehavior.NoAction);
                 });
 
             modelBuilder.Entity("FleetTechCore.Models.Address.Country", b =>
@@ -4112,7 +4090,7 @@ namespace FleetTechAPI.Migrations
 
             modelBuilder.Entity("FleetTechCore.Models.WorkShop.Mechanic", b =>
                 {
-                    b.Navigation("Specialty");
+                    b.Navigation("Specialties");
                 });
 
             modelBuilder.Entity("FleetTechCore.Models.WorkShop.MechanicalWorkshop", b =>
