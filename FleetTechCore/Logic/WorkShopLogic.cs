@@ -2,8 +2,8 @@ using FleetTechCore.DTOs.Data;
 using FleetTechCore.DTOs.Views;
 using FleetTechCore.Enums;
 using FleetTechCore.Errors;
+using FleetTechCore.Models;
 using FleetTechCore.Models.Address;
-using FleetTechCore.Models.Supply;
 using FleetTechCore.Models.User;
 using FleetTechCore.Models.WorkShop;
 
@@ -25,19 +25,19 @@ public partial class Logic
         // confirmar validaciones 
         if(await Data.ExistsMechanicalWorkshopWithRnc(data.RNC))  throw new AlreadyExists("Ya existe una suplidor con este RNC");
 
-        MechanicalWorkshop supply = new MechanicalWorkshop
+        MechanicalWorkshop workshop = new MechanicalWorkshop
         {
             Code = data.Code,
             CompanyName = data.CompanyName,
             RNC = data.RNC,
             Phone = data.Phone,
             Email = data.Email,
-
-        };
+            Status = (int)GenericStatus.Activo
+    };
 
        await Data.Atomic( async () => { 
             var address = await Data.Add(new Address
-                {
+            {
                     PlainAddress = $"{data.AddressLine1} {data.AddressLine2} {data.AddressLine3}" ,
                     AddressLine1 = data.AddressLine1,
                     AddressLine2 = data.AddressLine2,
@@ -45,68 +45,53 @@ public partial class Logic
                     CityId = data.CityId,
             });
 
-            supply.AddressId = address.Id;
-            await Data.Add( supply);
+            workshop.AddressId = address.Id;
+            await Data.Add( workshop);
 
-                var concats = data.Contacts.Select(c => new Contact { Name = c.Name , Telephone =c.Phone , Email = c.Email, MechanicalWorkshopId = supply.Id });
-
+           if (data.Contacts != null) {
+                var concats = data.Contacts.Select(c => new Contact { Name = c.Name , Telephone =c.Phone , Email = c.Email, MechanicalWorkshopId = workshop.Id });
                 await Data.AddRange(concats);
-            
+           }
+
+           if (data.Specialties != null)
+           {
+              var specialties = data.Specialties.Select(c => new Specialty { Description = c.Description,  MechanicalWorkshopId = workshop.Id });
+              await Data.AddRange(specialties);
+           }
        }); 
 
-        return supply.Id;                                                 
+        return workshop.Id;                                                 
     }
 
     public async Task<int> UpdateMechanicalWorkshop(MechanicalWorkshopData data, User user)
     {
-        var supply = await Data.GetMechanicalWorkshopById(data.Id);
+        var workshop = await Data.GetMechanicalWorkshopById(data.Id);
 
-        if (supply == null) throw new NotFound("No se encontro suplidor");
+        if (workshop == null) throw new NotFound("No se encontro suplidor");
         await Data.Atomic(async () => {
 
-            supply.Code = data.Code;
-            supply.CompanyName = data.CompanyName;
-            supply.RNC = data.RNC;
-            supply.Phone = data.Phone;
-            supply.Email = data.Email;
-            supply.Status = data.StatusId;
-            await Data.Update( supply,user.Id);
+            workshop.Code = data.Code;
+            workshop.CompanyName = data.CompanyName;
+            workshop.RNC = data.RNC;
+            workshop.Phone = data.Phone;
+            workshop.Email = data.Email;
+            workshop.Status = data.StatusId;
+            await Data.Update( workshop,user.Id);
 
-            supply.Address.PlainAddress = $"{data.AddressLine1} {data.AddressLine2} {data.AddressLine3}";
-            supply.Address.AddressLine1 = data.AddressLine1;
-            supply.Address.AddressLine2 = data.AddressLine2;
-            supply.Address.AddressLine3 = data.AddressLine3;
-            supply.Address.CityId = data.CityId;
+            workshop.Address.PlainAddress = $"{data.AddressLine1} {data.AddressLine2} {data.AddressLine3}";
+            workshop.Address.AddressLine1 = data.AddressLine1;
+            workshop.Address.AddressLine2 = data.AddressLine2;
+            workshop.Address.AddressLine3 = data.AddressLine3;
+            workshop.Address.CityId = data.CityId;
 
-            await Data.Update(supply.Address, user.Id);
+            await Data.Update(workshop.Address, user.Id);
+            
+            await ManagemmentContact(data.Contacts,workshop.Id,"MechanicalWorkshop" , workshop.Contacts.ToList());
 
-            if(data.Contacts.Count == 0)
-            {
-              await Data.DeleteRange(supply.Contacts);
-            }
-            else
-            {
-                var toConctact = data.Contacts.Select(c => new Contact { Name = c.Name, Telephone = c.Phone, Email = c.Email, MechanicalWorkshopId = supply.Id });
-                var newContact = toConctact.Where(c => c.Id == 0).ToList();
-
-                var delete = supply.Contacts.Except(toConctact).ToList();
-                if (delete?.Count > 0) await Data.DeleteRange<Contact>(delete);
-
-                if (newContact.Count > 0) await Data.AddRange<Contact>(newContact);
-
-                var updateContact = toConctact.Intersect(supply.Contacts).ToList();
-                if (updateContact?.Count > 0) 
-                {
-                    foreach (var contact in updateContact)
-                    {
-                        await Data.Update<Contact>(contact);
-                    }
-                }
-            }
-
+            await ManagemmentSpecialty(data.Specialties,workshop.Id,"MechanicalWorkshop" , workshop.Specialties);
         });
 
-        return supply.Id;
+        return workshop.Id;
     }
     public async Task<int> DeleteMechanicalWorkshop(int Id, User user)
     {

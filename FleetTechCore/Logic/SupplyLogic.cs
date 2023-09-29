@@ -33,8 +33,9 @@ public partial class Logic
             RNC = data.RNC,
             Phone = data.Phone,
             Email = data.Email,
+            Status = (int)GenericStatus.Activo,
 
-        };
+    };
 
        await Data.Atomic( async () => { 
             var address = await Data.Add(new Address
@@ -49,9 +50,9 @@ public partial class Logic
             supply.AddressId = address.Id;
             await Data.Add( supply);
 
-                var concats = data.Contacts.Select(c => new Contact { Name = c.Name , Telephone =c.Phone , Email = c.Email, SupplierId = supply.Id });
+            var concats = data.Contacts.Select(c => new Contact { Name = c.Name , Telephone =c.Phone , Email = c.Email, SupplierId = supply.Id });
 
-                await Data.AddRange(concats);
+            await Data.AddRange(concats);
             
        }); 
 
@@ -83,29 +84,7 @@ public partial class Logic
 
             await Data.Update(supply.Address, user.Id);
 
-            if(data.Contacts.Count == 0)
-            {
-              await Data.DeleteRange(supply.Contacts);
-            }
-            else
-            {
-                var toConctact = data.Contacts.Select(c => new Contact { Name = c.Name, Telephone = c.Phone, Email = c.Email, SupplierId = supply.Id });
-                var newContact = toConctact.Where(c => c.Id == 0).ToList();
-
-                var delete = supply.Contacts.Except(toConctact).ToList();
-                if (delete?.Count > 0) await Data.DeleteRange<Contact>(delete);
-
-                if (newContact.Count > 0) await Data.AddRange<Contact>(newContact);
-
-                var updateContact = toConctact.Intersect(supply.Contacts).ToList();
-                if (updateContact?.Count > 0) 
-                {
-                    foreach (var contact in updateContact)
-                    {
-                        await Data.Update<Contact>(contact);
-                    }
-                }
-            }
+            await ManagemmentContact(data.Contacts, supply.Id, "supply", supply.Contacts.ToList());
 
         });
 

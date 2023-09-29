@@ -12,6 +12,7 @@
         string AddressLine3,
         int    CityId,
         int    StatusId,
-        List<ContactData> Contacts
+        List<ContactData> Contacts,
+        List<SpecialityData> Specialties
     );
 }

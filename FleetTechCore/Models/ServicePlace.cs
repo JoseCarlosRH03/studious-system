@@ -11,7 +11,7 @@ namespace FleetTechCore.Model;
         public required string          Phone       { get; set; }
         public          string          Email       { get; set; }
         public          int             AddressId   { get; set; }
-        public          int             Status      {  get; set; } = 1;
+        public required int             Status      {  get; set; } = 1;
 
 
     public virtual Address Address  { get; set; }

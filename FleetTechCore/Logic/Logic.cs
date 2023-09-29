@@ -4,10 +4,12 @@ using FleetTechCore.DTOs.Shared;
 using FleetTechCore.DTOs.Views;
 using FleetTechCore.Enums;
 using FleetTechCore.Errors;
+using FleetTechCore.Models;
 using FleetTechCore.Models.Address;
 using FleetTechCore.Models.Company;
 using FleetTechCore.Models.Fleet;
 using FleetTechCore.Models.Shared;
+using FleetTechCore.Models.WorkShop;
 using FleetTechCore.Services;
 using FleetTechCore.Services.Infrastructure;
 using FleetTechCore.Services.Model_Related_Services;
@@ -405,5 +407,89 @@ public partial class Logic
       
 
         return FileId == 0?resultFile.Id: FileId;
+    }
+
+    public async Task<object> ManagemmentContact(List<ContactData> data, int idEntity,string entytyName, List<Contact> entityDataBase)
+    {
+        List<Contact> toConctact = new List<Contact>();
+
+        if (data is not null)
+
+            switch (entytyName)
+            { 
+                case "FuelStation":
+                    toConctact = data.Select(c => new Contact {Id = c.Id, Name = c.Name, Telephone = c.Phone, Email = c.Email, FuelStationId = idEntity }).ToList();
+                    break;
+                case "MechanicalWorkshop":
+                    toConctact = data.Select(c => new Contact { Id = c.Id, Name = c.Name, Telephone = c.Phone, Email = c.Email, MechanicalWorkshopId = idEntity }).ToList();
+                    break;
+                case "supply":
+                    toConctact = data.Select(c => new Contact { Id = c.Id, Name = c.Name, Telephone = c.Phone, Email = c.Email, SupplierId = idEntity }).ToList();
+                    break;
+            }
+        else 
+            await Data.DeleteRange(entityDataBase); 
+        
+        if(toConctact is not null)
+        {
+            var newContact = toConctact.Where(c => c.Id == 0).ToList();
+
+            var delete = entityDataBase.Where( data =>  !toConctact.Any( contact => data.Id == contact.Id )).ToList();
+            if (delete?.Count > 0) await Data.DeleteRange<Contact>(delete);
+
+            if (newContact.Count > 0) await Data.AddRange<Contact>(newContact);
+
+            var updateContact = entityDataBase.Where(data => toConctact.Any(contact => data.Id == contact.Id)).ToList();
+            if (updateContact?.Count > 0)
+            {
+                foreach (var contact in updateContact)
+                {
+                    await Data.Update<Contact>(contact);
+                }
+            }
+        }
+
+        return null;
+    }
+
+    public async Task<object> ManagemmentSpecialty(ICollection<SpecialityData> data, int idEntity, string entytyName, ICollection<Specialty> entityDataBase)
+    {
+        List<Specialty> toSpecialty = new List<Specialty>();
+
+        if (data is not null)
+
+            switch (entytyName)
+            {
+                case "Mechanic":
+                    toSpecialty.AddRange(data.Select(c => new Specialty { Id = c.Id, Description = c.Description, MechanicId = idEntity }));
+                    break;
+                case "MechanicalWorkshop":
+                    toSpecialty.AddRange(data.Select(c => new Specialty { Id = c.Id, Description = c.Description, MechanicalWorkshopId = idEntity }));
+                    break;
+            }
+        else
+            await Data.DeleteRange(entityDataBase);
+
+        if (toSpecialty is not null)
+        {
+            var newSpecialty = toSpecialty.Where(c => c.Id == 0).ToList();
+
+
+            var delete = entityDataBase.Where(data => !toSpecialty.Any(spe => data.Id == spe.Id)).ToList();
+            if (delete?.Count > 0) await Data.DeleteRange<Specialty>(delete);
+
+            if (newSpecialty.Count > 0) await Data.AddRange<Specialty>(newSpecialty);
+
+            var updateSpecialty = entityDataBase.Where(data => toSpecialty.Any(spe => data.Id == spe.Id)).ToList();
+            if (updateSpecialty?.Count > 0)
+            {
+                foreach (var specialty in updateSpecialty)
+                {
+                    await Data.Update<Specialty>(specialty);
+                }
+            }
+        }
+
+        return null;
     }
 }

@@ -37,8 +37,9 @@ public partial class Logic
             RNC = data.RNC,
             Phone = data.Phone,
             Email = data.Email,
+            Status = (int)GenericStatus.Activo
 
-        };
+    };
 
        await Data.Atomic( async () => { 
             var address = await Data.Add(new Address
@@ -86,29 +87,7 @@ public partial class Logic
 
             await Data.Update(station.Address, user.Id);
 
-            if(data.Contacts.Count == 0)
-            {
-              await Data.DeleteRange(station.Contacts);
-            }
-            else
-            {
-                var toConctact = data.Contacts.Select(c => new Contact { Name = c.Name, Telephone = c.Phone, Email = c.Email, FuelStationId = station.Id });
-                var newContact = toConctact.Where(c => c.Id == 0).ToList();
-
-                var delete = station.Contacts.Except(toConctact).ToList();
-                if (delete.Count > 0) await Data.DeleteRange<Contact>(delete);
-
-                if (newContact.Count > 0) await Data.AddRange<Contact>(newContact);
-
-                var updateContact = toConctact.Intersect(station.Contacts).ToList();
-                if (updateContact.Count > 0) 
-                {
-                    foreach (var contact in updateContact)
-                    {
-                        await Data.Update<Contact>(contact);
-                    }
-                }
-            }
+            await ManagemmentContact(data.Contacts, station.Id, "FuelStation", station.Contacts.ToList());
 
         });
 

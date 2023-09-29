@@ -13,7 +13,7 @@ namespace FleetTechCore.Models.WorkShop
         public required     string    JobTitle { get; set; }
         public              string    Email { get; set; }
 
-        public virtual List<MechanicSpecialty> Specialty { get; set; }
+        public virtual List<Specialty> Specialties { get; set; }
 
     }
 }
