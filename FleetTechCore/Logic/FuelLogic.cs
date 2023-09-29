@@ -139,6 +139,13 @@ public partial class Logic
         Validation.ValidateFuelPriceData(data);
         try
         {
+            var existingFuelPrices = await Data.GetAllFuelPrice();
+
+            if (existingFuelPrices.Any(fp => fp.FuelType.Id == data.FuelTypeId && fp.DateStart == data.DateFrom))
+            {
+                throw new Exception("Ya existe un precio de combustible con el mismo tipo de combustible y fecha.");
+            }
+
             var result = await Data.Add<FuelPrice>(new FuelPrice
             {
                 FuelTypeId = data.FuelTypeId,
@@ -152,7 +159,6 @@ public partial class Logic
         }
         catch (Exception ex)
         {
-
             throw ex;
         }
     }

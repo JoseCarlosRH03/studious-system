@@ -15,7 +15,8 @@ namespace FleetTechCore.DTOs.Views
         Item        FuelType,
         DateTime    DateStart,
         DateTime    DateEnd,
-        decimal     Price
+        decimal     Price,
+        Item        Status
     )
     {
         public static PriceView From(FuelPrice data) => new()
@@ -24,7 +25,8 @@ namespace FleetTechCore.DTOs.Views
             FuelType = data.FuelType is null ? new Item() : new Item { Id = data.FuelType.Id, Description = data.FuelType.Name },
             DateStart = data.DateFrom,
             DateEnd = data.DateTo,
-            Price = data.Price
+            Price = data.Price,
+            Status = new Item { Id = data.Status, Description = ((GenericStatus)data.Status).ToString() },
         };
     }
 }
