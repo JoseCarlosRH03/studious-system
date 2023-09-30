@@ -11,7 +11,7 @@ public record struct MechanicData
         string Phone,
         string Name,
         string Email,
-        int Status,
+        int StatusId,
         string JobTitle,
         List<SpecialityData> Specialties
      );

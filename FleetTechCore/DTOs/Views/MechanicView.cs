@@ -10,6 +10,7 @@ public record struct MechanicView
         string Code,
         string Phone,
         string Email,
+        string Name,
         Item Status,
         string JobTitle,
         List<Item> Specialties
@@ -18,6 +19,8 @@ public record struct MechanicView
         {
             Id = data.Id,
             Phone = data.Phone,
+            Name = data.Name,
+            Code = data.Code,
             Email = data.Email,
             JobTitle = data.JobTitle,
             Specialties = data.Specialties.Select(s => new Item { Description = s.Description, Id = s.Id}).ToList(),
