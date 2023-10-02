@@ -134,7 +134,7 @@ public partial class Logic
 
             if (data.Specialties != null)
             {
-                var specialties = data.Specialties.Select(c => new Specialty { Description = c.Description, MechanicalWorkshopId = mechanic.Id });
+                var specialties = data.Specialties.Select(c => new Specialty { Description = c.Description, MechanicId = mechanic.Id });
                 await Data.AddRange(specialties);
             }
         });
@@ -150,12 +150,14 @@ public partial class Logic
         await Data.Atomic(async () => {
 
             mechanic.Code = data.Code;
+            mechanic.Name = data.Name;
+            mechanic.JobTitle = data.JobTitle;
             mechanic.Phone = data.Phone;
             mechanic.Email = data.Email;
-            mechanic.Status = data.Status;
+            mechanic.Status = data.StatusId;
             await Data.Update(mechanic, user.Id);
 
-            await ManagemmentSpecialty(data.Specialties, mechanic.Id, "MechanicalWorkshop", mechanic.Specialties);
+            await ManagemmentSpecialty(data.Specialties, mechanic.Id, "Mechanic", mechanic.Specialties);
         });
 
         return mechanic.Id;
