@@ -43,6 +43,20 @@ public static class FluelManagement
             app.MapDelete("fuel/price/{id:int}", (int id, Context ctx) => ctx.ExecuteAuthenticated(
                 (user, logic) => logic.InactiveFuelPrice(id, user)))
             .Produces<int>(),
+             app.MapGet("/fuel/voucher", (Context ctx) => ctx.ExecuteAuthenticated(
+                (user, logic) => logic.GetAllVoucher())),
+             app.MapGet("fuel/voucher/{id:int}", (int Id, Context ctx) => ctx.ExecuteAuthenticated(
+                (user, logic) => logic.GetVoucherById(Id))),
+             app.MapPost("/fuel/voucher", (VoucherData data, Context ctx) => ctx.ExecuteAuthenticated(
+                (user, logic) => logic.CreateVoucher(data, user)))
+             .Produces<int>(),
+             app.MapPut("fuel/voucher/{id:int}", (int id, VoucherData data, Context ctx) => ctx.ExecuteAuthenticated(
+                (user, logic) => logic.UpdateVoucher(id, data, user)))
+            .Produces<int>(),
+             app.MapPut("/fuel/voucher/{id:int}", (int id, string newState, Context ctx) => ctx.ExecuteAuthenticated(
+                (user, logic) => logic.ChangeStateVoucher(id, user, newState)))
+             .Produces<int>(),
+
         }); ;
     }
 }

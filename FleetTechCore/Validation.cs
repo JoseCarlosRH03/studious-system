@@ -149,4 +149,13 @@ public class Validation
         Require(data.DateEnd, "Fecha hasta");
         Require(data.Price, "Precio del combustible");
     }
+
+    public static void ValidateVoucherData(VoucherData data)
+    {
+        Require(data.VehicleId, "Vehiculo");
+        Require(data.DriverId, "Conductor");
+        Require(data.FuelStationId, "Estacion de combustible");
+        Require(data.Mileage, "Kilometraje");
+        Require(data.FuelCapacity, "Capacidad del tanque");
+    }
 }

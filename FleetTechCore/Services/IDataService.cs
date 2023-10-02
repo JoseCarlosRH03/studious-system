@@ -4,6 +4,7 @@ using FleetTechCore.DTOs.Views;
 using FleetTechCore.Models;
 using FleetTechCore.Models.Address;
 using FleetTechCore.Models.Fleet;
+using FleetTechCore.Models.fuel;
 using FleetTechCore.Models.Fuel;
 using FleetTechCore.Models.Supply;
 using FleetTechCore.Models.User;
@@ -64,5 +65,7 @@ public interface IDataService {
     Task<bool> ExistsMechanicalWorkshopWithRnc(string rnc);
     Task<Mechanic> GetMechanicById(int Id);
     Task<List<MechanicView>> GetAllMechanic();
+    Task<List<VoucherView>> GetAllVoucher();
+    Task<FuelGestion> GetVoucherById(int Id);
 
 }

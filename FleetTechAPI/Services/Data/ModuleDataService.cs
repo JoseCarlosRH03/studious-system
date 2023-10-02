@@ -1,6 +1,7 @@
 ﻿using FleetTechCore.DTOs.Data;
 using FleetTechCore.DTOs.Views;
 using FleetTechCore.Models.Fleet;
+using FleetTechCore.Models.fuel;
 using FleetTechCore.Models.Fuel;
 using FleetTechCore.Models.Supply;
 using FleetTechCore.Models.User;
@@ -105,6 +106,20 @@ public partial class DataService
         await FuelPrices
         .Include(p => p.FuelType)
         .FirstOrDefaultAsync(p => p.Id == id);
+
+    public async Task<List<VoucherView>> GetAllVoucher() =>
+        await FuelGestion
+        .Include(v => v.Vehicle)
+        .Include(d => d.Driver)
+        .Include(s => s.FuelStation)
+        .Select(g => VoucherView.From(g))
+        .ToListAsync();
+    public async Task<FuelGestion> GetVoucherById(int id) =>
+        await FuelGestion
+        .Include(v => v.Vehicle)
+        .Include(d => d.Driver)
+        .Include(s => s.FuelStation)
+        .FirstOrDefaultAsync(v => v.Id == id);
     #endregion
 
     #region  Supply Managemen

@@ -5,6 +5,7 @@ using FleetTechCore.Enums;
 using FleetTechCore.Errors;
 using FleetTechCore.Models.Address;
 using FleetTechCore.Models.Fleet;
+using FleetTechCore.Models.fuel;
 using FleetTechCore.Models.Fuel;
 using FleetTechCore.Models.User;
 
@@ -173,4 +174,93 @@ public partial class Logic
 
         return price.Id;
     }
+
+    public async Task<List<VoucherView>> GetAllVoucher() => (await Data.GetAllVoucher());
+    public async Task<VoucherView> GetVoucherById(int id)
+    {
+        var voucher = await Data.GetVoucherById(id);
+        if (voucher == null) throw new NotFound("No se encontro ningun vale de combustible");
+
+        return VoucherView.From(voucher);
+    }
+
+    public async Task<int> CreateVoucher(VoucherData data, User user)
+    {
+        Validation.ValidateVoucherData(data);
+        try
+        {
+
+            var result = await Data.Add<FuelGestion>(new FuelGestion
+            {
+                VehicleId = data.VehicleId,
+                DriveId = data.DriverId,
+                FuelStationId = data.FuelStationId,
+                Mileage = data.Mileage,
+                FuelCapacity = data.FuelCapacity,
+                Status = (int)VoucherState.PendientePorAprobar
+            });
+
+            return result.Id;
+        }
+        catch (Exception ex)
+        {
+            throw ex;
+        }
+    }
+
+    public async Task<int> UpdateVoucher(int id, VoucherData data, User user)
+    {
+        Validation.ValidateVoucherData(data);
+        var voucher = await Data.GetByIdAsync<FuelGestion>(id);
+
+        await Data.Atomic(async () =>
+        {
+            if (voucher == null) throw new NotFound("No existe este vale de combustible");
+
+            voucher.VehicleId = data.VehicleId;
+            voucher.DriveId = data.DriverId;
+            voucher.FuelStationId = data.FuelStationId;
+            voucher.Mileage = data.Mileage;
+            voucher.FuelCapacity = data.FuelCapacity;
+            await Data.Update<FuelGestion>(voucher);
+        });
+
+        return voucher.Id;
+    }
+
+    public async Task<int> ChangeStateVoucher(int id, User user, string newState)
+    {
+        var voucher = await Data.GetByIdAsync<FuelGestion>(id);
+        await Data.Atomic(async () =>
+        {
+            if (voucher == null)
+            {
+                throw new NotFound("No existe este vale de combustible");
+            }
+
+            switch (newState.ToLower())
+            {
+                case "aprobado":
+                    voucher.Status = (int)VoucherState.Aprobado;
+                    break;
+                case "anulado":
+                    voucher.Status = (int)VoucherState.Anulado;
+                    break;
+                case "en proceso":
+                    voucher.Status = (int)VoucherState.EnProceso;
+                    break;
+                case "consumido":
+                    voucher.Status = (int)VoucherState.Consumido;
+                    break;
+                default:
+                    throw new ArgumentException("Estado no válido");
+            }
+
+            await Data.Update<FuelGestion>(voucher, user.Id);
+        });
+        
+        return voucher.Id;
+     
+    }
+
 }
